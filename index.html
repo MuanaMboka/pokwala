@@ -1387,6 +1387,21 @@
       });
     });
 
+    /* ── Scroll ring: dedicated handler (ensures lenis reference) ── */
+    var scrollRingEl = document.querySelector('.hero-scroll-ring');
+    if (scrollRingEl) {
+      scrollRingEl.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (lenis) {
+          lenis.scrollTo('#stats', { duration: 1.2 });
+        } else {
+          var target = document.getElementById('stats');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
     /* ── Hero mouse parallax ── */
     (function () {
       var hero = document.getElementById('hero');
