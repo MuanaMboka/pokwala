@@ -468,15 +468,17 @@
       justify-content: center;
       animation: ringFloat 3s ease-in-out infinite;
       background: rgba(201,168,76,0.18);
-      box-shadow: 0 0 20px rgba(201,168,76,0.50), 0 0 40px rgba(201,168,76,0.25), inset 0 0 12px rgba(201,168,76,0.15);
+      box-shadow: 0 0 24px rgba(201,168,76,0.65), 0 0 50px rgba(201,168,76,0.35), inset 0 0 14px rgba(201,168,76,0.2);
     }
     @keyframes ringFloat {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(7px); }
+      40%       { transform: translateY(10px); }
+      55%       { transform: translateY(7px); }
+      70%       { transform: translateY(11px); }
     }
     @keyframes ringPulse {
-      0%, 100% { opacity: 0.9; }
-      50% { opacity: 1; }
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.65; }
     }
 
     /* Buttons */
@@ -816,7 +818,15 @@
       .hero { max-height: 100svh; }
       .hero-main { padding: 60px 28px 20px; }
       .hero-bar { grid-template-columns: 1fr; padding: 32px 28px 40px; gap: 16px; }
-      .hero-scroll-ring { order: -1; }
+      .hero-bar { display: none; }
+      .hero-scroll-ring {
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        order: unset;
+        display: flex;
+      }
 
       .section-inner { padding: 0 28px; }
 
@@ -876,6 +886,10 @@
       .contact { padding: 56px 0; }
       .hero-ctas { flex-direction: column; align-items: stretch; }
       .btn-primary, .btn-ghost { justify-content: center; }
+      .btn-ghost {
+        color: rgba(247, 245, 242, 0.75);
+        border-color: rgba(247, 245, 242, 0.25);
+      }
       .footer-inner { padding: 0 20px; }
       .footer-nav { gap: 18px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
