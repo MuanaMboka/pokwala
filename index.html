@@ -1257,6 +1257,7 @@
     formspree('initForm', { formElement: '#contact-form', formId: 'mgoqqrak' });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
@@ -1518,9 +1519,23 @@
 
       /* Wire Lenis into GSAP ticker so both run in sync */
       if (lenis) {
-        lenis.on('scroll', ST.update);
         gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
+
+        /* ScrollerProxy — ST reads from Lenis virtual scroll, not window.scrollY */
+        ST.scrollerProxy(document.documentElement, {
+          scrollTop: function (value) {
+            if (arguments.length) { lenis.scrollTo(value, { immediate: true, force: true }); }
+            return lenis.scroll;
+          },
+          getBoundingClientRect: function () {
+            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+          }
+        });
+
+        lenis.on('scroll', ST.update);
+        ST.addEventListener('refresh', function () { lenis.resize(); });
+        ST.refresh();
       }
 
       /* Hero background parallax — video drifts slower than scroll */
