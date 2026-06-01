@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ottawa SEO FAQ | Pokwala — Questions Answered</title>
+  <meta name="description" content="Answers to the most common SEO and GEO questions from Ottawa small business owners and tradespeople.">
+  <link rel="canonical" href="https://pokwala.vercel.app/faq">
+  <meta property="og:title" content="Ottawa SEO FAQ | Pokwala — Questions Answered">
+  <meta property="og:description" content="Answers to the most common SEO and GEO questions from Ottawa small business owners and tradespeople.">
+  <meta property="og:url" content="https://pokwala.vercel.app/faq">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:          #07111C;
+      --surface:     #0D1B29;
+      --gold:        #C9A84C;
+      --gold-light:  #D9BB6E;
+      --cream:       #F7F5F2;
+      --text:        rgba(247,245,242,0.88);
+      --muted:       rgba(247,245,242,0.42);
+      --border:      rgba(247,245,242,0.07);
+      --border-gold: rgba(201,168,76,0.25);
+      --nav-h:       72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      padding-top: var(--nav-h);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .nav, main, footer { position: relative; z-index: 1; }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: none;
+    }
+    .scroll-reveal.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1) 300ms,
+                  transform 1000ms cubic-bezier(0.16, 1, 0.3, 1) 300ms;
+    }
+    @media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* Custom cursor */
+    .cursor { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .cursor {
+        display: block;
+        position: fixed;
+        top: 0; left: 0;
+        width: 2.2rem; height: 2.2rem;
+        margin: -1.1rem 0 0 -1.1rem;
+        z-index: 11000;
+        pointer-events: none;
+        will-change: transform;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .cursor.is-active { opacity: 1; }
+      .cursor-circle {
+        width: 100%; height: 100%;
+        border: 1.5px solid rgba(201,168,76,0.7);
+        border-radius: 50%;
+        background: rgba(201,168,76,0);
+        transition: transform 0.32s cubic-bezier(0.16,1,0.3,1),
+                    background 0.3s, border-color 0.3s;
+        will-change: transform;
+      }
+      .cursor.is-hover .cursor-circle {
+        transform: scale(1.55);
+        background: rgba(201,168,76,0.12);
+        border-color: rgba(201,168,76,0.95);
+      }
+      .cursor.is-hidden .cursor-circle { transform: scale(0); }
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 200;
+      background: rgba(7,17,28,0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--cream);
+      transition: color 0.2s;
+    }
+    .nav-logo:hover { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(247,245,242,0.72);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a[aria-current="page"] { color: var(--gold); }
+
+    .nav-link { position: relative; display: inline-block; overflow: hidden; line-height: 1.1; vertical-align: middle; }
+    .nav-link .nl-default,
+    .nav-link .nl-hover {
+      display: block;
+      transition: transform 0.42s cubic-bezier(0.16,1,0.3,1);
+    }
+    .nav-link .nl-hover {
+      position: absolute;
+      top: 100%; left: 0;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .nav-link:hover .nl-default,
+    .nav-link:hover .nl-hover { transform: translateY(-100%); }
+
+    .nl-hover span {
+      display: inline-block;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: transform 0.38s cubic-bezier(0.16,1,0.3,1),
+                  opacity 0.28s ease;
+    }
+    .nav-link:hover .nl-hover span {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 22px;
+      background: var(--gold);
+      color: #07111C !important;
+      font-size: 0.875rem;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--muted);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: rgba(7,17,28,0.97);
+      backdrop-filter: blur(20px);
+      padding: 28px 32px;
+      flex-direction: column;
+      gap: 22px;
+      z-index: 199;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .nav-mobile a:hover { color: var(--cream); }
+    .nav-mobile a[aria-current="page"] { color: var(--gold); }
+    .nav-mobile .nav-cta { align-self: flex-start; color: #07111C !important; }
+
+    /* Shared layout */
+    .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--gold);
+      color: #07111C;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      letter-spacing: -0.01em;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      padding: 96px 0 80px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .page-hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(201,168,76,0.12) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+    }
+    .page-hero-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .page-hero-overline {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .page-hero-h1 {
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      color: var(--cream);
+      margin-bottom: 28px;
+    }
+    .page-hero-sub {
+      font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── FAQ section ── */
+    .faq-page { padding: 16px 0 100px; background: var(--bg); }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .faq-item {
+      background: rgba(247,245,242,0.02);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item.is-open { background: rgba(201,168,76,0.05); }
+    .faq-toggle {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+    .faq-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+    .faq-question-text {
+      flex: 1;
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s, transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .faq-icon svg { display: block; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .faq-item.is-open .faq-icon { background: rgba(201,168,76,0.12); border-color: var(--gold); }
+    .faq-item.is-open .faq-icon svg { transform: rotate(45deg); }
+    .faq-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .faq-body-inner { padding: 0 40px 28px; }
+    .faq-answer {
+      font-size: 0.9375rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ── Closing CTA / Contact ── */
+    .faq-cta {
+      padding: 100px 0;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .faq-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.pexels.com/photos/4261563/pexels-photo-4261563.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+      filter: brightness(0.55) saturate(0.7);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .faq-cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(7,17,28,0.75) 0%, rgba(7,17,28,0.4) 50%, rgba(7,17,28,0.8) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .faq-cta .section-inner { position: relative; z-index: 2; }
+    .faq-cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .faq-cta-title {
+      font-size: clamp(2rem, 3.25vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.07;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .faq-cta-desc {
+      font-size: 0.9375rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    .contact-bullets { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .contact-bullets li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+    .contact-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; opacity: 0.7; }
+
+    /* Form */
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,245,242,0.5); margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--cream);
+      background: rgba(247,245,242,0.04);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(247,245,242,0.2); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(201,168,76,0.5);
+      background: rgba(247,245,242,0.06);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+    }
+    .form-group input[aria-invalid="true"], .form-group select[aria-invalid="true"], .form-group textarea[aria-invalid="true"] { border-color: rgba(220,60,60,0.6); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .select-wrap { position: relative; }
+    .select-wrap::after { content: ''; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid var(--muted); pointer-events: none; }
+    .form-group select option { background: #0D1B29; color: var(--cream); }
+
+    [data-fs-error] { display: none; font-size: 0.75rem; color: rgba(220,60,60,0.9); margin-top: 6px; }
+    [data-fs-error]:not(:empty) { display: block; }
+    .form-error-banner { display: none; padding: 14px 16px; background: rgba(220,60,60,0.07); border: 1px solid rgba(220,60,60,0.2); border-radius: 4px; color: rgba(220,60,60,0.9); font-size: 0.875rem; margin-bottom: 16px; }
+    [data-fs-error]:not(:empty).form-error-banner { display: block; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold);
+      color: #07111C;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover:not(:disabled) { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    [data-fs-success] { display: none; padding: 48px 40px; border: 1px solid var(--border-gold); border-radius: 6px; text-align: center; background: rgba(201,168,76,0.04); }
+    [data-fs-success].fs-shown { display: block; }
+    .success-ring { width: 52px; height: 52px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .success-title { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.025em; color: var(--cream); margin-bottom: 10px; }
+    .success-text { font-size: 0.9375rem; line-height: 1.7; color: var(--muted); }
+
+    /* ── Footer ── */
+    .footer { padding: 72px 0 44px; background: var(--surface); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 48px; margin-bottom: 56px; }
+    .footer-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); margin-bottom: 12px; }
+    .footer-tagline { font-size: 0.8125rem; line-height: 1.7; color: var(--muted); max-width: 260px; }
+    .footer-nav { display: flex; gap: 32px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .footer-nav a { font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--cream); }
+    .footer-nav a[aria-current="page"] { color: var(--gold); }
+    .footer-divider { height: 1px; background: var(--border); margin-bottom: 28px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 0.8125rem; color: rgba(247,245,242,0.22); }
+
+    /* Responsive 900px */
+    @media (max-width: 900px) {
+      :root { --nav-h: 64px; }
+      .nav-inner { padding: 0 28px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile { padding: 24px 28px; }
+
+      .section-inner { padding: 0 28px; }
+      .page-hero-inner { padding: 0 28px; }
+      .faq-cta-inner { padding: 0 28px; }
+
+      .page-hero { padding: 72px 0 64px; }
+      .faq-page { padding: 12px 0 72px; }
+      .faq-cta { padding: 72px 0; }
+      .faq-cta-grid { grid-template-columns: 1fr; gap: 52px; }
+
+      .footer-inner { padding: 0 28px; }
+      .footer-top { flex-direction: column; gap: 36px; }
+    }
+
+    /* Responsive 600px */
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; }
+      .nav-mobile { padding: 20px; }
+      .section-inner { padding: 0 20px; }
+      .page-hero-inner { padding: 0 20px; }
+      .faq-cta-inner { padding: 0 20px; }
+
+      .page-hero { padding: 56px 0 52px; }
+      .faq-page { padding: 8px 0 56px; }
+      .faq-cta { padding: 56px 0; }
+
+      .faq-toggle { padding: 22px 24px; }
+      .faq-body-inner { padding: 0 24px 22px; }
+
+      .footer-inner { padding: 0 20px; }
+      .footer-nav { gap: 18px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor" aria-hidden="true"><div class="cursor-circle"></div></div>
+
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav" id="navbar" role="banner">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" aria-label="Pokwala — go to homepage">Pokwala</a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="/#services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
+          <li><a class="nav-link" href="/#process" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
+          <li><a class="nav-link" href="/faq" aria-current="page" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
+          <li><a class="nav-cta" href="/#contact">Book a Free Audit</a></li>
+        </ul>
+      </nav>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="/#services"  onclick="closeMobileNav()">Services</a>
+    <a href="/"           onclick="closeMobileNav()">About</a>
+    <a href="/#process"   onclick="closeMobileNav()">Blog</a>
+    <a href="/faq" aria-current="page" onclick="closeMobileNav()">FAQ</a>
+    <a class="nav-cta" href="/#contact" onclick="closeMobileNav()">Book a Free Audit</a>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="page-hero" aria-labelledby="faq-h1">
+      <div class="page-hero-dots" aria-hidden="true"></div>
+      <div class="page-hero-fade" aria-hidden="true"></div>
+      <div class="page-hero-inner">
+        <span class="page-hero-overline reveal">Common Questions</span>
+        <h1 class="page-hero-h1 reveal reveal-d1" id="faq-h1">
+          Everything Ottawa business owners ask us about SEO.
+        </h1>
+        <p class="page-hero-sub reveal reveal-d2">
+          Answers to the questions we hear most from Ottawa tradespeople, contractors, and small business owners thinking about SEO for the first time.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ LIST -->
+    <section class="faq-page" aria-label="Frequently asked questions">
+      <div class="section-inner">
+        <div class="faq-list">
+
+          <!-- FAQ 1 -->
+          <div class="faq-item" id="faq-item-1">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-1">
+                <span class="faq-question-text">How much does SEO cost in Ottawa?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-1" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">It depends on what you need. A one-time SEO audit for a small business website starts around $300–500. Monthly SEO management — where someone actively works on your rankings every month — typically ranges from $500 to $1,500/month for a local business in a mid-size market like Ottawa. At Pokwala, we offer a free audit first so you know exactly what needs to be done before spending anything.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item" id="faq-item-2">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-2">
+                <span class="faq-question-text">Is SEO still relevant in 2026?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-2" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Yes — more than ever. Every day, millions of people search Google to find a plumber, a roofer, a web designer, a dentist near them. SEO is how you show up when they search. What has changed is that AI tools like ChatGPT and Google AI Overviews now also recommend businesses — and the businesses they recommend are the ones with strong SEO. If you rank well on Google, you tend to show up in AI answers too.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item" id="faq-item-3">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-3">
+                <span class="faq-question-text">What is GEO and how is it different from SEO?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-3" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">SEO (Search Engine Optimization) is the practice of getting your website to rank on Google. GEO (Generative Engine Optimization) is the newer practice of getting your business mentioned and recommended by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. When someone asks ChatGPT "who is the best contractor in Ottawa?", GEO is what determines whether your business gets named. The good news: strong SEO and strong GEO are built on the same foundations — good content, clear information, and a trustworthy website.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item" id="faq-item-4">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-4">
+                <span class="faq-question-text">What does local SEO actually include?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-4" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Local SEO is a set of practices that help your business show up when people nearby search for what you offer. It includes: optimising your Google Business Profile so you appear on the map, making sure your website mentions the right locations and services, building citations (listings on directories like Yelp, Yellow Pages, and industry sites), and earning reviews that signal trust to Google. For an Ottawa tradesperson, local SEO is often more valuable than broad SEO because your customers are always nearby — they are not searching from Tokyo.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item" id="faq-item-5">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-5">
+                <span class="faq-question-text">Do I need an SEO consultant or an SEO agency?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-5" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">It depends on your situation. A consultant typically works independently and gives you a strategy and recommendations — you or your team execute the work. An agency handles execution for you. For most Ottawa small businesses and tradespeople, an agency model makes more sense because you are already running a business — you do not have time to implement SEO yourself. At Pokwala, we handle both: the strategy and the doing.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item" id="faq-item-6">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-6">
+                <span class="faq-question-text">How do I find a reliable SEO agency near me?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-6" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Start by looking for agencies that are transparent about their process and honest about timelines. Good SEO takes time — anyone promising page one rankings in two weeks is not being straight with you. Look for an agency that shows you exactly what they will do, reports on real metrics (rankings, traffic, leads — not vanity numbers), and can explain their work in plain language without hiding behind jargon. Locally in Ottawa, you want someone who understands the Ottawa market — the neighbourhoods, the industries, the search behaviour of local customers.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item" id="faq-item-7">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-7">
+                <span class="faq-question-text">Does local SEO work differently in Ontario compared to other provinces?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-7" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">The fundamentals are the same everywhere, but Ontario markets tend to be more competitive than smaller provinces — especially in cities like Toronto, Ottawa, and Hamilton. That means the bar for ranking is higher and the importance of doing SEO properly is greater. For Ottawa specifically, the market is competitive but not Toronto-level — there is real opportunity for a well-optimised local business to rank on page one without a massive budget.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 8 -->
+          <div class="faq-item" id="faq-item-8">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-8">
+                <span class="faq-question-text">What makes an SEO service professional and trustworthy?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-8" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">A professional SEO service does not make guarantees it cannot keep. Google's algorithm is not something any agency controls — no one can guarantee a specific ranking. What a trustworthy agency can guarantee is the quality of the work: proper technical setup, well-researched content, clean backlink practices, and honest monthly reporting. Red flags to watch for: agencies that will not explain what they do, lock you into long contracts without results, or focus on metrics that do not translate to actual business (like raw traffic numbers with no leads).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 9 -->
+          <div class="faq-item" id="faq-item-9">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-9">
+                <span class="faq-question-text">How long does SEO take to show results?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-9" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Honest answer: most businesses start seeing meaningful movement in 3 to 6 months. In a mid-size market like Ottawa, you can sometimes see early wins — small ranking improvements and more traffic from long-tail searches — within 4 to 8 weeks. Full competitive rankings for high-volume keywords take longer, sometimes 6 to 12 months of consistent work. SEO is not a switch you flip — it is a foundation you build. The businesses that win long-term are the ones that start early and stay consistent.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 10 -->
+          <div class="faq-item" id="faq-item-10">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-10">
+                <span class="faq-question-text">What is the difference between SEO and digital marketing?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-10" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Digital marketing is the umbrella term for all online marketing activities — paid ads, social media, email campaigns, content marketing, and SEO. SEO is one channel within digital marketing, but it is unique because it generates organic (unpaid) traffic. You do not pay per click. For most Ottawa small businesses and tradespeople, SEO is the highest-ROI digital marketing channel because it builds lasting visibility rather than renting attention. Pokwala specialises in SEO and GEO — we do not run ads or manage social media, so you get focused expertise rather than a generalist doing everything average.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 11 -->
+          <div class="faq-item" id="faq-item-11">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-11">
+                <span class="faq-question-text">Does SEO work for e-commerce businesses in Ottawa?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-11" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Yes, but e-commerce SEO is a different challenge from local SEO. Local SEO targets people searching nearby — "plumber Ottawa", "contractor near me". E-commerce SEO targets people searching for products regardless of location — "buy X online", "best X Canada". Both are valid but require different strategies. If you have a physical location in Ottawa and also sell online, you need both — local SEO for foot traffic and regional customers, e-commerce SEO for national reach. Pokwala currently focuses on local SEO for Ottawa service businesses, but we can advise on e-commerce strategy as part of a broader audit.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 12 -->
+          <div class="faq-item" id="faq-item-12">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-12">
+                <span class="faq-question-text">What should I ask an SEO consultant before hiring them?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-12" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Five questions worth asking: (1) Can you show me examples of local businesses you have ranked in Ottawa or similar markets? (2) How do you measure success — and what metrics will you report on? (3) What does your process look like in the first 90 days? (4) Do you do the work yourself or outsource it? (5) What happens to my rankings if I stop working with you? A good consultant answers all five without hesitation. At Pokwala, we answer these on our first call — and we offer a free audit before you spend anything.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 13 -->
+          <div class="faq-item" id="faq-item-13">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-13">
+                <span class="faq-question-text">Why does the content on my website affect my Google ranking?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-13" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Google reads your website the same way a person would — looking for clear, useful information. If your site says "We do plumbing" and nothing else, Google has no idea what kind of plumbing, where, or for whom. But if your site explains your services in detail, mentions the Ottawa neighbourhoods you serve, and answers common questions your customers have, Google understands it and ranks it higher. Content is how you tell Google (and your customers) exactly what you do. A site with no content is invisible, no matter how good the underlying code is.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA + FORM -->
+    <section class="faq-cta" id="contact" aria-labelledby="faq-cta-h2">
+      <div class="faq-cta-overlay" aria-hidden="true"></div>
+      <div class="section-inner">
+        <div class="faq-cta-grid">
+          <div class="reveal">
+            <span class="section-label">Still have questions?</span>
+            <h2 class="faq-cta-title" id="faq-cta-h2">Get a free Ottawa SEO audit and we will provide you answers.</h2>
+            <p class="faq-cta-desc">We review your current site, your rankings, and your market — then walk you through exactly what we would do and why. No obligation, no jargon, no hard sell.</p>
+            <ul class="contact-bullets" aria-label="What your free audit includes">
+              <li>Full technical SEO health check</li>
+              <li>AI discoverability check (ChatGPT, Perplexity, Google AI Overviews)</li>
+              <li>Ottawa keyword opportunity report for your industry</li>
+              <li>Priority actions you can start on immediately</li>
+            </ul>
+          </div>
+          <div class="reveal reveal-d1">
+            <div data-fs-success>
+              <div class="success-ring" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M4.5 11l5 5L18 6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p class="success-title">Audit request received!</p>
+              <p class="success-text">We'll review your details and be in touch within one business day with your personalised free audit.</p>
+            </div>
+            <div data-fs-error class="form-error-banner"></div>
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. John Tremblay" required autocomplete="name" data-fs-field>
+                <span data-fs-error="name"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@yourcompany.com" required autocomplete="email" data-fs-field>
+                <span data-fs-error="email"></span>
+              </div>
+              <div class="form-group">
+                <label for="website">Website URL</label>
+                <input type="url" id="website" name="website" placeholder="https://yoursite.com" autocomplete="url" data-fs-field>
+                <span data-fs-error="website"></span>
+              </div>
+              <div class="form-group">
+                <label for="goal">What do you do?</label>
+                <div class="select-wrap">
+                  <select id="goal" name="goal" required data-fs-field>
+                    <option value="" disabled selected>Select your trade or business…</option>
+                    <option value="plumbing">Plumbing</option>
+                    <option value="renovation">Renovation</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="painting">Painting</option>
+                    <option value="other-trades">Other trades</option>
+                    <option value="other-business">Other business</option>
+                  </select>
+                </div>
+                <span data-fs-error="goal"></span>
+              </div>
+              <div class="form-group">
+                <label for="message">Anything else? <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.5">(optional)</span></label>
+                <textarea id="message" name="message" placeholder="Tell us your biggest challenge getting customers online" data-fs-field></textarea>
+                <span data-fs-error="message"></span>
+              </div>
+              <button type="submit" class="btn-submit" data-fs-submit-btn>Get My Free Audit →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer scroll-reveal" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Pokwala</div>
+          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-nav">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#process">How it works</a></li>
+            <li><a href="/faq" aria-current="page">FAQ</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Pokwala. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FAQPage JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does SEO cost in Ottawa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on what you need. A one-time SEO audit for a small business website starts around $300–500. Monthly SEO management — where someone actively works on your rankings every month — typically ranges from $500 to $1,500/month for a local business in a mid-size market like Ottawa. At Pokwala, we offer a free audit first so you know exactly what needs to be done before spending anything."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is SEO still relevant in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — more than ever. Every day, millions of people search Google to find a plumber, a roofer, a web designer, a dentist near them. SEO is how you show up when they search. What has changed is that AI tools like ChatGPT and Google AI Overviews now also recommend businesses — and the businesses they recommend are the ones with strong SEO. If you rank well on Google, you tend to show up in AI answers too."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is GEO and how is it different from SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SEO (Search Engine Optimization) is the practice of getting your website to rank on Google. GEO (Generative Engine Optimization) is the newer practice of getting your business mentioned and recommended by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. When someone asks ChatGPT who is the best contractor in Ottawa, GEO is what determines whether your business gets named. The good news: strong SEO and strong GEO are built on the same foundations — good content, clear information, and a trustworthy website."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does local SEO actually include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Local SEO is a set of practices that help your business show up when people nearby search for what you offer. It includes: optimising your Google Business Profile so you appear on the map, making sure your website mentions the right locations and services, building citations (listings on directories like Yelp, Yellow Pages, and industry sites), and earning reviews that signal trust to Google. For an Ottawa tradesperson, local SEO is often more valuable than broad SEO because your customers are always nearby — they are not searching from Tokyo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an SEO consultant or an SEO agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on your situation. A consultant typically works independently and gives you a strategy and recommendations — you or your team execute the work. An agency handles execution for you. For most Ottawa small businesses and tradespeople, an agency model makes more sense because you are already running a business — you do not have time to implement SEO yourself. At Pokwala, we handle both: the strategy and the doing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find a reliable SEO agency near me?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start by looking for agencies that are transparent about their process and honest about timelines. Good SEO takes time — anyone promising page one rankings in two weeks is not being straight with you. Look for an agency that shows you exactly what they will do, reports on real metrics (rankings, traffic, leads — not vanity numbers), and can explain their work in plain language without hiding behind jargon. Locally in Ottawa, you want someone who understands the Ottawa market — the neighbourhoods, the industries, the search behaviour of local customers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does local SEO work differently in Ontario compared to other provinces?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The fundamentals are the same everywhere, but Ontario markets tend to be more competitive than smaller provinces — especially in cities like Toronto, Ottawa, and Hamilton. That means the bar for ranking is higher and the importance of doing SEO properly is greater. For Ottawa specifically, the market is competitive but not Toronto-level — there is real opportunity for a well-optimised local business to rank on page one without a massive budget."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes an SEO service professional and trustworthy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A professional SEO service does not make guarantees it cannot keep. Google's algorithm is not something any agency controls — no one can guarantee a specific ranking. What a trustworthy agency can guarantee is the quality of the work: proper technical setup, well-researched content, clean backlink practices, and honest monthly reporting. Red flags to watch for: agencies that will not explain what they do, lock you into long contracts without results, or focus on metrics that do not translate to actual business (like raw traffic numbers with no leads)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does SEO take to show results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Honest answer: most businesses start seeing meaningful movement in 3 to 6 months. In a mid-size market like Ottawa, you can sometimes see early wins — small ranking improvements and more traffic from long-tail searches — within 4 to 8 weeks. Full competitive rankings for high-volume keywords take longer, sometimes 6 to 12 months of consistent work. SEO is not a switch you flip — it is a foundation you build. The businesses that win long-term are the ones that start early and stay consistent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SEO and digital marketing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Digital marketing is the umbrella term for all online marketing activities — paid ads, social media, email campaigns, content marketing, and SEO. SEO is one channel within digital marketing, but it is unique because it generates organic (unpaid) traffic. You do not pay per click. For most Ottawa small businesses and tradespeople, SEO is the highest-ROI digital marketing channel because it builds lasting visibility rather than renting attention. Pokwala specialises in SEO and GEO — we do not run ads or manage social media, so you get focused expertise rather than a generalist doing everything average."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does SEO work for e-commerce businesses in Ottawa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but e-commerce SEO is a different challenge from local SEO. Local SEO targets people searching nearby — 'plumber Ottawa', 'contractor near me'. E-commerce SEO targets people searching for products regardless of location — 'buy X online', 'best X Canada'. Both are valid but require different strategies. If you have a physical location in Ottawa and also sell online, you need both — local SEO for foot traffic and regional customers, e-commerce SEO for national reach. Pokwala currently focuses on local SEO for Ottawa service businesses, but we can advise on e-commerce strategy as part of a broader audit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I ask an SEO consultant before hiring them?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Five questions worth asking: (1) Can you show me examples of local businesses you have ranked in Ottawa or similar markets? (2) How do you measure success — and what metrics will you report on? (3) What does your process look like in the first 90 days? (4) Do you do the work yourself or outsource it? (5) What happens to my rankings if I stop working with you? A good consultant answers all five without hesitation. At Pokwala, we answer these on our first call — and we offer a free audit before you spend anything."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the content on my website affect my Google ranking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google reads your website the same way a person would — looking for clear, useful information. If your site says 'We do plumbing' and nothing else, Google has no idea what kind of plumbing, where, or for whom. But if your site explains your services in detail, mentions the Ottawa neighbourhoods you serve, and answers common questions your customers have, Google understands it and ranks it higher. Content is how you tell Google (and your customers) exactly what you do. A site with no content is invisible, no matter how good the underlying code is."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mgoqqrak' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <script>
+  (function () {
+
+    /* ── Lenis smooth scroll ── */
+    var lenis = null;
+    if (window.Lenis) {
+      lenis = new window.Lenis({ lerp: 0.08, duration: 1.2, smoothWheel: true });
+    }
+
+    /* ── Particle canvas ── */
+    var canvas = document.getElementById('bg-canvas');
+    var ctx = canvas.getContext('2d');
+    var W, H, particles;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    function makeParticle() {
+      return {
+        x: Math.random() * W, y: Math.random() * H,
+        r: Math.random() * 1.2 + 0.2,
+        o: Math.random() * 0.16 + 0.02,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2
+      };
+    }
+    function initParticles() {
+      var count = Math.min(80, Math.floor(W * H / 15000));
+      particles = Array.from({ length: count }, makeParticle);
+    }
+
+    var rafId = null;
+    function tick() {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201,168,76,' + p.o + ')';
+        ctx.fill();
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -4) p.x = W + 4;
+        if (p.x > W + 4) p.x = -4;
+        if (p.y < -4) p.y = H + 4;
+        if (p.y > H + 4) p.y = -4;
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+    function startAnim() { if (!rafId) rafId = requestAnimationFrame(tick); }
+    function stopAnim()  { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+
+    resize();
+    initParticles();
+    startAnim();
+    window.addEventListener('resize', function () { resize(); initParticles(); });
+    document.addEventListener('visibilitychange', function () {
+      document.hidden ? stopAnim() : startAnim();
+    });
+
+    /* ── .reveal observer ── */
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); revObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.04, rootMargin: '0px 0px -16px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { revObs.observe(el); });
+
+    /* ── .scroll-reveal observer ── */
+    var srObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-revealed'); srObs.unobserve(e.target); }
+      });
+    }, { rootMargin: '-10% 0px', threshold: 0 });
+    document.querySelectorAll('.scroll-reveal').forEach(function (el) { srObs.observe(el); });
+
+    /* ── Mobile nav ── */
+    var hamburger = document.getElementById('hamburger');
+    var mobileNav = document.getElementById('mobile-nav');
+    var navbar    = document.getElementById('navbar');
+    hamburger.addEventListener('click', function () {
+      var open = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation');
+    }
+    window.closeMobileNav = closeMobileNav;
+    document.addEventListener('click', function (e) {
+      if (!navbar.contains(e.target) && !mobileNav.contains(e.target)) closeMobileNav();
+    });
+
+    /* ── GSAP ScrollTrigger ── */
+    (function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      var gsap = window.gsap;
+      var ST   = window.ScrollTrigger;
+      gsap.registerPlugin(ST);
+
+      if (lenis) {
+        gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+        ST.scrollerProxy(document.documentElement, {
+          scrollTop: function (value) {
+            if (arguments.length) { lenis.scrollTo(value, { immediate: true, force: true }); }
+            return lenis.scroll;
+          },
+          getBoundingClientRect: function () {
+            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+          }
+        });
+        lenis.on('scroll', ST.update);
+        ST.addEventListener('refresh', function () { lenis.resize(); });
+        ST.refresh();
+      }
+
+      gsap.from('.faq-item', {
+        y: 28, opacity: 0,
+        duration: 0.75, ease: 'power2.out',
+        stagger: 0.07,
+        scrollTrigger: { trigger: '.faq-list', start: 'top 85%' }
+      });
+    })();
+
+    /* ── Nav character split ── */
+    (function () {
+      document.querySelectorAll('.nav-link .nl-hover').forEach(function (hoverEl) {
+        var text = hoverEl.textContent;
+        hoverEl.textContent = '';
+        text.split('').forEach(function (char, i) {
+          var s = document.createElement('span');
+          s.textContent = char === ' ' ? ' ' : char;
+          s.style.transitionDelay = (i * 28) + 'ms';
+          hoverEl.appendChild(s);
+        });
+      });
+    })();
+
+    /* ── FAQ Accordion ── */
+    (function () {
+      var items = document.querySelectorAll('.faq-item');
+      items.forEach(function (item) {
+        var btn  = item.querySelector('.faq-toggle');
+        var body = item.querySelector('.faq-body');
+        if (!btn || !body) return;
+
+        btn.addEventListener('click', function () {
+          var isOpen = item.classList.contains('is-open');
+
+          items.forEach(function (other) {
+            if (other.classList.contains('is-open')) {
+              other.classList.remove('is-open');
+              other.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+              other.querySelector('.faq-body').style.maxHeight = '0';
+            }
+          });
+
+          if (!isOpen) {
+            item.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
+        });
+      });
+    })();
+
+    /* ── Custom cursor ── */
+    (function () {
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      var cursor = document.getElementById('cursor');
+      if (!cursor) return;
+
+      var mx = -100, my = -100, cx = -100, cy = -100, px = -100, py = -100;
+      var active = false, cRaf = null;
+
+      document.addEventListener('mousemove', function (e) {
+        mx = e.clientX; my = e.clientY;
+        if (!active) { active = true; cx = mx; cy = my; px = mx; py = my; cursor.classList.add('is-active'); }
+        if (!cRaf) cRaf = requestAnimationFrame(loop);
+      });
+
+      function loop() {
+        cx += (mx - cx) * 0.18; cy += (my - cy) * 0.18;
+        var vx = cx - px, vy = cy - py; px = cx; py = cy;
+        var speed = Math.min(Math.sqrt(vx * vx + vy * vy), 70);
+        var k = speed / 70, angle = Math.atan2(vy, vx) * 180 / Math.PI;
+        var sx = 1 + k * 0.45, sy = 1 - k * 0.32;
+        cursor.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0) rotate(' + angle + 'deg) scale(' + sx + ',' + sy + ')';
+        if (Math.abs(mx - cx) > 0.1 || Math.abs(my - cy) > 0.1 || speed > 0.4) {
+          cRaf = requestAnimationFrame(loop);
+        } else { cRaf = null; }
+      }
+
+      document.addEventListener('mouseleave', function () { cursor.classList.remove('is-active'); });
+      document.addEventListener('mouseenter', function () { if (active) cursor.classList.add('is-active'); });
+
+      document.querySelectorAll('a:not([data-cursor="hide"]), button, input, textarea').forEach(function (el) {
+        el.addEventListener('mouseenter', function () { cursor.classList.add('is-hover'); });
+        el.addEventListener('mouseleave', function () { cursor.classList.remove('is-hover'); });
+      });
+      document.querySelectorAll('[data-cursor="hide"]').forEach(function (el) {
+        el.addEventListener('mouseenter', function () { cursor.classList.add('is-hidden'); });
+        el.addEventListener('mouseleave', function () { cursor.classList.remove('is-hidden'); });
+      });
+    })();
+
+  })();
+  </script>
+
+</body>
+</html>
