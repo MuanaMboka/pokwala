@@ -237,7 +237,7 @@
     /* ── Credentials tiles (same as service cards) ── */
     .credentials-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 1px;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -245,12 +245,12 @@
       margin-top: 48px;
     }
     .credential-card {
-      padding: 40px 32px;
+      padding: 40px 28px;
       background: rgba(247,245,242,0.02);
       border-right: 1px solid var(--border);
       transition: background 0.3s;
     }
-    .credential-card:nth-child(3n) { border-right: none; }
+    .credential-card:last-child { border-right: none; }
     .credential-card:hover { background: rgba(201,168,76,0.04); }
     .credential-icon { width: 40px; height: 40px; color: var(--gold); margin-bottom: 24px; opacity: 0.85; }
     .credential-name {
@@ -341,8 +341,10 @@
       .about-section { padding: 72px 0; }
 
       .credentials-grid { grid-template-columns: repeat(2, 1fr); }
-      .credential-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .credential-card { border-right: 1px solid var(--border); }
+      .credential-card:last-child { border-right: none; }
       .credential-card:nth-child(2n) { border-right: none; }
+      .credential-card:nth-child(2n+1) { border-right: 1px solid var(--border); }
 
       .values-grid { grid-template-columns: 1fr; gap: 52px; }
       .value-desc { max-width: 100%; }
