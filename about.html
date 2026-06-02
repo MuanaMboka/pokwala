@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About George Mangala | Pokwala: Ottawa SEO Consultancy</title>
+  <meta name="description" content="Meet George Mangala, founder of Pokwala, an Ottawa SEO and GEO consultancy helping local businesses and tradespeople get found on Google and AI platforms.">
+  <link rel="canonical" href="https://pokwala.vercel.app/about">
+  <meta property="og:title" content="About George Mangala | Pokwala: Ottawa SEO Consultancy">
+  <meta property="og:description" content="Meet George Mangala, founder of Pokwala, an Ottawa SEO and GEO consultancy helping local businesses and tradespeople get found on Google and AI platforms.">
+  <meta property="og:url" content="https://pokwala.vercel.app/about">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:          #07111C;
+      --surface:     #0D1B29;
+      --gold:        #C9A84C;
+      --gold-light:  #D9BB6E;
+      --cream:       #F7F5F2;
+      --text:        rgba(247,245,242,0.88);
+      --muted:       rgba(247,245,242,0.42);
+      --border:      rgba(247,245,242,0.07);
+      --border-gold: rgba(201,168,76,0.25);
+      --nav-h:       72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      padding-top: var(--nav-h);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+
+    #bg-canvas {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    }
+    .nav, main, footer { position: relative; z-index: 1; }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    .scroll-reveal { opacity: 0; transform: translateY(2rem); transition: none; }
+    .scroll-reveal.is-revealed {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 1000ms cubic-bezier(0.16,1,0.3,1) 300ms, transform 1000ms cubic-bezier(0.16,1,0.3,1) 300ms;
+    }
+    @media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* Cursor */
+    .cursor { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .cursor {
+        display: block; position: fixed; top: 0; left: 0;
+        width: 2.2rem; height: 2.2rem; margin: -1.1rem 0 0 -1.1rem;
+        z-index: 11000; pointer-events: none; will-change: transform;
+        opacity: 0; transition: opacity 0.3s;
+      }
+      .cursor.is-active { opacity: 1; }
+      .cursor-circle {
+        width: 100%; height: 100%;
+        border: 1.5px solid rgba(201,168,76,0.7); border-radius: 50%;
+        background: rgba(201,168,76,0);
+        transition: transform 0.32s cubic-bezier(0.16,1,0.3,1), background 0.3s, border-color 0.3s;
+        will-change: transform;
+      }
+      .cursor.is-hover .cursor-circle { transform: scale(1.55); background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.95); }
+      .cursor.is-hidden .cursor-circle { transform: scale(0); }
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 200;
+      background: rgba(7,17,28,0.94); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 48px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); transition: color 0.2s; }
+    .nav-logo:hover { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 600; color: rgba(247,245,242,0.72); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-links a[aria-current="page"] { color: var(--gold); }
+
+    .nav-link { position: relative; display: inline-block; overflow: hidden; line-height: 1.1; vertical-align: middle; }
+    .nav-link .nl-default, .nav-link .nl-hover { display: block; transition: transform 0.42s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link .nl-hover { position: absolute; top: 100%; left: 0; font-style: italic; font-weight: 400; color: var(--gold); white-space: nowrap; }
+    .nav-link:hover .nl-default, .nav-link:hover .nl-hover { transform: translateY(-100%); }
+    .nl-hover span { display: inline-block; transform: translateY(8px); opacity: 0; transition: transform 0.38s cubic-bezier(0.16,1,0.3,1), opacity 0.28s ease; }
+    .nav-link:hover .nl-hover span { transform: translateY(0); opacity: 1; }
+
+    .nav-cta {
+      display: inline-flex; align-items: center; padding: 10px 22px;
+      background: var(--gold); color: #07111C !important; font-size: 0.875rem; font-weight: 700;
+      border-radius: 4px; cursor: pointer; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      cursor: pointer; padding: 6px; background: none; border: none;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--muted); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    .nav-mobile {
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: rgba(7,17,28,0.97); backdrop-filter: blur(20px);
+      padding: 28px 32px; flex-direction: column; gap: 22px; z-index: 199;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .nav-mobile a:hover { color: var(--cream); }
+    .nav-mobile a[aria-current="page"] { color: var(--gold); }
+    .nav-mobile .nav-cta { align-self: flex-start; color: #07111C !important; }
+
+    /* Shared layout */
+    .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .section-label {
+      display: inline-block; font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px;
+      background: var(--gold); color: #07111C; font-weight: 700; font-size: 0.9375rem;
+      letter-spacing: -0.01em; border-radius: 4px; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* ── About Hero ── */
+    .about-hero {
+      padding: 96px 0 100px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(201,168,76,0.12) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+    }
+    .about-hero-fade {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+    .about-hero-grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-photo-col { display: flex; justify-content: center; }
+    .about-photo-wrap {
+      position: relative;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border-gold);
+      box-shadow: 0 0 0 8px rgba(201,168,76,0.06), 0 32px 64px rgba(0,0,0,0.5);
+      flex-shrink: 0;
+    }
+    .about-photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .about-photo-fallback {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--surface), rgba(201,168,76,0.08));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; color: var(--border-gold);
+    }
+    .about-text-col { display: flex; flex-direction: column; justify-content: center; }
+    .about-h1 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 700; letter-spacing: -0.045em; line-height: 1.08;
+      color: var(--cream); margin-bottom: 28px;
+    }
+    .about-sub {
+      font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+      line-height: 1.8; color: var(--muted); max-width: 540px;
+    }
+
+    /* ── Shared section styles ── */
+    .about-section { padding: 100px 0; }
+    .about-section.surface { background: var(--surface); }
+    .about-section.bg { background: var(--bg); }
+
+    .section-header { margin-bottom: 48px; }
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 700; letter-spacing: -0.04em; line-height: 1.07;
+      color: var(--cream); max-width: 640px;
+    }
+    .section-body {
+      font-size: 0.9375rem; line-height: 1.9; color: var(--muted);
+      max-width: 760px; margin-top: 24px;
+    }
+    .section-body + .section-body { margin-top: 18px; }
+
+    /* ── Credentials tiles (same as service cards) ── */
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+    .credential-card {
+      padding: 40px 32px;
+      background: rgba(247,245,242,0.02);
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .credential-card:nth-child(3n) { border-right: none; }
+    .credential-card:hover { background: rgba(201,168,76,0.04); }
+    .credential-icon { width: 40px; height: 40px; color: var(--gold); margin-bottom: 24px; opacity: 0.85; }
+    .credential-name {
+      font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--cream); line-height: 1.35;
+    }
+
+    /* ── Value cards (same visual as process steps) ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 64px 80px;
+      margin-top: 64px;
+    }
+    .value-card { position: relative; }
+    .value-num {
+      display: block;
+      font-size: clamp(5rem, 7vw, 7rem);
+      font-weight: 900; letter-spacing: -0.07em; line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,0.5);
+      margin-bottom: 24px;
+    }
+    .value-name {
+      font-size: 1.1875rem; font-weight: 700; letter-spacing: -0.025em;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .value-desc {
+      font-size: 0.9375rem; line-height: 1.8; color: var(--muted); max-width: 460px;
+    }
+
+    /* ── Closing CTA ── */
+    .about-cta {
+      padding: 100px 0;
+      background: var(--bg);
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .about-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.pexels.com/photos/4261563/pexels-photo-4261563.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+      filter: brightness(0.55) saturate(0.7);
+      pointer-events: none; z-index: 0;
+    }
+    .about-cta-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(7,17,28,0.75) 0%, rgba(7,17,28,0.4) 50%, rgba(7,17,28,0.8) 100%);
+      z-index: 1; pointer-events: none;
+    }
+    .about-cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; padding: 0 48px; }
+    .about-cta-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 700; letter-spacing: -0.04em; line-height: 1.1;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .about-cta-desc {
+      font-size: 0.9375rem; line-height: 1.8; color: var(--muted); margin-bottom: 36px;
+    }
+
+    /* ── Footer ── */
+    .footer { padding: 72px 0 44px; background: var(--surface); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 48px; margin-bottom: 56px; }
+    .footer-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); margin-bottom: 12px; }
+    .footer-tagline { font-size: 0.8125rem; line-height: 1.7; color: var(--muted); max-width: 260px; }
+    .footer-nav { display: flex; gap: 32px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .footer-nav a { font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--cream); }
+    .footer-nav a[aria-current="page"] { color: var(--gold); }
+    .footer-divider { height: 1px; background: var(--border); margin-bottom: 28px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 0.8125rem; color: rgba(247,245,242,0.22); }
+
+    /* ── Responsive 900px ── */
+    @media (max-width: 900px) {
+      :root { --nav-h: 64px; }
+      .nav-inner { padding: 0 28px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .section-inner { padding: 0 28px; }
+      .about-hero { padding: 72px 0 80px; }
+      .about-hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .about-photo-col { justify-content: center; }
+      .about-text-col { align-items: center; }
+      .about-sub { max-width: 100%; }
+
+      .about-section { padding: 72px 0; }
+
+      .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+      .credential-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .credential-card:nth-child(2n) { border-right: none; }
+
+      .values-grid { grid-template-columns: 1fr; gap: 52px; }
+      .value-desc { max-width: 100%; }
+
+      .about-cta { padding: 72px 0; }
+      .about-cta-inner { padding: 0 28px; }
+
+      .footer-inner { padding: 0 28px; }
+      .footer-top { flex-direction: column; gap: 36px; }
+    }
+
+    /* ── Responsive 600px ── */
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; }
+      .section-inner { padding: 0 20px; }
+      .about-hero { padding: 56px 0 64px; }
+      .about-photo-wrap { width: 260px; height: 260px; }
+      .about-section { padding: 56px 0; }
+      .credentials-grid { grid-template-columns: 1fr; }
+      .credential-card { border-right: none !important; border-bottom: 1px solid var(--border); }
+      .credential-card:last-child { border-bottom: none; }
+      .about-cta { padding: 56px 0; }
+      .about-cta-inner { padding: 0 20px; }
+      .footer-inner { padding: 0 20px; }
+      .footer-nav { gap: 18px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor" aria-hidden="true"><div class="cursor-circle"></div></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav" id="navbar" role="banner">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" aria-label="Pokwala — go to homepage">Pokwala</a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="/#services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/about" aria-current="page" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
+          <li><a class="nav-link" href="/#process" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
+          <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
+          <li><a class="nav-cta" href="/#contact">Book a Free Audit</a></li>
+        </ul>
+      </nav>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="/#services" onclick="closeMobileNav()">Services</a>
+    <a href="/about" aria-current="page" onclick="closeMobileNav()">About</a>
+    <a href="/#process" onclick="closeMobileNav()">Blog</a>
+    <a href="/faq" onclick="closeMobileNav()">FAQ</a>
+    <a class="nav-cta" href="/#contact" onclick="closeMobileNav()">Book a Free Audit</a>
+  </nav>
+
+  <main>
+
+    <!-- 1. HERO -->
+    <section class="about-hero" aria-labelledby="about-h1">
+      <div class="about-hero-dots" aria-hidden="true"></div>
+      <div class="about-hero-fade" aria-hidden="true"></div>
+      <div class="section-inner">
+        <div class="about-hero-grid">
+
+          <div class="about-photo-col reveal">
+            <div class="about-photo-wrap">
+              <img
+                src="assets/images/george-mangala.jpg"
+                alt="George Mangala, founder of Pokwala Ottawa SEO consultancy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              >
+              <div class="about-photo-fallback" style="display:none;" aria-hidden="true">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="32" r="16" stroke="currentColor" stroke-width="2"/>
+                  <path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-text-col">
+            <span class="section-label reveal">The person behind Pokwala</span>
+            <h1 class="about-h1 reveal reveal-d1" id="about-h1">
+              Ottawa SEO consultant.<br>One focus. Real results.
+            </h1>
+            <p class="about-sub reveal reveal-d2">
+              Hi, I'm George Mangala, founder of Pokwala. I provide practical, high-impact SEO and GEO strategies to help Ottawa small businesses and tradespeople get found on Google and AI platforms.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WHY POKWALA -->
+    <section class="about-section surface scroll-reveal" aria-labelledby="why-h2">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-label">Why Pokwala</span>
+          <h2 class="section-title" id="why-h2">A name built with intention.</h2>
+        </div>
+        <p class="section-body">
+          Pokwala is a name I built from real pieces: a combination of family names that became something new with its own identity. That is the same philosophy behind the work. Nothing arbitrary, nothing off-the-shelf. Every strategy, every recommendation, every report is built for your specific business, not copied from a template and renamed.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. BACKGROUND & CREDENTIALS -->
+    <section class="about-section bg scroll-reveal" aria-labelledby="background-h2">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-label">Background</span>
+          <h2 class="section-title" id="background-h2">Built on real experience, not theory.</h2>
+        </div>
+        <p class="section-body">
+          I have a background in Economics and a diploma in Digital Marketing, but the work that matters most came after the classroom. For the past three years I have been working as a Web Performance and Content Specialist at a tech company in Montreal, managing SEO strategy, Google Analytics, Search Console, schema markup, and AI-era content optimisation for a live product used by thousands of people daily.
+        </p>
+        <p class="section-body">
+          Pokwala is how I bring that same level of work to Ottawa small businesses and tradespeople who deserve proper SEO strategy, not cookie-cutter packages from an agency that treats them as an afterthought.
+        </p>
+
+        <div class="credentials-grid" role="list" aria-label="Credentials and skills">
+
+          <article class="credential-card" role="listitem">
+            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M20 12v8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="credential-name">3+ years in-house SEO and web performance</p>
+          </article>
+
+          <article class="credential-card" role="listitem">
+            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M6 32V18l8-6 8 4 12-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 32h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="14" cy="26" r="2" fill="currentColor"/>
+              <circle cx="22" cy="20" r="2" fill="currentColor"/>
+              <circle cx="34" cy="12" r="2" fill="currentColor"/>
+            </svg>
+            <p class="credential-name">GA4, Google Search Console, BigQuery, Looker Studio</p>
+          </article>
+
+          <article class="credential-card" role="listitem">
+            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M14 14l-6 6 6 6M26 14l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 10l-4 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p class="credential-name">Schema markup and structured data implementation</p>
+          </article>
+
+          <article class="credential-card" role="listitem">
+            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="6" y="8" width="28" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 18h4M22 18h4M14 23h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="20" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M17 32h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p class="credential-name">GEO and AI Overview optimisation</p>
+          </article>
+
+          <article class="credential-card" role="listitem">
+            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M8 14c0-2.209 1.791-4 4-4h4c1.5 0 2.5 1 2.5 2.5S17.5 15 16 15h-1c-1.5 0-2.5 1-2.5 2.5S13.5 20 15 20h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M22 20h2c1.5 0 2.5 1 2.5 2.5S25.5 25 24 25h-1c-1.5 0-2.5 1-2.5 2.5S21.5 30 23 30h5c2.209 0 4-1.791 4-4v-4c0-2.209-1.791-4-4-4h-4c-1.5 0-2.5-1-2.5-2.5S22.5 13 24 13h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p class="credential-name">Bilingual: English and French</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. HOW I WORK -->
+    <section class="about-section surface scroll-reveal" aria-labelledby="how-h2">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-label">How it works with me</span>
+          <h2 class="section-title" id="how-h2">You deal with me directly. Start to finish.</h2>
+        </div>
+        <p class="section-body">
+          When you hire Pokwala you get me directly: George Mangala, on every call, every audit, every report. I do not outsource your work to a team you have never met. When you bring a problem to Pokwala, I handle it personally, from diagnosis to delivery.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. WHAT I BELIEVE -->
+    <section class="about-section bg scroll-reveal" aria-labelledby="values-h2">
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-label">What I believe</span>
+          <h2 class="section-title" id="values-h2">How I think about the work.</h2>
+        </div>
+
+        <div class="values-grid" role="list">
+
+          <div class="value-card scroll-reveal" role="listitem">
+            <span class="value-num" aria-hidden="true">01</span>
+            <h3 class="value-name">Honesty over hype.</h3>
+            <p class="value-desc">SEO takes time. I will never promise page one rankings in two weeks. What I will promise is transparent work, honest timelines, and a clear explanation of everything I do.</p>
+          </div>
+
+          <div class="value-card scroll-reveal" role="listitem">
+            <span class="value-num" aria-hidden="true">02</span>
+            <h3 class="value-name">Results you can understand.</h3>
+            <p class="value-desc">Monthly reports in plain language, not a wall of numbers that requires a data scientist to interpret. If your rankings improved you will see it. If something is not working I will tell you why.</p>
+          </div>
+
+          <div class="value-card scroll-reveal" role="listitem">
+            <span class="value-num" aria-hidden="true">03</span>
+            <h3 class="value-name">Strategy before execution.</h3>
+            <p class="value-desc">I do not start optimising before I understand your business, your market, and your customers. The audit comes first. Every tactic follows from a reason.</p>
+          </div>
+
+          <div class="value-card scroll-reveal" role="listitem">
+            <span class="value-num" aria-hidden="true">04</span>
+            <h3 class="value-name">Built to last, not to impress.</h3>
+            <p class="value-desc">Vanity metrics, raw traffic, impressions, social likes, are easy to inflate. I focus on the numbers that translate to actual business: qualified leads, local rankings, and conversion-ready visibility.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CLOSING CTA -->
+    <section class="about-cta" aria-labelledby="cta-h2">
+      <div class="about-cta-overlay" aria-hidden="true"></div>
+      <div class="about-cta-inner scroll-reveal">
+        <span class="section-label">Ready to start?</span>
+        <h2 class="about-cta-title" id="cta-h2">Let's talk about your Ottawa business.</h2>
+        <p class="about-cta-desc">
+          Book a free audit and I will review your current site, your rankings, and your local Ottawa market. You will leave the call with a clear picture of where you stand and exactly what needs to happen next, whether you hire me or not.
+        </p>
+        <a class="btn-primary" href="/#contact">
+          Get My Free Audit
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+            <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer scroll-reveal" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Pokwala</div>
+          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-nav">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#process">How it works</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Pokwala. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <script>
+  (function () {
+
+    /* ── Lenis smooth scroll ── */
+    var lenis = null;
+    if (window.Lenis) {
+      lenis = new window.Lenis({ lerp: 0.08, duration: 1.2, smoothWheel: true });
+    }
+
+    /* ── Particle canvas ── */
+    var canvas = document.getElementById('bg-canvas');
+    var ctx = canvas.getContext('2d');
+    var W, H, particles;
+
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    function makeParticle() {
+      return { x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.2+0.2,
+               o: Math.random()*0.16+0.02, vx: (Math.random()-0.5)*0.2, vy: (Math.random()-0.5)*0.2 };
+    }
+    function initParticles() { particles = Array.from({ length: Math.min(80, Math.floor(W*H/15000)) }, makeParticle); }
+
+    var rafId = null;
+    function tick() {
+      ctx.clearRect(0,0,W,H);
+      for (var i=0; i<particles.length; i++) {
+        var p = particles[i];
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(201,168,76,'+p.o+')'; ctx.fill();
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<-4)p.x=W+4; if(p.x>W+4)p.x=-4;
+        if(p.y<-4)p.y=H+4; if(p.y>H+4)p.y=-4;
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+    function startAnim() { if(!rafId) rafId=requestAnimationFrame(tick); }
+    function stopAnim()  { if(rafId){cancelAnimationFrame(rafId);rafId=null;} }
+
+    resize(); initParticles(); startAnim();
+    window.addEventListener('resize', function(){ resize(); initParticles(); });
+    document.addEventListener('visibilitychange', function(){ document.hidden?stopAnim():startAnim(); });
+
+    /* ── .reveal observer ── */
+    var revObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('is-visible');revObs.unobserve(e.target);} });
+    }, { threshold: 0.04, rootMargin: '0px 0px -16px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+
+    /* ── .scroll-reveal observer ── */
+    var srObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('is-revealed');srObs.unobserve(e.target);} });
+    }, { rootMargin: '-8% 0px', threshold: 0 });
+    document.querySelectorAll('.scroll-reveal').forEach(function(el){ srObs.observe(el); });
+
+    /* ── Mobile nav ── */
+    var hamburger = document.getElementById('hamburger');
+    var mobileNav = document.getElementById('mobile-nav');
+    var navbar    = document.getElementById('navbar');
+    hamburger.addEventListener('click', function(){
+      var open = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    });
+    function closeMobileNav() {
+      mobileNav.classList.remove('open'); hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false'); hamburger.setAttribute('aria-label','Open navigation');
+    }
+    window.closeMobileNav = closeMobileNav;
+    document.addEventListener('click', function(e){
+      if(!navbar.contains(e.target)&&!mobileNav.contains(e.target)) closeMobileNav();
+    });
+
+    /* ── GSAP ScrollTrigger ── */
+    (function(){
+      if(!window.gsap||!window.ScrollTrigger) return;
+      var gsap=window.gsap, ST=window.ScrollTrigger;
+      gsap.registerPlugin(ST);
+      if(lenis){
+        gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+        gsap.ticker.lagSmoothing(0);
+        ST.scrollerProxy(document.documentElement,{
+          scrollTop:function(value){ if(arguments.length){lenis.scrollTo(value,{immediate:true,force:true});} return lenis.scroll; },
+          getBoundingClientRect:function(){ return{top:0,left:0,width:window.innerWidth,height:window.innerHeight}; }
+        });
+        lenis.on('scroll',ST.update);
+        ST.addEventListener('refresh',function(){ lenis.resize(); });
+        ST.refresh();
+      }
+      gsap.from('.credential-card',{ y:36,opacity:0,duration:0.8,ease:'power2.out',stagger:0.1,
+        scrollTrigger:{trigger:'.credentials-grid',start:'top 85%'} });
+    })();
+
+    /* ── Nav character split ── */
+    (function(){
+      document.querySelectorAll('.nav-link .nl-hover').forEach(function(hoverEl){
+        var text=hoverEl.textContent; hoverEl.textContent='';
+        text.split('').forEach(function(char,i){
+          var s=document.createElement('span'); s.textContent=char===' '?' ':char;
+          s.style.transitionDelay=(i*28)+'ms'; hoverEl.appendChild(s);
+        });
+      });
+    })();
+
+    /* ── Custom cursor ── */
+    (function(){
+      if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      var cursor=document.getElementById('cursor'); if(!cursor) return;
+      var mx=-100,my=-100,cx=-100,cy=-100,px=-100,py=-100,active=false,cRaf=null;
+      document.addEventListener('mousemove',function(e){
+        mx=e.clientX;my=e.clientY;
+        if(!active){active=true;cx=mx;cy=my;px=mx;py=my;cursor.classList.add('is-active');}
+        if(!cRaf) cRaf=requestAnimationFrame(loop);
+      });
+      function loop(){
+        cx+=(mx-cx)*0.18;cy+=(my-cy)*0.18;
+        var vx=cx-px,vy=cy-py;px=cx;py=cy;
+        var speed=Math.min(Math.sqrt(vx*vx+vy*vy),70),k=speed/70,angle=Math.atan2(vy,vx)*180/Math.PI;
+        cursor.style.transform='translate3d('+cx+'px,'+cy+'px,0) rotate('+angle+'deg) scale('+(1+k*0.45)+','+(1-k*0.32)+')';
+        if(Math.abs(mx-cx)>0.1||Math.abs(my-cy)>0.1||speed>0.4){cRaf=requestAnimationFrame(loop);}else{cRaf=null;}
+      }
+      document.addEventListener('mouseleave',function(){cursor.classList.remove('is-active');});
+      document.addEventListener('mouseenter',function(){if(active)cursor.classList.add('is-active');});
+      document.querySelectorAll('a:not([data-cursor="hide"]),button,input,textarea').forEach(function(el){
+        el.addEventListener('mouseenter',function(){cursor.classList.add('is-hover');});
+        el.addEventListener('mouseleave',function(){cursor.classList.remove('is-hover');});
+      });
+      document.querySelectorAll('[data-cursor="hide"]').forEach(function(el){
+        el.addEventListener('mouseenter',function(){cursor.classList.add('is-hidden');});
+        el.addEventListener('mouseleave',function(){cursor.classList.remove('is-hidden');});
+      });
+    })();
+
+  })();
+  </script>
+
+</body>
+</html>
