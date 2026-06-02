@@ -237,7 +237,7 @@
     /* ── Credentials tiles (same as service cards) ── */
     .credentials-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -256,6 +256,11 @@
     .credential-name {
       font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.02em;
       color: var(--cream); line-height: 1.35;
+    }
+    .credential-sub {
+      display: block; margin-top: 8px;
+      font-size: 0.8125rem; font-weight: 500;
+      color: var(--gold); letter-spacing: 0.02em;
     }
 
     /* ── Value cards (same visual as process steps) ── */
@@ -341,10 +346,9 @@
       .about-section { padding: 72px 0; }
 
       .credentials-grid { grid-template-columns: repeat(2, 1fr); }
-      .credential-card { border-right: 1px solid var(--border); }
-      .credential-card:last-child { border-right: none; }
+      .credential-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
       .credential-card:nth-child(2n) { border-right: none; }
-      .credential-card:nth-child(2n+1) { border-right: 1px solid var(--border); }
+      .credential-card:nth-child(3), .credential-card:nth-child(4) { border-bottom: none; }
 
       .values-grid { grid-template-columns: 1fr; gap: 52px; }
       .value-desc { max-width: 100%; }
@@ -478,7 +482,9 @@
               <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5"/>
               <path d="M20 12v8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <p class="credential-name">3+ years in-house SEO and web performance</p>
+            <p class="credential-name">3+ years in-house SEO and web performance
+              <span class="credential-sub">Bilingual: English and French</span>
+            </p>
           </article>
 
           <article class="credential-card" role="listitem">
@@ -510,13 +516,6 @@
             <p class="credential-name">GEO and AI Overview optimisation</p>
           </article>
 
-          <article class="credential-card" role="listitem">
-            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M8 14c0-2.209 1.791-4 4-4h4c1.5 0 2.5 1 2.5 2.5S17.5 15 16 15h-1c-1.5 0-2.5 1-2.5 2.5S13.5 20 15 20h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M22 20h2c1.5 0 2.5 1 2.5 2.5S25.5 25 24 25h-1c-1.5 0-2.5 1-2.5 2.5S21.5 30 23 30h5c2.209 0 4-1.791 4-4v-4c0-2.209-1.791-4-4-4h-4c-1.5 0-2.5-1-2.5-2.5S22.5 13 24 13h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <p class="credential-name">Bilingual: English and French</p>
-          </article>
 
         </div>
       </div>
