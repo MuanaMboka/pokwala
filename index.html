@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
   <style>
-    :root {
+    :root {h
       --bg:          #07111C;
       --surface:     #0D1B29;
       --gold:        #C9A84C;
@@ -394,7 +394,7 @@
       will-change: transform;
     }
 
-    .hero-main {
+    .hero-main {      min-height: 0;
       position: relative;
       z-index: 5;
       display: flex;
@@ -821,7 +821,7 @@
       .nav-mobile { padding: 24px 28px; }
 
       .hero { min-height: 100svh; }
-      .hero-main { padding: 60px 28px 20px; }
+      .hero-main {      min-height: 0; padding: 60px 28px 20px; }
       .hero-bar { grid-template-columns: 1fr; padding: 32px 28px 40px; gap: 16px; }
       .hero-bar { display: none; }
 
@@ -864,7 +864,7 @@
       .nav-inner { padding: 0 20px; }
       .nav-mobile { padding: 20px; }
       .section-inner { padding: 0 20px; }
-      .hero-main { padding: 52px 20px 110px; }
+      .hero-main {      min-height: 0; padding: 52px 20px 110px; }
       .hero-bar { padding: 28px 20px 36px; }
       .stats { padding: 40px 0; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
