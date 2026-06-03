@@ -1660,7 +1660,9 @@
   <script>
     document.querySelector('.hero-scroll-ring').addEventListener('click', function(e) {
       e.preventDefault();
-      document.querySelector('#stats').scrollIntoView({ behavior: 'smooth' });
+      var target = document.querySelector('#stats');
+      var top = target.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
     });
   </script>
 </body>
