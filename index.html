@@ -342,7 +342,7 @@
       height: 100vh;
       background: var(--bg);
       display: grid;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: 1fr;
       position: relative;
       margin-top: calc(-1 * var(--nav-h));
       padding-top: var(--nav-h);
@@ -406,7 +406,7 @@
       will-change: transform;
     }
 
-    .hero-bar {
+    .hero-bar {      position: absolute;      bottom: 0;      left: 0;      right: 0;      position: absolute;
       position: relative;
       z-index: 5;
       display: grid;
@@ -822,8 +822,8 @@
 
       .hero { min-height: 100svh; }
       .hero-main {      min-height: 0; padding: 60px 28px 20px; }
-      .hero-bar { grid-template-columns: 1fr; padding: 32px 28px 40px; gap: 16px; }
-      .hero-bar { display: none; }
+      .hero-bar {      position: absolute;      bottom: 0;      left: 0;      right: 0;      position: absolute;      bottom: 0; grid-template-columns: 1fr; padding: 32px 28px 40px; gap: 16px; }
+      .hero-bar {      position: absolute;      bottom: 0;      left: 0;      right: 0;      position: absolute;      bottom: 0;      left: 0; display: none; }
 
       .section-inner { padding: 0 28px; }
 
@@ -865,7 +865,7 @@
       .nav-mobile { padding: 20px; }
       .section-inner { padding: 0 20px; }
       .hero-main {      min-height: 0; padding: 52px 20px 110px; }
-      .hero-bar { padding: 28px 20px 36px; }
+      .hero-bar {      position: absolute;      bottom: 0;      left: 0;      right: 0; padding: 28px 20px 36px; }
       .stats { padding: 40px 0; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat { padding: 28px 14px; }
