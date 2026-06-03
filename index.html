@@ -339,7 +339,7 @@
 
     /* Hero */
     .hero {
-      min-height: 100vh;
+      height: 100vh;
       background: var(--bg);
       display: grid;
       grid-template-rows: 1fr auto;
@@ -1270,7 +1270,7 @@
         smoothWheel: true,
       });
       /* RAF driven by GSAP ticker when available; else manual loop */
-      if (!window.gsap) {
+      if (true) {
         (function lenisFrame(time) { lenis.raf(time); requestAnimationFrame(lenisFrame); })(0);
       }
     }
