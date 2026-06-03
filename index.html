@@ -1657,5 +1657,11 @@
   </script>
   <script src="/assets/js/cookie-consent.js" defer></script>
 
+  <script>
+    document.querySelector('.hero-scroll-ring').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('#stats').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
