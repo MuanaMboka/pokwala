@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Pokwala: Ottawa SEO & GEO Agency</title>
+  <meta name="description" content="Pokwala's privacy policy. Learn how we collect, use, and protect your personal information in accordance with PIPEDA and Quebec Law 25.">
+  <link rel="canonical" href="https://pokwala.vercel.app/privacy-policy">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,900;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:          #07111C;
+      --surface:     #0D1B29;
+      --gold:        #C9A84C;
+      --gold-light:  #D9BB6E;
+      --cream:       #F7F5F2;
+      --text:        rgba(247,245,242,0.88);
+      --muted:       rgba(247,245,242,0.42);
+      --border:      rgba(247,245,242,0.07);
+      --border-gold: rgba(201,168,76,0.25);
+      --nav-h:       72px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      padding-top: var(--nav-h);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+    #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .nav, main, footer { position: relative; z-index: 1; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+    .scroll-reveal { opacity: 0; transform: translateY(2rem); transition: none; }
+    .scroll-reveal.is-revealed { opacity: 1; transform: translateY(0); transition: opacity 1000ms cubic-bezier(0.16,1,0.3,1) 300ms, transform 1000ms cubic-bezier(0.16,1,0.3,1) 300ms; }
+    @media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
+    .cursor { display: none; }
+    @media (hover: hover) and (pointer: fine) {
+      .cursor { display: block; position: fixed; top: 0; left: 0; width: 2.2rem; height: 2.2rem; margin: -1.1rem 0 0 -1.1rem; z-index: 11000; pointer-events: none; will-change: transform; opacity: 0; transition: opacity 0.3s; }
+      .cursor.is-active { opacity: 1; }
+      .cursor-circle { width: 100%; height: 100%; border: 1.5px solid rgba(201,168,76,0.7); border-radius: 50%; background: rgba(201,168,76,0); transition: transform 0.32s cubic-bezier(0.16,1,0.3,1), background 0.3s, border-color 0.3s; will-change: transform; }
+      .cursor.is-hover .cursor-circle { transform: scale(1.55); background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.95); }
+      .cursor.is-hidden .cursor-circle { transform: scale(0); }
+    }
+    .nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 200; background: rgba(7,17,28,0.94); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 1px 0 var(--border); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); transition: color 0.2s; }
+    .nav-logo:hover { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 600; color: rgba(247,245,242,0.72); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-link { position: relative; display: inline-block; overflow: hidden; line-height: 1.1; vertical-align: middle; }
+    .nav-link .nl-default, .nav-link .nl-hover { display: block; transition: transform 0.42s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link .nl-hover { position: absolute; top: 100%; left: 0; font-style: italic; font-weight: 400; color: var(--gold); white-space: nowrap; }
+    .nav-link:hover .nl-default, .nav-link:hover .nl-hover { transform: translateY(-100%); }
+    .nl-hover span { display: inline-block; transform: translateY(8px); opacity: 0; transition: transform 0.38s cubic-bezier(0.16,1,0.3,1), opacity 0.28s ease; }
+    .nav-link:hover .nl-hover span { transform: translateY(0); opacity: 1; }
+    .nav-cta { display: inline-flex; align-items: center; padding: 10px 22px; background: var(--gold); color: #07111C !important; font-size: 0.875rem; font-weight: 700; border-radius: 4px; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--muted); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+    .nav-mobile { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(7,17,28,0.97); backdrop-filter: blur(20px); padding: 28px 32px; flex-direction: column; gap: 22px; z-index: 199; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .nav-mobile a:hover { color: var(--cream); }
+    .nav-mobile .nav-cta { align-self: flex-start; color: #07111C !important; }
+    .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .section-label { display: inline-block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .privacy-hero { padding: 96px 0 80px; background: var(--bg); position: relative; overflow: hidden; }
+    .privacy-hero-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(201,168,76,0.12) 1px, transparent 1px); background-size: 42px 42px; pointer-events: none; }
+    .privacy-hero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
+    .privacy-hero-inner { position: relative; z-index: 1; max-width: 800px; }
+    .privacy-h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.045em; line-height: 1.1; color: var(--cream); margin-bottom: 20px; }
+    .privacy-meta { font-size: 0.875rem; color: var(--muted); }
+    .privacy-doc { padding: 0 0 120px; background: var(--bg); }
+    .privacy-doc-inner { max-width: 800px; margin: 0 auto; padding: 0 48px; }
+    .policy-section { padding: 64px 0 0; border-top: 1px solid var(--border); margin-top: 64px; }
+    .policy-section:first-child { border-top: none; margin-top: 0; padding-top: 72px; }
+    .policy-h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.03em; color: var(--cream); margin-bottom: 20px; }
+    .policy-h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--cream); margin: 28px 0 10px; }
+    .policy-p { font-size: 0.9375rem; line-height: 1.85; color: var(--muted); margin-bottom: 16px; }
+    .policy-p:last-child { margin-bottom: 0; }
+    .policy-p a { color: var(--gold); transition: color 0.2s; }
+    .policy-p a:hover { color: var(--gold-light); }
+    .policy-list { list-style: none; padding: 0; margin: 16px 0; }
+    .policy-list li { font-size: 0.9375rem; line-height: 1.85; color: var(--muted); padding: 8px 0 8px 20px; border-bottom: 1px solid var(--border); position: relative; }
+    .policy-list li:first-child { border-top: 1px solid var(--border); }
+    .policy-list li::before { content: ''; position: absolute; left: 0; top: 50%; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: 0.6; transform: translateY(-50%); }
+    .policy-callout { background: var(--surface); border: 1px solid var(--border-gold); border-left: 3px solid var(--gold); border-radius: 6px; padding: 20px 24px; margin: 24px 0; }
+    .policy-callout p { font-size: 0.9rem; line-height: 1.75; color: var(--muted); margin: 0; }
+    .policy-callout strong { color: var(--cream); }
+    .footer { padding: 72px 0 44px; background: var(--surface); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 48px; margin-bottom: 56px; }
+    .footer-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); margin-bottom: 12px; }
+    .footer-tagline { font-size: 0.8125rem; line-height: 1.7; color: var(--muted); max-width: 260px; }
+    .footer-nav { display: flex; gap: 32px; list-style: none; align-items: center; flex-wrap: wrap; }
+    .footer-nav a { font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--cream); }
+    .footer-nav a[aria-current="page"] { color: var(--gold); }
+    .footer-divider { height: 1px; background: var(--border); margin-bottom: 28px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 0.8125rem; color: rgba(247,245,242,0.22); }
+    @media (max-width: 900px) {
+      :root { --nav-h: 64px; }
+      .nav-inner { padding: 0 28px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .section-inner { padding: 0 28px; }
+      .privacy-hero { padding: 72px 0 64px; }
+      .privacy-doc-inner { padding: 0 28px; }
+      .footer-inner { padding: 0 28px; }
+      .footer-top { flex-direction: column; gap: 36px; }
+    }
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; }
+      .section-inner { padding: 0 20px; }
+      .privacy-hero { padding: 56px 0 48px; }
+      .privacy-doc-inner { padding: 0 20px; }
+      .footer-inner { padding: 0 20px; }
+      .footer-nav { gap: 18px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor" aria-hidden="true"><div class="cursor-circle"></div></div>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <header class="nav" id="navbar" role="banner">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" aria-label="Pokwala, go to homepage">Pokwala</a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="/#services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
+          <li><a class="nav-link" href="/blog" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
+          <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
+          <li><a class="nav-cta" href="/#contact">Get Your Free SEO Audit</a></li>
+        </ul>
+      </nav>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="/#services" onclick="closeMobileNav()">Services</a>
+    <a href="/about" onclick="closeMobileNav()">About</a>
+    <a href="/blog" onclick="closeMobileNav()">Blog</a>
+    <a href="/faq" onclick="closeMobileNav()">FAQ</a>
+    <a class="nav-cta" href="/#contact" onclick="closeMobileNav()">Get Your Free SEO Audit</a>
+  </nav>
+  <main>
+    <section class="privacy-hero" aria-labelledby="privacy-h1">
+      <div class="privacy-hero-dots" aria-hidden="true"></div>
+      <div class="privacy-hero-fade" aria-hidden="true"></div>
+      <div class="section-inner">
+        <div class="privacy-hero-inner">
+          <span class="section-label reveal">Legal</span>
+          <h1 class="privacy-h1 reveal reveal-d1" id="privacy-h1">Privacy Policy</h1>
+          <p class="privacy-meta reveal reveal-d2">Pokwala. Ottawa, Ontario, Canada. Last updated: June 2026</p>
+        </div>
+      </div>
+    </section>
+    <article class="privacy-doc">
+      <div class="privacy-doc-inner">
+        <section class="policy-section scroll-reveal" aria-labelledby="s1">
+          <span class="section-label">Overview</span>
+          <h2 class="policy-h2" id="s1">Who we are and what this policy covers</h2>
+          <p class="policy-p">Pokwala is a one-person SEO and GEO consultancy based in Ottawa, Ontario, Canada. George Mangala is the sole owner and operator. The business provides SEO optimization, website design, analytics reporting, and content management services to local businesses, primarily in the Ottawa area.</p>
+          <p class="policy-p">This Privacy Policy describes what personal information we collect through this website (pokwala.vercel.app), how we use it, how long we keep it, and what rights you have in relation to it. It applies to visitors and prospective clients who interact with this website.</p>
+          <p class="policy-p">We comply with the <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA), Canada's federal private-sector privacy law, and with <em>Quebec's Act respecting the protection of personal information in the private sector</em> (Law 25), which imposes additional obligations for anyone handling the personal information of Quebec residents.</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s2">
+          <span class="section-label">Collection</span>
+          <h2 class="policy-h2" id="s2">What information we collect</h2>
+          <h3 class="policy-h3">Contact form</h3>
+          <p class="policy-p">When you submit the audit request form on this website, we collect:</p>
+          <ul class="policy-list" aria-label="Contact form data collected">
+            <li>Your name</li>
+            <li>Your email address</li>
+            <li>Your website URL</li>
+            <li>Your business or trade type (selected from a dropdown)</li>
+            <li>Any additional information you choose to share in the free-text field</li>
+          </ul>
+          <p class="policy-p">We collect this information only when you voluntarily submit the form. You are not required to provide it. Submitting the form constitutes your express consent to us collecting and using your information for the purpose of responding to your audit request.</p>
+          <h3 class="policy-h3">Analytics data (Google Analytics 4)</h3>
+          <p class="policy-p">We use Google Analytics 4 (GA4) to understand how visitors find and use this website. GA4 collects data such as pages visited, time on site, approximate geographic region, device type, browser, and traffic source. This data is collected via cookies and is processed by Google on servers located outside Canada, including in the United States.</p>
+          <p class="policy-p">GA4 data is aggregated and does not directly identify you by name. However, it is associated with a unique analytics identifier stored in a cookie on your device. This qualifies as personal information under both PIPEDA and Quebec Law 25.</p>
+          <p class="policy-p">GA4 analytics cookies are only placed on your device if you click <strong>Accept cookies</strong> on the consent banner displayed when you first visit the site. If you click <strong>Decline cookies</strong>, no analytics cookies are set and no GA4 data is collected about your visit.</p>
+          <h3 class="policy-h3">Information we do not collect</h3>
+          <p class="policy-p">We do not collect payment information, government ID, health data, or any other sensitive categories of personal information. We do not use email marketing platforms, CRM software, or advertising networks. We do not buy or sell personal information.</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s3">
+          <span class="section-label">Use</span>
+          <h2 class="policy-h2" id="s3">How we use your information</h2>
+          <p class="policy-p">We use the personal information we collect for the following purposes:</p>
+          <ul class="policy-list" aria-label="Purposes for using personal information">
+            <li>To respond to your audit request and communicate with you about our services</li>
+            <li>To prepare the free SEO audit you requested</li>
+            <li>To answer questions you send us through the contact form</li>
+            <li>To understand how visitors use this website so we can improve it (GA4, analytics only with your consent)</li>
+          </ul>
+          <p class="policy-p">We do not use your personal information for automated decision-making, profiling, or any purpose other than those listed above. We do not send unsolicited marketing emails.</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s4">
+          <span class="section-label">Cookies</span>
+          <h2 class="policy-h2" id="s4">Cookies and consent</h2>
+          <p class="policy-p">This website uses two categories of cookies.</p>
+          <h3 class="policy-h3">Strictly necessary cookies</h3>
+          <p class="policy-p">These cookies are required for the website to function, for example to remember your cookie preference. They do not track you and do not require your consent.</p>
+          <h3 class="policy-h3">Analytics cookies (GA4)</h3>
+          <p class="policy-p">Google Analytics 4 uses first-party cookies (beginning with <code>_ga</code>) to distinguish visitors and track sessions. These cookies are only set if you actively accept them via the cookie banner. You may withdraw your consent at any time by clearing your browser cookies. The GA4 cookies have a standard expiry of 2 years (<code>_ga</code>) and 24 hours (<code>_ga_[container-id]</code>).</p>
+          <div class="policy-callout">
+            <p><strong>To opt out of GA4 analytics</strong> after accepting: clear your browser cookies for pokwala.vercel.app, then decline cookies when the banner reappears. You can also install Google's <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Analytics Opt-out Browser Add-on</a>.</p>
+          </div>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s5">
+          <span class="section-label">Third parties</span>
+          <h2 class="policy-h2" id="s5">Disclosure and third-party services</h2>
+          <p class="policy-p">We share your information only in the following limited circumstances:</p>
+          <h3 class="policy-h3">Google Analytics</h3>
+          <p class="policy-p">If you accept analytics cookies, aggregated usage data is transmitted to Google LLC (United States) pursuant to Google's data processing terms. Google's privacy policy is available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>. This transfer is made under standard contractual clauses and Google's Data Processing Amendment. By accepting analytics cookies, you acknowledge that your data will be processed outside Canada.</p>
+          <h3 class="policy-h3">Vercel (hosting)</h3>
+          <p class="policy-p">This website is hosted on Vercel Inc. (United States). Vercel may process technical data such as your IP address and server request logs as part of delivering the website. This is necessary for the operation of the site. Vercel's privacy policy is available at <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">vercel.com/legal/privacy-policy</a>.</p>
+          <h3 class="policy-h3">Legal requirements</h3>
+          <p class="policy-p">We may disclose personal information if required to do so by law, court order, or at the request of a government authority, or where necessary to protect the rights, safety, or property of Pokwala or others.</p>
+          <p class="policy-p">We do not sell, rent, or trade your personal information to any third party.</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s6">
+          <span class="section-label">Retention</span>
+          <h2 class="policy-h2" id="s6">How long we keep your information</h2>
+          <p class="policy-p">We retain personal information only as long as necessary to fulfill the purpose for which it was collected, or as required by law.</p>
+          <ul class="policy-list" aria-label="Retention periods">
+            <li>Contact form submissions: retained for up to 24 months, then securely deleted</li>
+            <li>GA4 analytics data: retained for 14 months within GA4, then automatically deleted by Google</li>
+            <li>Email correspondence: retained for up to 24 months after the last communication</li>
+          </ul>
+          <p class="policy-p">When we no longer need personal information, we delete it securely. Paper records (if any) are shredded. Digital records are permanently deleted from all devices and services where they are stored.</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s7">
+          <span class="section-label">Your rights</span>
+          <h2 class="policy-h2" id="s7">Your rights under PIPEDA and Quebec Law 25</h2>
+          <p class="policy-p">You have the following rights in relation to your personal information:</p>
+          <ul class="policy-list" aria-label="Your privacy rights">
+            <li><strong style="color: var(--cream);">Access:</strong> you may request a copy of the personal information we hold about you</li>
+            <li><strong style="color: var(--cream);">Correction:</strong> you may ask us to correct inaccurate or incomplete information</li>
+            <li><strong style="color: var(--cream);">Withdrawal of consent:</strong> you may withdraw your consent to analytics cookies at any time (see the Cookies section above)</li>
+            <li><strong style="color: var(--cream);">Deletion:</strong> you may ask us to delete your personal information, subject to any legal obligations we may have to retain it</li>
+            <li><strong style="color: var(--cream);">Complaint:</strong> you have the right to file a complaint with the Office of the Privacy Commissioner of Canada (<a href="https://www.priv.gc.ca" target="_blank" rel="noopener noreferrer">priv.gc.ca</a>) or, for Quebec residents, with the Commission d'acces a l'information (<a href="https://www.cai.gouv.qc.ca" target="_blank" rel="noopener noreferrer">cai.gouv.qc.ca</a>)</li>
+          </ul>
+          <p class="policy-p">To exercise any of these rights, contact us at the address in the Privacy Officer section below. We will respond within 30 days.</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s8">
+          <span class="section-label">Security</span>
+          <h2 class="policy-h2" id="s8">How we protect your information</h2>
+          <p class="policy-p">We take reasonable steps to protect your personal information against loss, theft, and unauthorized access, use, disclosure, or modification. This includes transmitting all data over encrypted HTTPS connections, limiting access to personal information to George Mangala as the sole operator of Pokwala, and using reputable third-party services (Google, Vercel) that maintain their own security programs.</p>
+          <p class="policy-p">No method of transmission over the internet is 100% secure. If you have reason to believe your personal information has been compromised, please contact us immediately.</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s9">
+          <span class="section-label">Contact</span>
+          <h2 class="policy-h2" id="s9">Privacy Officer</h2>
+          <p class="policy-p">As required under PIPEDA and Quebec Law 25, Pokwala has designated a Privacy Officer who is responsible for the organization's compliance with privacy obligations and for responding to inquiries and complaints.</p>
+          <div class="policy-callout">
+            <p>
+              <strong>Privacy Officer:</strong> George Mangala<br>
+              <strong>Business:</strong> Pokwala<br>
+              <strong>Location:</strong> Ottawa, Ontario, Canada<br>
+              <strong>Email:</strong> <a href="mailto:georgemangala@gmail.com">georgemangala@gmail.com</a>
+            </p>
+          </div>
+          <p class="policy-p">If you have a question, concern, or complaint about how we handle your personal information, please contact us by email. We will acknowledge your inquiry within 5 business days and respond fully within 30 days. If you are not satisfied with our response, you have the right to escalate your complaint to the applicable privacy regulator (see Your Rights above).</p>
+        </section>
+        <section class="policy-section scroll-reveal" aria-labelledby="s10">
+          <span class="section-label">Updates</span>
+          <h2 class="policy-h2" id="s10">Changes to this policy</h2>
+          <p class="policy-p">We may update this Privacy Policy from time to time to reflect changes in our practices or in applicable law. When we make material changes, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically. Your continued use of this website after changes are posted constitutes your acceptance of the updated policy.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <footer class="footer scroll-reveal" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Pokwala</div>
+          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-nav">
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="/privacy-policy" aria-current="page">Privacy Policy</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Pokwala. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script>
+  (function () {
+    var lenis = null;
+    if (window.Lenis) { lenis = new window.Lenis({ lerp: 0.08, duration: 1.2, smoothWheel: true }); }
+    var canvas = document.getElementById('bg-canvas');
+    var ctx = canvas.getContext('2d');
+    var W, H, particles;
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    function makeParticle() { return { x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.2+0.2, o: Math.random()*0.16+0.02, vx: (Math.random()-0.5)*0.2, vy: (Math.random()-0.5)*0.2 }; }
+    function initParticles() { particles = Array.from({ length: Math.min(80, Math.floor(W*H/15000)) }, makeParticle); }
+    var rafId = null;
+    function tick() {
+      ctx.clearRect(0,0,W,H);
+      for (var i=0; i<particles.length; i++) { var p=particles[i]; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(201,168,76,'+p.o+')'; ctx.fill(); p.x+=p.vx; p.y+=p.vy; if(p.x<-4)p.x=W+4; if(p.x>W+4)p.x=-4; if(p.y<-4)p.y=H+4; if(p.y>H+4)p.y=-4; }
+      rafId = requestAnimationFrame(tick);
+    }
+    function startAnim() { if(!rafId) rafId=requestAnimationFrame(tick); }
+    function stopAnim() { if(rafId){cancelAnimationFrame(rafId);rafId=null;} }
+    resize(); initParticles(); startAnim();
+    window.addEventListener('resize', function(){ resize(); initParticles(); });
+    document.addEventListener('visibilitychange', function(){ document.hidden?stopAnim():startAnim(); });
+    var revObs = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('is-visible');revObs.unobserve(e.target);} }); }, { threshold: 0.04, rootMargin: '0px 0px -16px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
+    var srObs = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('is-revealed');srObs.unobserve(e.target);} }); }, { rootMargin: '-8% 0px', threshold: 0 });
+    document.querySelectorAll('.scroll-reveal').forEach(function(el){ srObs.observe(el); });
+    var hamburger = document.getElementById('hamburger');
+    var mobileNav = document.getElementById('mobile-nav');
+    var navbar = document.getElementById('navbar');
+    hamburger.addEventListener('click', function(){ var open=mobileNav.classList.toggle('open'); hamburger.classList.toggle('open',open); hamburger.setAttribute('aria-expanded',String(open)); hamburger.setAttribute('aria-label',open?'Close navigation':'Open navigation'); });
+    function closeMobileNav() { mobileNav.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.setAttribute('aria-label','Open navigation'); }
+    window.closeMobileNav = closeMobileNav;
+    document.addEventListener('click', function(e){ if(!navbar.contains(e.target)&&!mobileNav.contains(e.target)) closeMobileNav(); });
+    (function(){ if(!window.gsap||!window.ScrollTrigger) return; var gsap=window.gsap,ST=window.ScrollTrigger; gsap.registerPlugin(ST); if(lenis){ gsap.ticker.add(function(time){ lenis.raf(time*1000); }); gsap.ticker.lagSmoothing(0); ST.scrollerProxy(document.documentElement,{ scrollTop:function(value){ if(arguments.length){lenis.scrollTo(value,{immediate:true,force:true});} return lenis.scroll; }, getBoundingClientRect:function(){ return{top:0,left:0,width:window.innerWidth,height:window.innerHeight}; } }); lenis.on('scroll',ST.update); ST.addEventListener('refresh',function(){ lenis.resize(); }); ST.refresh(); } })();
+    (function(){ document.querySelectorAll('.nav-link .nl-hover').forEach(function(hoverEl){ var text=hoverEl.textContent; hoverEl.textContent=''; text.split('').forEach(function(char,i){ var s=document.createElement('span'); s.textContent=char===' '?' ':char; s.style.transitionDelay=(i*28)+'ms'; hoverEl.appendChild(s); }); }); })();
+    (function(){ if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return; var cursor=document.getElementById('cursor'); if(!cursor) return; var mx=-100,my=-100,cx=-100,cy=-100,px=-100,py=-100,active=false,cRaf=null; document.addEventListener('mousemove',function(e){ mx=e.clientX;my=e.clientY; if(!active){active=true;cx=mx;cy=my;px=mx;py=my;cursor.classList.add('is-active');} if(!cRaf) cRaf=requestAnimationFrame(loop); }); function loop(){ cx+=(mx-cx)*0.18;cy+=(my-cy)*0.18; var vx=cx-px,vy=cy-py;px=cx;py=cy; var speed=Math.min(Math.sqrt(vx*vx+vy*vy),70),k=speed/70,angle=Math.atan2(vy,vx)*180/Math.PI; cursor.style.transform='translate3d('+cx+'px,'+cy+'px,0) rotate('+angle+'deg) scale('+(1+k*0.45)+','+(1-k*0.32)+')'; if(Math.abs(mx-cx)>0.1||Math.abs(my-cy)>0.1||speed>0.4){cRaf=requestAnimationFrame(loop);}else{cRaf=null;} } document.addEventListener('mouseleave',function(){cursor.classList.remove('is-active');}); document.addEventListener('mouseenter',function(){if(active)cursor.classList.add('is-active');}); document.querySelectorAll('a:not([data-cursor="hide"]),button,input,textarea').forEach(function(el){ el.addEventListener('mouseenter',function(){cursor.classList.add('is-hover');}); el.addEventListener('mouseleave',function(){cursor.classList.remove('is-hover');}); }); document.querySelectorAll('[data-cursor="hide"]').forEach(function(el){ el.addEventListener('mouseenter',function(){cursor.classList.add('is-hidden');}); el.addEventListener('mouseleave',function(){cursor.classList.remove('is-hidden');}); }); })();
+  })();
+  </script>
+  <script src="/assets/js/cookie-consent.js" defer></script>
+</body>
+</html>
