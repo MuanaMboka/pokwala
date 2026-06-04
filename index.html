@@ -195,7 +195,7 @@
       font-weight: 700;
       border-radius: 4px;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2s, transform 0.15s, color 0.2s;
     }
     .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
     .nav-hamburger {
@@ -409,6 +409,7 @@
     .hero-bar {      position: absolute;      bottom: 0;      left: 0;      right: 0;
       position: relative;
       z-index: 5;
+      pointer-events: none;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: end;
