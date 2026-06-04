@@ -862,6 +862,24 @@
       .footer-nav { gap: 18px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
+  
+    /* ── Custom cursor ── */
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid #D4AF37;
+      pointer-events: none;
+      z-index: 999999;
+      will-change: transform;
+    }
   </style>
 </head>
 <body>
@@ -1568,6 +1586,26 @@
       var top = target.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
+  </script>
+
+  <script>
+    /* ── Custom cursor (GSAP ticker) ── */
+    (function () {
+      const cursor = document.createElement('div');
+      cursor.id = 'custom-cursor';
+      document.body.appendChild(cursor);
+      let mouseX = -100, mouseY = -100;
+      let curX = -100, curY = -100;
+      document.addEventListener('mousemove', function (e) {
+        mouseX = e.clientX - 16;
+        mouseY = e.clientY - 16;
+      });
+      gsap.ticker.add(function () {
+        curX += (mouseX - curX) * 0.15;
+        curY += (mouseY - curY) * 0.15;
+        gsap.set(cursor, { x: curX, y: curY });
+      });
+    })();
   </script>
 </body>
 </html>
