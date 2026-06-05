@@ -341,6 +341,9 @@
       object-fit: cover;
       z-index: 0;
       pointer-events: none;
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
 
     .hero-overlay {
@@ -1456,18 +1459,29 @@
         ST.refresh();
       }
 
-      /* Hero background parallax — video drifts slower than scroll */
-      gsap.to('.hero-vid', {
-        yPercent: 28,
-        ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 }
-      });
-      /* Hero dot grid also drifts slightly */
-      gsap.to('.hero-dots', {
-        yPercent: 14,
-        ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 }
-      });
+      /* Hero parallax is the heaviest scroll effect (full-screen video repaint).
+         Skip it where it janks most or isn't wanted: reduced-motion users,
+         small screens, coarse-pointer/touch, and low-core (mid-range mobile) CPUs. */
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var lowPower = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches
+                     || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+
+      if (!prefersReduced && !lowPower) {
+        /* Hero background parallax — video drifts slower than scroll */
+        gsap.to('.hero-vid', {
+          yPercent: 20,
+          ease: 'none',
+          force3D: true,
+          scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+        });
+        /* Hero dot grid also drifts slightly */
+        gsap.to('.hero-dots', {
+          yPercent: 14,
+          ease: 'none',
+          force3D: true,
+          scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
+        });
+      }
 
       /* Stats — stagger in */
       gsap.from('.stat', {
