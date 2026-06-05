@@ -866,22 +866,24 @@
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
   
-    /* ── Custom cursor ── */
-    *, *::before, *::after {
-      cursor: none !important;
-    }
-    #custom-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: transparent;
-      border: 2px solid #D4AF37;
-      pointer-events: none;
-      z-index: 999999;
-      will-change: transform;
+    /* ── Custom cursor — desktop / fine-pointer only (no touch or tablets) ── */
+    @media (hover: hover) and (pointer: fine) {
+      *, *::before, *::after {
+        cursor: none !important;
+      }
+      #custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: transparent;
+        border: 2px solid #D4AF37;
+        pointer-events: none;
+        z-index: 999999;
+        will-change: transform;
+      }
     }
   </style>
 </head>
@@ -1591,8 +1593,9 @@
   </script>
 
   <script>
-    /* ── Custom cursor (GSAP ticker) ── */
+    /* ── Custom cursor (GSAP ticker) — desktop / fine-pointer only ── */
     (function () {
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
       const cursor = document.createElement('div');
       cursor.id = 'custom-cursor';
       document.body.appendChild(cursor);
