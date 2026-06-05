@@ -341,9 +341,9 @@
       object-fit: cover;
       z-index: 0;
       pointer-events: none;
-      will-change: transform;
+      /* Static background: the video is no longer scroll-transformed, so it
+         keeps its single decode layer and is never re-composited on scroll. */
       transform: translateZ(0);
-      backface-visibility: hidden;
     }
 
     .hero-overlay {
@@ -1459,22 +1459,13 @@
         ST.refresh();
       }
 
-      /* Hero parallax is the heaviest scroll effect (full-screen video repaint).
-         Skip it where it janks most or isn't wanted: reduced-motion users,
-         small screens, coarse-pointer/touch, and low-core (mid-range mobile) CPUs. */
+      /* The video stays static (no scroll transform) — that was the heaviest
+         per-frame cost. Only the lightweight dot grid drifts, and we still skip
+         even that for reduced-motion users to keep things calm. */
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var lowPower = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches
-                     || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
 
-      if (!prefersReduced && !lowPower) {
-        /* Hero background parallax — video drifts slower than scroll */
-        gsap.to('.hero-vid', {
-          yPercent: 20,
-          ease: 'none',
-          force3D: true,
-          scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 }
-        });
-        /* Hero dot grid also drifts slightly */
+      if (!prefersReduced) {
+        /* Hero dot grid drifts slightly — cheap to composite */
         gsap.to('.hero-dots', {
           yPercent: 14,
           ease: 'none',
