@@ -203,6 +203,25 @@
     }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
 
+    /* Tools */
+    .tools { padding: 80px 0 120px; background: var(--bg); }
+    .tools-heading {
+      font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700;
+      letter-spacing: -0.04em; color: var(--cream); text-align: center; margin-bottom: 48px;
+    }
+    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 560px; margin: 0 auto; }
+    .tool-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 40px; text-align: left; transition: border-color 0.3s, transform 0.2s;
+    }
+    .tool-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+    .tool-card-title {
+      font-size: 1.375rem; font-weight: 700; letter-spacing: -0.03em;
+      color: var(--cream); margin-bottom: 14px;
+    }
+    .tool-card-desc { font-size: 0.9375rem; line-height: 1.8; color: var(--muted); margin-bottom: 28px; }
+    .tools-more { text-align: center; font-size: 0.8125rem; color: var(--muted); margin-top: 40px; }
+
     /* Footer */
     .footer { padding: 72px 0 44px; background: var(--surface); }
     .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
@@ -228,6 +247,8 @@
       .page-hero-inner { padding: 0 28px; }
       .blog-empty { padding: 56px 0 96px; }
       .blog-empty-inner { padding: 0 28px; }
+      .tools { padding: 56px 0 96px; }
+      .tool-card { padding: 32px; }
       .footer-inner { padding: 0 28px; }
       .footer-top { flex-direction: column; gap: 36px; }
     }
@@ -241,6 +262,8 @@
       .page-hero-inner { padding: 0 20px; }
       .blog-empty { padding: 40px 0 72px; }
       .blog-empty-inner { padding: 0 20px; }
+      .tools { padding: 40px 0 72px; }
+      .tool-card { padding: 28px; }
       .footer-inner { padding: 0 20px; }
       .footer-nav { gap: 18px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -291,23 +314,22 @@
           Resources
         </h1>
         <p class="page-hero-sub reveal reveal-d2">
-          Practical articles on local SEO, AI search, and what Ottawa small businesses can do to get found online. First posts coming soon.
+          Free tools to help Ottawa contractors get found online.
         </p>
       </div>
     </section>
 
-    <section class="blog-empty" aria-label="Coming soon">
-      <div class="blog-empty-inner scroll-reveal">
-        <div class="blog-empty-ring" aria-hidden="true">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M6 10h20M6 16h14M6 22h10" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+    <section class="tools" aria-label="Free tools">
+      <div class="section-inner">
+        <h2 class="tools-heading scroll-reveal">Free Tools</h2>
+        <div class="tools-grid">
+          <article class="tool-card scroll-reveal">
+            <h3 class="tool-card-title">AI Visibility Checker</h3>
+            <p class="tool-card-desc">Find out if Google and AI search can actually find your business — and get a specific fix list in under 60 seconds.</p>
+            <a class="btn-primary" href="/resources/tools/ai-visibility-checker">Try It Free →</a>
+          </article>
         </div>
-        <h2 class="blog-empty-title">Articles on the way.</h2>
-        <p class="blog-empty-desc">
-          I'm working on practical guides covering local SEO for Ottawa tradespeople, how AI search works, and what you can do right now to improve your rankings. In the meantime, start with a free audit.
-        </p>
-        <a class="btn-primary" href="/contact">Get Your Free SEO Audit →</a>
+        <p class="tools-more scroll-reveal">More tools coming soon.</p>
       </div>
     </section>
 
