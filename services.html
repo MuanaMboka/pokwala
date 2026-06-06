@@ -210,6 +210,7 @@
       box-shadow: 0 0 0 8px rgba(201,168,76,0.04), 0 32px 64px rgba(0,0,0,0.45);
       background: var(--surface);
     }
+    .service-figure picture { display: block; width: 100%; height: 100%; }
     .service-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .service-figure-fallback {
       position: absolute; inset: 0;
@@ -392,11 +393,20 @@
         <div class="service-grid">
 
           <figure class="service-figure reveal">
-            <img
-              src="assets/images/service-seo.jpg"
-              alt="SEO and GEO optimization for Ottawa businesses"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            >
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/service-seo-480.webp 480w, assets/images/service-seo-800.webp 800w, assets/images/service-seo-1200.webp 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px">
+              <img
+                src="assets/images/service-seo-800.jpg"
+                srcset="assets/images/service-seo-480.jpg 480w, assets/images/service-seo-800.jpg 800w, assets/images/service-seo-1200.jpg 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px"
+                width="1200" height="900"
+                loading="eager" fetchpriority="high" decoding="async"
+                alt="SEO and GEO optimization for Ottawa businesses"
+                onerror="var f=this.closest('.service-figure'); f.querySelector('picture').style.display='none'; f.querySelector('.service-figure-fallback').style.display='flex';"
+              >
+            </picture>
             <div class="service-figure-fallback" style="display:none;" aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
                 <rect x="3" y="6" width="34" height="28" rx="3" stroke="currentColor" stroke-width="1.5"/>
@@ -441,11 +451,20 @@
         <div class="service-grid">
 
           <figure class="service-figure reveal">
-            <img
-              src="assets/images/service-gbp.jpg"
-              alt="Google Business Profile management for Ottawa businesses"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            >
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/service-gbp-480.webp 480w, assets/images/service-gbp-800.webp 800w, assets/images/service-gbp-1200.webp 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px">
+              <img
+                src="assets/images/service-gbp-800.jpg"
+                srcset="assets/images/service-gbp-480.jpg 480w, assets/images/service-gbp-800.jpg 800w, assets/images/service-gbp-1200.jpg 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px"
+                width="1200" height="900"
+                loading="lazy" decoding="async"
+                alt="Google Business Profile management for Ottawa businesses"
+                onerror="var f=this.closest('.service-figure'); f.querySelector('picture').style.display='none'; f.querySelector('.service-figure-fallback').style.display='flex';"
+              >
+            </picture>
             <div class="service-figure-fallback" style="display:none;" aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
                 <path d="M20 4C13.373 4 8 9.373 8 16c0 9 12 20 12 20s12-11 12-20c0-6.627-5.373-12-12-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -488,11 +507,20 @@
         <div class="service-grid">
 
           <figure class="service-figure reveal">
-            <img
-              src="assets/images/service-analytics.jpg"
-              alt="Analytics and monthly reporting for Ottawa businesses"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            >
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/service-analytics-480.webp 480w, assets/images/service-analytics-800.webp 800w, assets/images/service-analytics-1200.webp 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px">
+              <img
+                src="assets/images/service-analytics-800.jpg"
+                srcset="assets/images/service-analytics-480.jpg 480w, assets/images/service-analytics-800.jpg 800w, assets/images/service-analytics-1200.jpg 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px"
+                width="1200" height="900"
+                loading="lazy" decoding="async"
+                alt="Analytics and monthly reporting for Ottawa businesses"
+                onerror="var f=this.closest('.service-figure'); f.querySelector('picture').style.display='none'; f.querySelector('.service-figure-fallback').style.display='flex';"
+              >
+            </picture>
             <div class="service-figure-fallback" style="display:none;" aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
                 <path d="M6 32V18l8-6 8 4 12-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -538,11 +566,20 @@
         <div class="service-grid">
 
           <figure class="service-figure reveal">
-            <img
-              src="assets/images/service-content.jpg"
-              alt="Content and website management for Ottawa businesses"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            >
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/service-content-480.webp 480w, assets/images/service-content-800.webp 800w, assets/images/service-content-1200.webp 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px">
+              <img
+                src="assets/images/service-content-800.jpg"
+                srcset="assets/images/service-content-480.jpg 480w, assets/images/service-content-800.jpg 800w, assets/images/service-content-1200.jpg 1200w"
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 56px), (max-width: 1280px) calc(50vw - 88px), 552px"
+                width="1200" height="900"
+                loading="lazy" decoding="async"
+                alt="Content and website management for Ottawa businesses"
+                onerror="var f=this.closest('.service-figure'); f.querySelector('picture').style.display='none'; f.querySelector('.service-figure-fallback').style.display='flex';"
+              >
+            </picture>
             <div class="service-figure-fallback" style="display:none;" aria-hidden="true">
               <svg viewBox="0 0 40 40" fill="none">
                 <rect x="6" y="5" width="28" height="30" rx="3" stroke="currentColor" stroke-width="1.5"/>
@@ -668,7 +705,7 @@
     /* ── .reveal observer ── */
     var revObs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('is-visible');revObs.unobserve(e.target);} });
-    }, { threshold: 0.04, rootMargin: '0px 0px -16px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px 100px 0px' });
     document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
 
     /* ── .scroll-reveal observer ── */
