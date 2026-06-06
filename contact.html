@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About George Mangala | Pokwala: Ottawa SEO Consultancy</title>
-  <meta name="description" content="Meet George Mangala, founder of Pokwala, an Ottawa SEO and GEO consultancy helping local businesses and tradespeople get found on Google and AI platforms.">
-  <link rel="canonical" href="https://pokwala.vercel.app/about">
-  <meta property="og:title" content="About George Mangala | Pokwala: Ottawa SEO Consultancy">
-  <meta property="og:description" content="Meet George Mangala, founder of Pokwala, an Ottawa SEO and GEO consultancy helping local businesses and tradespeople get found on Google and AI platforms.">
-  <meta property="og:url" content="https://pokwala.vercel.app/about">
+  <title>Contact | Pokwala: Ottawa SEO &amp; GEO Agency</title>
+  <meta name="description" content="Get in touch with Pokwala for a free SEO audit. Email georgemangala@gmail.com or call +1 438 274 3768, and George will reply within one business day.">
+  <link rel="canonical" href="https://pokwala.vercel.app/contact">
+  <meta property="og:title" content="Contact | Pokwala: Ottawa SEO &amp; GEO Agency">
+  <meta property="og:description" content="Get in touch with Pokwala for a free SEO audit. Email georgemangala@gmail.com or call +1 438 274 3768, and George will reply within one business day.">
+  <meta property="og:url" content="https://pokwala.vercel.app/contact">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,161 +159,114 @@
     }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-    /* ── About Hero ── */
-    .about-hero {
-      padding: 96px 0 100px;
-      background: var(--bg);
-      position: relative;
-      overflow: hidden;
-    }
-    .about-hero-dots {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(201,168,76,0.12) 1px, transparent 1px);
-      background-size: 42px 42px;
-      pointer-events: none;
-    }
-    .about-hero-fade {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
-      background: linear-gradient(to bottom, transparent, var(--bg));
-      pointer-events: none;
-    }
-    .about-hero-grid {
-      position: relative; z-index: 1;
-      display: grid;
-      grid-template-columns: 420px 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .about-photo-col { display: flex; justify-content: center; }
-    .about-photo-wrap {
-      position: relative;
-      width: 340px; height: 340px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--border-gold);
-      box-shadow: 0 0 0 8px rgba(201,168,76,0.06), 0 32px 64px rgba(0,0,0,0.5);
-      flex-shrink: 0;
-    }
-    .about-photo-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .about-photo-fallback {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, var(--surface), rgba(201,168,76,0.08));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 5rem; color: var(--border-gold);
-    }
-    .about-text-col { display: flex; flex-direction: column; justify-content: center; }
-    .about-h1 {
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      font-weight: 700; letter-spacing: -0.045em; line-height: 1.08;
-      color: var(--cream); margin-bottom: 28px;
-    }
-    .about-sub {
-      font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
-      line-height: 1.8; color: var(--muted); max-width: 540px;
-    }
-
-    /* ── Shared section styles ── */
-    .about-section { padding: 100px 0; }
-    .about-section.surface { background: var(--surface); }
-    .about-section.bg { background: var(--bg); }
-
-    .section-header { margin-bottom: 48px; }
-    .section-title {
-      font-size: clamp(2rem, 3.5vw, 2.75rem);
-      font-weight: 700; letter-spacing: -0.04em; line-height: 1.07;
-      color: var(--cream); max-width: 640px;
-    }
-    .section-body {
-      font-size: 0.9375rem; line-height: 1.9; color: var(--muted);
-      max-width: 760px; margin-top: 24px;
-    }
-    .section-body + .section-body { margin-top: 18px; }
-
-    /* ── Credentials tiles (same as service cards) ── */
-    .credentials-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: 48px;
-    }
-    .credential-card {
-      padding: 40px 28px;
-      background: rgba(247,245,242,0.02);
-      border-right: 1px solid var(--border);
-      transition: background 0.3s;
-    }
-    .credential-card:last-child { border-right: none; }
-    .credential-card:hover { background: rgba(201,168,76,0.04); }
-    .credential-icon { width: 40px; height: 40px; color: var(--gold); margin-bottom: 24px; opacity: 0.85; }
-    .credential-name {
-      font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.02em;
-      color: var(--cream); line-height: 1.35;
-    }
-    .credential-sub {
-      display: block; margin-top: 8px;
-      font-size: 0.8125rem; font-weight: 500;
-      color: var(--gold); letter-spacing: 0.02em;
-    }
-
-    /* ── Value cards (same visual as process steps) ── */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 64px 80px;
-      margin-top: 64px;
-    }
-    .value-card { position: relative; }
-    .value-num {
-      display: block;
-      font-size: clamp(5rem, 7vw, 7rem);
-      font-weight: 900; letter-spacing: -0.07em; line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(201,168,76,0.5);
-      margin-bottom: 24px;
-    }
-    .value-name {
-      font-size: 1.1875rem; font-weight: 700; letter-spacing: -0.025em;
-      color: var(--cream); margin-bottom: 12px;
-    }
-    .value-desc {
-      font-size: 0.9375rem; line-height: 1.8; color: var(--muted); max-width: 460px;
-    }
-
-    /* ── Closing CTA ── */
-    .about-cta {
+    /* ── Contact section ── */
+    .contact {
       padding: 100px 0;
       background: var(--bg);
-      position: relative; overflow: hidden; text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .about-cta::before {
+    .contact::before {
       content: '';
       position: absolute; inset: 0;
       background: url('/assets/img/texture-1920.jpg') center/cover no-repeat;
       filter: brightness(0.55) saturate(0.7);
-      pointer-events: none; z-index: 0;
+      pointer-events: none;
+      z-index: 0;
     }
-    .about-cta-overlay {
-      position: absolute; inset: 0;
+    .contact-overlay {
+      position: absolute;
+      inset: 0;
       background: linear-gradient(160deg, rgba(7,17,28,0.75) 0%, rgba(7,17,28,0.4) 50%, rgba(7,17,28,0.8) 100%);
       z-index: 1; pointer-events: none;
     }
-    .about-cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; padding: 0 48px; }
-    .about-cta-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-      font-weight: 700; letter-spacing: -0.04em; line-height: 1.1;
-      color: var(--cream); margin-bottom: 20px;
+    .contact .section-inner { position: relative; z-index: 2; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+    .contact-title {
+      font-size: clamp(2rem, 3.25vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.07;
+      color: var(--cream);
+      margin-bottom: 24px;
     }
-    .about-cta-desc {
-      font-size: 0.9375rem; line-height: 1.8; color: var(--muted); margin-bottom: 36px;
+    .contact-desc { font-size: 0.9375rem; line-height: 1.8; color: var(--muted); margin-bottom: 40px; }
+
+    .contact-details { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+    .contact-detail { display: flex; align-items: center; gap: 16px; }
+    .contact-detail-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 50%; border: 1px solid var(--border-gold);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); background: rgba(201,168,76,0.05);
     }
+    .contact-detail-icon svg { width: 18px; height: 18px; display: block; }
+    .contact-detail-label {
+      display: block; font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(247,245,242,0.5); margin-bottom: 5px;
+    }
+    .contact-detail a { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--cream); transition: color 0.2s; }
+    .contact-detail a:hover { color: var(--gold); }
+
+    /* ── Form (identical to homepage) ── */
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,245,242,0.5); margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--cream);
+      background: rgba(247,245,242,0.04);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(247,245,242,0.2); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(201,168,76,0.5);
+      background: rgba(247,245,242,0.06);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.08);
+    }
+    .form-group input[aria-invalid="true"], .form-group select[aria-invalid="true"], .form-group textarea[aria-invalid="true"] { border-color: rgba(220,60,60,0.6); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .select-wrap { position: relative; }
+    .select-wrap::after { content: ''; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid var(--muted); pointer-events: none; }
+    .form-group select option { background: #0D1B29; color: var(--cream); }
+
+    [data-fs-error] { display: none; font-size: 0.75rem; color: rgba(220,60,60,0.9); margin-top: 6px; }
+    [data-fs-error]:not(:empty) { display: block; }
+    .form-error-banner { display: none; padding: 14px 16px; background: rgba(220,60,60,0.07); border: 1px solid rgba(220,60,60,0.2); border-radius: 4px; color: rgba(220,60,60,0.9); font-size: 0.875rem; margin-bottom: 16px; }
+    [data-fs-error]:not(:empty).form-error-banner { display: block; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold);
+      color: #07111C;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover:not(:disabled) { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    [data-fs-success] { display: none; padding: 48px 40px; border: 1px solid var(--border-gold); border-radius: 6px; text-align: center; background: rgba(201,168,76,0.04); }
+    [data-fs-success].fs-shown { display: block; }
+    .success-ring { width: 52px; height: 52px; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .success-title { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.025em; color: var(--cream); margin-bottom: 10px; }
+    .success-text { font-size: 0.9375rem; line-height: 1.7; color: var(--muted); }
 
     /* ── Footer ── */
     .footer { padding: 72px 0 44px; background: var(--surface); }
@@ -337,24 +290,9 @@
       .nav-hamburger { display: flex; }
 
       .section-inner { padding: 0 28px; }
-      .about-hero { padding: 72px 0 80px; }
-      .about-hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-      .about-photo-col { justify-content: center; }
-      .about-text-col { align-items: center; }
-      .about-sub { max-width: 100%; }
 
-      .about-section { padding: 72px 0; }
-
-      .credentials-grid { grid-template-columns: repeat(2, 1fr); }
-      .credential-card { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-      .credential-card:nth-child(2n) { border-right: none; }
-      .credential-card:nth-child(3), .credential-card:nth-child(4) { border-bottom: none; }
-
-      .values-grid { grid-template-columns: 1fr; gap: 52px; }
-      .value-desc { max-width: 100%; }
-
-      .about-cta { padding: 72px 0; }
-      .about-cta-inner { padding: 0 28px; }
+      .contact { padding: 72px 0; }
+      .contact-grid { grid-template-columns: 1fr; gap: 52px; }
 
       .footer-inner { padding: 0 28px; }
       .footer-top { flex-direction: column; gap: 36px; }
@@ -363,15 +301,9 @@
     /* ── Responsive 600px ── */
     @media (max-width: 600px) {
       .nav-inner { padding: 0 20px; }
+      .nav-mobile { padding: 20px; }
       .section-inner { padding: 0 20px; }
-      .about-hero { padding: 56px 0 64px; }
-      .about-photo-wrap { width: 260px; height: 260px; }
-      .about-section { padding: 56px 0; }
-      .credentials-grid { grid-template-columns: 1fr; }
-      .credential-card { border-right: none !important; border-bottom: 1px solid var(--border); }
-      .credential-card:last-child { border-bottom: none; }
-      .about-cta { padding: 56px 0; }
-      .about-cta-inner { padding: 0 20px; }
+      .contact { padding: 56px 0; }
       .footer-inner { padding: 0 20px; }
       .footer-nav { gap: 18px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -389,10 +321,10 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
-          <li><a class="nav-link" href="/about" aria-current="page" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
+          <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
           <li><a class="nav-link" href="/blog" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
           <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
-          <li><a class="nav-link" href="/contact" data-cursor="hide"><span class="nl-default">Contact</span><span class="nl-hover">Contact</span></a></li>
+          <li><a class="nav-link" href="/contact" aria-current="page" data-cursor="hide"><span class="nl-default">Contact</span><span class="nl-hover">Contact</span></a></li>
           <li><a class="nav-cta" href="/contact">Get Your Free SEO Audit →</a></li>
         </ul>
       </nav>
@@ -404,186 +336,100 @@
 
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/services" onclick="closeMobileNav()">Services</a>
-    <a href="/about" aria-current="page" onclick="closeMobileNav()">About</a>
+    <a href="/about" onclick="closeMobileNav()">About</a>
     <a href="/blog" onclick="closeMobileNav()">Blog</a>
     <a href="/faq" onclick="closeMobileNav()">FAQ</a>
-    <a href="/contact" onclick="closeMobileNav()">Contact</a>
+    <a href="/contact" aria-current="page" onclick="closeMobileNav()">Contact</a>
     <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get Your Free SEO Audit →</a>
   </nav>
 
   <main>
 
-    <!-- 1. HERO -->
-    <section class="about-hero" aria-labelledby="about-h1">
-      <div class="about-hero-dots" aria-hidden="true"></div>
-      <div class="about-hero-fade" aria-hidden="true"></div>
+    <section class="contact" id="contact" aria-labelledby="contact-h1">
+      <div class="contact-overlay" aria-hidden="true"></div>
       <div class="section-inner">
-        <div class="about-hero-grid">
-
-          <div class="about-photo-col reveal">
-            <div class="about-photo-wrap">
-              <img
-                src="assets/images/george-mangala.jpg"
-                alt="George Mangala, founder of Pokwala Ottawa SEO consultancy"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              >
-              <div class="about-photo-fallback" style="display:none;" aria-hidden="true">
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                  <circle cx="40" cy="32" r="16" stroke="currentColor" stroke-width="2"/>
-                  <path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <div class="contact-grid">
+          <div class="reveal">
+            <span class="section-label">Get in touch</span>
+            <h1 class="contact-title" id="contact-h1">Let's talk about your business.</h1>
+            <p class="contact-desc">Fill out the form and I will get back to you within one business day with a clear, honest picture of where your Ottawa business stands online.</p>
+            <ul class="contact-details" aria-label="Direct contact details">
+              <li class="contact-detail">
+                <span class="contact-detail-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span>
+                  <span class="contact-detail-label">Email</span>
+                  <a href="mailto:georgemangala@gmail.com">georgemangala@gmail.com</a>
+                </span>
+              </li>
+              <li class="contact-detail">
+                <span class="contact-detail-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 5.7 2 2 0 016.5 3.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span>
+                  <span class="contact-detail-label">Phone</span>
+                  <a href="tel:+14382743768">+1 438 274 3768</a>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="reveal reveal-d1">
+            <div data-fs-success>
+              <div class="success-ring" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M4.5 11l5 5L18 6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
+              <p class="success-title">Audit request received!</p>
+              <p class="success-text">I'll review your details and be in touch within one business day with your personalised free audit.</p>
             </div>
+            <div data-fs-error class="form-error-banner"></div>
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. John Tremblay" required autocomplete="name" data-fs-field>
+                <span data-fs-error="name"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@yourcompany.com" required autocomplete="email" data-fs-field>
+                <span data-fs-error="email"></span>
+              </div>
+              <div class="form-group">
+                <label for="website">Website URL</label>
+                <input type="url" id="website" name="website" placeholder="https://yoursite.com" autocomplete="url" data-fs-field>
+                <span data-fs-error="website"></span>
+              </div>
+              <div class="form-group">
+                <label for="goal">What do you do?</label>
+                <div class="select-wrap">
+                  <select id="goal" name="goal" required data-fs-field>
+                    <option value="" disabled selected>Select your trade or business…</option>
+                    <option value="plumbing">Plumbing</option>
+                    <option value="renovation">Renovation</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="painting">Painting</option>
+                    <option value="other-trades">Other trades</option>
+                    <option value="other-business">Other business</option>
+                  </select>
+                </div>
+                <span data-fs-error="goal"></span>
+              </div>
+              <div class="form-group">
+                <label for="message">Anything else? <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.5">(optional)</span></label>
+                <textarea id="message" name="message" placeholder="Tell me your biggest challenge getting customers online" data-fs-field></textarea>
+                <span data-fs-error="message"></span>
+              </div>
+              <button type="submit" class="btn-submit" data-fs-submit-btn>Get Your Free SEO Audit →</button>
+            </form>
           </div>
-
-          <div class="about-text-col">
-            <span class="section-label reveal">The person behind Pokwala</span>
-            <h1 class="about-h1 reveal reveal-d1" id="about-h1">
-              Ottawa SEO consultant.<br>One focus. Real results.
-            </h1>
-            <p class="about-sub reveal reveal-d2">
-              Hi, I'm George Mangala, founder of Pokwala. I provide practical, high-impact SEO and GEO strategies to help Ottawa small businesses and tradespeople get found on Google and AI platforms.
-            </p>
-          </div>
-
         </div>
-      </div>
-    </section>
-
-    <!-- 2. WHY POKWALA -->
-    <section class="about-section surface scroll-reveal" aria-labelledby="why-h2">
-      <div class="section-inner">
-        <div class="section-header">
-          <span class="section-label">Why Pokwala</span>
-          <h2 class="section-title" id="why-h2">A name built with intention.</h2>
-        </div>
-        <p class="section-body">
-          Pokwala is a name I built from real pieces: a combination of family names that became something new with its own identity. That is the same philosophy behind the work. Nothing arbitrary, nothing off-the-shelf. Every strategy, every recommendation, every report is built for your specific business, not copied from a template and renamed.
-        </p>
-      </div>
-    </section>
-
-    <!-- 3. BACKGROUND & CREDENTIALS -->
-    <section class="about-section bg scroll-reveal" aria-labelledby="background-h2">
-      <div class="section-inner">
-        <div class="section-header">
-          <span class="section-label">Background</span>
-          <h2 class="section-title" id="background-h2">Built on real experience, not theory.</h2>
-        </div>
-        <p class="section-body">
-          I hold a background in Economics and Digital Marketing, but my real expertise was built on the ground. For the past three years, I've managed web performance and SEO strategy for a Montreal tech product used by thousands of people daily, handling everything from deep Google Analytics data and technical schema to AI-era content optimization.
-        </p>
-        <p class="section-body">
-          I don't do rigid, one-size-fits-all packages. Pokwala is about delivering clear, custom digital strategy for Ottawa businesses that want to dominate their local market.
-        </p>
-
-        <div class="credentials-grid" role="list" aria-label="Credentials and skills">
-
-          <article class="credential-card" role="listitem">
-            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 12v8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <p class="credential-name">3+ years in-house SEO and web performance
-              <span class="credential-sub">Bilingual: English and French</span>
-            </p>
-          </article>
-
-          <article class="credential-card" role="listitem">
-            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M6 32V18l8-6 8 4 12-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6 32h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="14" cy="26" r="2" fill="currentColor"/>
-              <circle cx="22" cy="20" r="2" fill="currentColor"/>
-              <circle cx="34" cy="12" r="2" fill="currentColor"/>
-            </svg>
-            <p class="credential-name">GA4, Google Search Console, BigQuery, Looker Studio</p>
-          </article>
-
-          <article class="credential-card" role="listitem">
-            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M14 14l-6 6 6 6M26 14l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M22 10l-4 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <p class="credential-name">Schema markup and structured data implementation</p>
-          </article>
-
-          <article class="credential-card" role="listitem">
-            <svg class="credential-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect x="6" y="8" width="28" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M14 18h4M22 18h4M14 23h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="20" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M17 32h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <p class="credential-name">GEO and AI Overview optimisation</p>
-          </article>
-
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. HOW I WORK -->
-    <section class="about-section surface scroll-reveal" aria-labelledby="how-h2">
-      <div class="section-inner">
-        <div class="section-header">
-          <span class="section-label">How it works with me</span>
-          <h2 class="section-title" id="how-h2">You deal with me directly. Start to finish.</h2>
-        </div>
-        <p class="section-body">
-          When you hire Pokwala you get me directly: George Mangala, on every call, every audit, every report. I do not outsource your work to a team you have never met. When you bring a problem to Pokwala, I handle it personally, from diagnosis to delivery.
-        </p>
-      </div>
-    </section>
-
-    <!-- 5. WHAT I BELIEVE -->
-    <section class="about-section bg scroll-reveal" aria-labelledby="values-h2">
-      <div class="section-inner">
-        <div class="section-header">
-          <span class="section-label">What I believe</span>
-          <h2 class="section-title" id="values-h2">How I think about the work.</h2>
-        </div>
-
-        <div class="values-grid" role="list">
-
-          <div class="value-card scroll-reveal" role="listitem">
-            <span class="value-num" aria-hidden="true">01</span>
-            <h3 class="value-name">Honesty over hype.</h3>
-            <p class="value-desc">SEO takes time. I will never promise page one rankings in two weeks. What I will promise is transparent work, honest timelines, and a clear explanation of everything I do.</p>
-          </div>
-
-          <div class="value-card scroll-reveal" role="listitem">
-            <span class="value-num" aria-hidden="true">02</span>
-            <h3 class="value-name">Results you can understand.</h3>
-            <p class="value-desc">Monthly reports in plain language, not a wall of numbers that requires a data scientist to interpret. If your rankings improved you will see it. If something is not working I will tell you why.</p>
-          </div>
-
-          <div class="value-card scroll-reveal" role="listitem">
-            <span class="value-num" aria-hidden="true">03</span>
-            <h3 class="value-name">Strategy before execution.</h3>
-            <p class="value-desc">I do not start optimising before I understand your business, your market, and your customers. The audit comes first. Every tactic follows from a reason.</p>
-          </div>
-
-          <div class="value-card scroll-reveal" role="listitem">
-            <span class="value-num" aria-hidden="true">04</span>
-            <h3 class="value-name">Built to last, not to impress.</h3>
-            <p class="value-desc">Vanity metrics, raw traffic, impressions, social likes, are easy to inflate. I focus on the numbers that translate to actual business: qualified leads, local rankings, and conversion-ready visibility.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. CLOSING CTA -->
-    <section class="about-cta" aria-labelledby="cta-h2">
-      <div class="about-cta-overlay" aria-hidden="true"></div>
-      <div class="about-cta-inner scroll-reveal">
-        <span class="section-label">Ready to start?</span>
-        <h2 class="about-cta-title" id="cta-h2">Let's talk about your Ottawa business.</h2>
-        <p class="about-cta-desc">
-          Book a free audit and I will review your current site, your rankings, and your local Ottawa market. You will leave the call with a clear picture of where you stand and exactly what needs to happen next, whether you hire me or not.
-        </p>
-        <a class="btn-primary" href="/contact">Get Your Free SEO Audit →</a>
       </div>
     </section>
 
@@ -599,10 +445,10 @@
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="/services">Services</a></li>
-            <li><a href="/about" aria-current="page">About</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/faq">FAQ</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/contact" aria-current="page">Contact</a></li>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </nav>
@@ -614,6 +460,11 @@
     </div>
   </footer>
 
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mgoqqrak' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -691,7 +542,7 @@
       if(!navbar.contains(e.target)&&!mobileNav.contains(e.target)) closeMobileNav();
     });
 
-    /* ── GSAP ScrollTrigger ── */
+    /* ── GSAP ScrollTrigger (Lenis sync) ── */
     (function(){
       if(!window.gsap||!window.ScrollTrigger) return;
       var gsap=window.gsap, ST=window.ScrollTrigger;
@@ -707,8 +558,6 @@
         ST.addEventListener('refresh',function(){ lenis.resize(); });
         ST.refresh();
       }
-      gsap.from('.credential-card',{ y:36,opacity:0,duration:0.8,ease:'power2.out',stagger:0.1,
-        scrollTrigger:{trigger:'.credentials-grid',start:'top 85%'} });
     })();
 
     /* ── Nav character split ── */
@@ -741,7 +590,7 @@
       }
       document.addEventListener('mouseleave',function(){cursor.classList.remove('is-active');});
       document.addEventListener('mouseenter',function(){if(active)cursor.classList.add('is-active');});
-      document.querySelectorAll('a:not([data-cursor="hide"]),button,input,textarea').forEach(function(el){
+      document.querySelectorAll('a:not([data-cursor="hide"]),button,input,textarea,select').forEach(function(el){
         el.addEventListener('mouseenter',function(){cursor.classList.add('is-hover');});
         el.addEventListener('mouseleave',function(){cursor.classList.remove('is-hover');});
       });
