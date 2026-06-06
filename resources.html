@@ -209,7 +209,10 @@
       font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700;
       letter-spacing: -0.04em; color: var(--cream); text-align: center; margin-bottom: 48px;
     }
-    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 560px; margin: 0 auto; }
+    .tools-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 1100px; margin: 0 auto; }
+    @media (min-width: 860px) {
+      .tools-grid { grid-template-columns: 1fr 360px; align-items: start; }
+    }
     .tool-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
       padding: 40px; text-align: left; transition: border-color 0.3s, transform 0.2s;
@@ -224,32 +227,44 @@
     .tool-card-desc { font-size: 0.9375rem; line-height: 1.8; color: var(--muted); margin-bottom: 28px; }
     .tools-more { text-align: center; font-size: 0.8125rem; color: var(--muted); margin-top: 40px; }
 
-    /* Coming-soon cards */
-    .tools-soon-grid {
-      display: grid; grid-template-columns: 1fr; gap: 24px;
-      max-width: 560px; margin: 48px auto 0;
-    }
-    .tool-card-soon {
+    /* Sidebar */
+    .tools-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .tools-sidebar-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; padding: 32px 40px;
-      display: flex; align-items: center; gap: 20px;
-      opacity: 0.5;
+      border-radius: 8px; padding: 28px 32px;
     }
-    .tool-card-soon-icon {
-      width: 40px; height: 40px; flex-shrink: 0;
-      border-radius: 8px; background: var(--bg);
+    .tools-sidebar-label {
+      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .tools-sidebar-title {
+      font-size: 1.0625rem; font-weight: 700; color: var(--cream);
+      margin-bottom: 8px; letter-spacing: -0.02em;
+    }
+    .tools-sidebar-body {
+      font-size: 0.875rem; line-height: 1.75; color: var(--muted);
+    }
+
+    /* Coming soon items inside sidebar */
+    .tools-soon-list { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+    .tool-soon-item {
+      display: flex; align-items: center; gap: 14px;
+      opacity: 0.55;
+    }
+    .tool-soon-icon {
+      width: 34px; height: 34px; flex-shrink: 0;
+      border-radius: 6px; background: var(--bg);
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       color: var(--gold);
     }
-    .tool-card-soon-icon svg { width: 20px; height: 20px; }
-    .tool-card-soon-text { flex: 1; }
-    .tool-card-soon-label {
-      font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
-    }
-    .tool-card-soon-title {
-      font-size: 1rem; font-weight: 600; color: var(--cream);
+    .tool-soon-icon svg { width: 16px; height: 16px; }
+    .tool-soon-name { font-size: 0.875rem; font-weight: 600; color: var(--cream); }
+    .tool-soon-badge {
+      margin-left: auto; font-size: 0.625rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); opacity: 0.7;
     }
 
     /* Bottom CTA band */
@@ -391,30 +406,50 @@
             <p class="tool-card-desc">Find out if Google and AI search can actually find your business, and get a specific fix list in under 60 seconds.</p>
             <a class="btn-primary" href="/resources/tools/ai-visibility-checker">Try It Free →</a>
           </article>
-        </div>
-        <div class="tools-soon-grid scroll-reveal" aria-label="Tools in development">
-          <div class="tool-card-soon">
-            <div class="tool-card-soon-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-              </svg>
+
+          <aside class="tools-sidebar scroll-reveal">
+
+            <div class="tools-sidebar-card">
+              <div class="tools-sidebar-label">Why it matters</div>
+              <div class="tools-sidebar-title">Most Ottawa businesses are invisible to AI search</div>
+              <p class="tools-sidebar-body">Google AI Overviews, ChatGPT, and Perplexity are now answering local searches directly, and most local businesses aren't showing up at all. This tool tells you exactly where you stand in 60 seconds.</p>
             </div>
-            <div class="tool-card-soon-text">
-              <div class="tool-card-soon-label">Coming Soon</div>
-              <div class="tool-card-soon-title">Local Keyword Finder</div>
+
+            <div class="tools-sidebar-card">
+              <div class="tools-sidebar-label">More tools coming</div>
+              <div class="tools-soon-list">
+                <div class="tool-soon-item">
+                  <div class="tool-soon-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                    </svg>
+                  </div>
+                  <span class="tool-soon-name">Local Keyword Finder</span>
+                  <span class="tool-soon-badge">Soon</span>
+                </div>
+                <div class="tool-soon-item">
+                  <div class="tool-soon-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                      <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                  </div>
+                  <span class="tool-soon-name">GBP Grader</span>
+                  <span class="tool-soon-badge">Soon</span>
+                </div>
+                <div class="tool-soon-item">
+                  <div class="tool-soon-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                  </div>
+                  <span class="tool-soon-name">Site Speed Checker</span>
+                  <span class="tool-soon-badge">Soon</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="tool-card-soon">
-            <div class="tool-card-soon-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
-            </div>
-            <div class="tool-card-soon-text">
-              <div class="tool-card-soon-label">Coming Soon</div>
-              <div class="tool-card-soon-title">Google Business Profile Grader</div>
-            </div>
-          </div>
+
+          </aside>
         </div>
       </div>
     </section>
