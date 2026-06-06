@@ -67,6 +67,12 @@
     }
     @media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
 
+    /* Staggered delay variants for scroll-reveal children */
+    .scroll-reveal-d1 { transition-delay: 150ms !important; }
+    .scroll-reveal-d2 { transition-delay: 300ms !important; }
+    .scroll-reveal-d3 { transition-delay: 450ms !important; }
+    .scroll-reveal-d4 { transition-delay: 600ms !important; }
+
     /* Cursor */
     .cursor { display: none; }
     @media (hover: hover) and (pointer: fine) {
@@ -388,7 +394,7 @@
         <h2 class="tools-heading scroll-reveal">Free Tools</h2>
         <div class="tools-grid">
           <article class="tool-card scroll-reveal">
-            <figure class="tool-card-media">
+            <figure class="tool-card-media scroll-reveal">
               <picture>
                 <source type="image/webp"
                   srcset="/assets/images/service-seo-480.webp 480w, /assets/images/service-seo-800.webp 800w, /assets/images/service-seo-1200.webp 1200w"
@@ -402,20 +408,20 @@
                   alt="Laptop showing Google search, check how Ottawa businesses appear in AI and search results">
               </picture>
             </figure>
-            <h3 class="tool-card-title">AI Visibility Checker</h3>
-            <p class="tool-card-desc">Find out if Google and AI search can actually find your business, and get a specific fix list in under 60 seconds.</p>
-            <a class="btn-primary" href="/resources/tools/ai-visibility-checker">Try It Free →</a>
+            <h3 class="tool-card-title scroll-reveal scroll-reveal-d1">AI Visibility Checker</h3>
+            <p class="tool-card-desc scroll-reveal scroll-reveal-d2">Find out if Google and AI search can actually find your business, and get a specific fix list in under 60 seconds.</p>
+            <a class="btn-primary scroll-reveal scroll-reveal-d3" href="/resources/tools/ai-visibility-checker">Try It Free →</a>
           </article>
 
           <aside class="tools-sidebar scroll-reveal">
 
-            <div class="tools-sidebar-card">
+            <div class="tools-sidebar-card scroll-reveal">
               <div class="tools-sidebar-label">Why it matters</div>
               <div class="tools-sidebar-title">Most Ottawa businesses are invisible to AI search</div>
               <p class="tools-sidebar-body">Google AI Overviews, ChatGPT, and Perplexity are now answering local searches directly, and most local businesses aren't showing up at all. This tool tells you exactly where you stand in 60 seconds.</p>
             </div>
 
-            <div class="tools-sidebar-card">
+            <div class="tools-sidebar-card scroll-reveal scroll-reveal-d1">
               <div class="tools-sidebar-label">More tools coming</div>
               <div class="tools-soon-list">
                 <div class="tool-soon-item">
@@ -456,10 +462,10 @@
 
     <section class="resources-cta scroll-reveal" aria-label="Get a free SEO audit">
       <div class="resources-cta-inner">
-        <span class="resources-cta-label">Free for Ottawa businesses</span>
-        <h2 class="resources-cta-heading">Not sure where your business stands online?</h2>
-        <p class="resources-cta-sub">Get a free, no-obligation SEO audit. I'll tell you exactly how Google and AI search see your business, and what to fix first.</p>
-        <a class="btn-primary" href="/contact">Get Your Free Audit →</a>
+        <span class="resources-cta-label scroll-reveal">Free for Ottawa businesses</span>
+        <h2 class="resources-cta-heading scroll-reveal scroll-reveal-d1">Not sure where your business stands online?</h2>
+        <p class="resources-cta-sub scroll-reveal scroll-reveal-d2">Get a free, no-obligation SEO audit. I'll tell you exactly how Google and AI search see your business, and what to fix first.</p>
+        <a class="btn-primary scroll-reveal scroll-reveal-d3" href="/contact">Get Your Free Audit →</a>
       </div>
     </section>
 
