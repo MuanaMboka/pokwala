@@ -231,6 +231,35 @@
       .url-submit { justify-content: center; }
     }
 
+    /* Inline error */
+    .url-error {
+      margin-top: 14px; font-size: 0.875rem; line-height: 1.5;
+      color: #E2867B; font-weight: 500;
+    }
+
+    /* Loading checklist (replaces button) */
+    .url-loading { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .loading-step { display: flex; align-items: center; gap: 14px; opacity: 0.4; transition: opacity 0.3s; }
+    .loading-step.is-active, .loading-step.is-done { opacity: 1; }
+    .ls-icon {
+      width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%;
+      border: 1.5px solid var(--border-gold); position: relative; box-sizing: border-box;
+    }
+    .loading-step.is-active .ls-icon {
+      border-color: rgba(201,168,76,0.25); border-top-color: var(--gold);
+      animation: ls-spin 0.7s linear infinite;
+    }
+    .loading-step.is-done .ls-icon { border-color: var(--gold); background: var(--gold); animation: none; }
+    .loading-step.is-done .ls-icon::after {
+      content: ''; position: absolute; left: 7px; top: 3px;
+      width: 5px; height: 10px; border: solid #07111C; border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    @keyframes ls-spin { to { transform: rotate(360deg); } }
+    .loading-step .ls-text { font-size: 0.9375rem; color: var(--text); }
+    .loading-step.is-active .ls-text { color: var(--gold); }
+    @media (prefers-reduced-motion: reduce) { .loading-step.is-active .ls-icon { animation: none; } }
+
     .btn-primary {
       display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px;
       background: var(--gold); color: #07111C; font-weight: 700; font-size: 0.9375rem;
@@ -373,8 +402,17 @@
         <form class="url-form scroll-reveal" id="url-form" onsubmit="return false;">
           <input class="url-input" id="url-input" type="url" name="url"
                  placeholder="yourbusiness.com" aria-label="Your website URL" autocomplete="url">
-          <button class="url-submit" type="submit">Check My Score →</button>
+          <button class="url-submit" id="url-submit" type="submit">Check My Score →</button>
         </form>
+
+        <p class="url-error" id="url-error" role="alert" hidden></p>
+
+        <div class="url-loading" id="url-loading" aria-live="polite" hidden>
+          <div class="loading-step" data-step="0"><span class="ls-icon" aria-hidden="true"></span><span class="ls-text">Fetching your website...</span></div>
+          <div class="loading-step" data-step="1"><span class="ls-icon" aria-hidden="true"></span><span class="ls-text">Analyzing local signals...</span></div>
+          <div class="loading-step" data-step="2"><span class="ls-icon" aria-hidden="true"></span><span class="ls-text">Checking GEO readiness...</span></div>
+          <div class="loading-step" data-step="3"><span class="ls-icon" aria-hidden="true"></span><span class="ls-text">Building your report...</span></div>
+        </div>
       </div>
     </section>
 
@@ -525,6 +563,107 @@
       document.querySelectorAll('[data-cursor="hide"]').forEach(function(el){
         el.addEventListener('mouseenter',function(){cursor.classList.add('is-hidden');});
         el.addEventListener('mouseleave',function(){cursor.classList.remove('is-hidden');});
+      });
+    })();
+
+    /* ── AI Visibility Checker: URL submit → /api/grade ── */
+    (function(){
+      var form    = document.getElementById('url-form');
+      var input   = document.getElementById('url-input');
+      var submit  = document.getElementById('url-submit');
+      var errEl   = document.getElementById('url-error');
+      var loading = document.getElementById('url-loading');
+      if(!form) return;
+
+      var steps    = Array.prototype.slice.call(loading.querySelectorAll('.loading-step'));
+      var stepTimers = [];
+      var busy = false;
+
+      function showError(msg){ errEl.textContent = msg; errEl.hidden = false; }
+      function clearError(){ errEl.textContent = ''; errEl.hidden = true; }
+
+      function normalizeUrl(raw){
+        var v = (raw || '').trim();
+        if(!v) return null;
+        if(!/^https?:\/\//i.test(v)) v = 'https://' + v;
+        try {
+          var u = new URL(v);
+          if(!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$/i.test(u.hostname)) return null;
+          return u.href;
+        } catch(e){ return null; }
+      }
+
+      function resetSteps(){
+        stepTimers.forEach(clearTimeout); stepTimers = [];
+        steps.forEach(function(s){ s.classList.remove('is-active','is-done'); });
+      }
+
+      function runStep(i){
+        if(i >= steps.length) return;
+        steps[i].classList.add('is-active');
+        var t = setTimeout(function(){
+          steps[i].classList.remove('is-active');
+          steps[i].classList.add('is-done');
+          runStep(i + 1);
+        }, 2000);
+        stepTimers.push(t);
+      }
+
+      function startLoading(){
+        busy = true;
+        submit.style.display = 'none';
+        input.disabled = true;
+        resetSteps();
+        loading.hidden = false;
+        runStep(0);
+      }
+
+      function stopLoading(){
+        busy = false;
+        resetSteps();
+        loading.hidden = true;
+        submit.style.display = '';
+        input.disabled = false;
+      }
+
+      function sendRequest(url){
+        var controller = new AbortController();
+        var timeout = setTimeout(function(){ controller.abort(); }, 20000);
+
+        fetch('/api/grade', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: url }),
+          signal: controller.signal
+        })
+        .then(function(res){
+          clearTimeout(timeout);
+          if(!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(data){
+          console.log('[AI Visibility Checker] /api/grade response:', data);
+          busy = false; // results display comes next session; leave checklist as-is
+        })
+        .catch(function(err){
+          clearTimeout(timeout);
+          console.warn('[AI Visibility Checker] request failed:', err);
+          stopLoading();
+          showError('Something went wrong. Please try again.');
+        });
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if(busy) return;
+        clearError();
+        var url = normalizeUrl(input.value);
+        if(!url){
+          showError('Please enter a valid website URL (e.g. yoursite.com)');
+          return;
+        }
+        startLoading();
+        sendRequest(url);
       });
     })();
 
