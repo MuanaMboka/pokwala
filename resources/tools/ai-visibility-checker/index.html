@@ -239,6 +239,7 @@
 
     /* Loading checklist (replaces button) */
     .url-loading { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .url-loading[hidden] { display: none; }
     .loading-step { display: flex; align-items: center; gap: 14px; opacity: 0.4; transition: opacity 0.3s; }
     .loading-step.is-active, .loading-step.is-done { opacity: 1; }
     .ls-icon {
