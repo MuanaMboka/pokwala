@@ -277,6 +277,59 @@
       font-size: 0.9375rem; color: var(--muted);
     }
 
+    /* Results report */
+    .report { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 40px; }
+    .report-head { display: flex; align-items: center; gap: 28px; border-bottom: 1px solid var(--border); padding-bottom: 28px; margin-bottom: 28px; }
+    .report-score {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 120px; height: 120px; flex-shrink: 0; border-radius: 50%; border: 2px solid var(--border-gold);
+    }
+    .report-score-num { font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--gold); letter-spacing: -0.03em; }
+    .report-score-max { font-size: 0.6875rem; color: var(--muted); margin-top: 4px; }
+    .report-head-text { flex: 1; }
+    .report-grade {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    .report-grade-badge {
+      display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 26px;
+      padding: 0 8px; border-radius: 6px; border: 1px solid var(--border-gold); color: var(--gold); font-size: 0.875rem; letter-spacing: 0;
+    }
+    .report-title { font-size: 1.25rem; font-weight: 700; color: var(--cream); letter-spacing: -0.02em; margin-bottom: 6px; }
+    .report-url { font-size: 0.8125rem; color: var(--muted); word-break: break-all; }
+    .report-summary { font-size: 0.9375rem; line-height: 1.75; color: var(--text); margin-bottom: 32px; }
+    .report-cats { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
+    .cat-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .cat-name { font-size: 0.9375rem; font-weight: 600; color: var(--cream); }
+    .cat-score { font-size: 0.8125rem; font-weight: 700; color: var(--gold); }
+    .cat-track { height: 6px; border-radius: 3px; background: var(--bg); overflow: hidden; }
+    .cat-fill { height: 100%; border-radius: 3px; background: var(--gold); transition: width 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .cat-detail { font-size: 0.75rem; line-height: 1.5; color: var(--muted); margin-top: 6px; }
+    .report-fixes-label { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .fix-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; list-style: none; }
+    .fix-item { display: flex; gap: 16px; padding: 20px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+    .fix-badge {
+      flex-shrink: 0; align-self: flex-start; font-size: 0.625rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 9px; border-radius: 4px;
+    }
+    .fix-badge.high { background: rgba(226,134,123,0.14); color: #E2867B; }
+    .fix-badge.medium { background: rgba(201,168,76,0.16); color: var(--gold); }
+    .fix-badge.low { background: rgba(247,245,242,0.06); color: var(--muted); }
+    .fix-title { font-size: 0.9375rem; font-weight: 700; color: var(--cream); margin-bottom: 4px; letter-spacing: -0.01em; }
+    .fix-why { font-size: 0.875rem; line-height: 1.65; color: var(--muted); }
+    .report-cta { border-top: 1px solid var(--border); padding-top: 28px; text-align: center; }
+    .report-cta-text { font-size: 0.9375rem; color: var(--text); margin-bottom: 18px; }
+    .report-error {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 48px 40px; text-align: center; color: var(--muted); font-size: 0.9375rem; line-height: 1.7;
+    }
+    @media (max-width: 600px) {
+      .report { padding: 28px; }
+      .report-head { flex-direction: column; text-align: center; gap: 18px; }
+      .report-grade { justify-content: center; }
+      .fix-item { flex-direction: column; gap: 10px; }
+    }
+
     /* Footer */
     .footer { padding: 72px 0 44px; background: var(--surface); }
     .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
@@ -394,7 +447,7 @@
             </div>
             <div class="how-step scroll-reveal scroll-reveal-d3">
               <div class="how-step-num" aria-hidden="true">3</div>
-              <div class="how-step-text">Enter your email to unlock your full action plan.</div>
+              <div class="how-step-text">Get your full fix list and action plan, instantly.</div>
             </div>
           </div>
         </div>
@@ -575,6 +628,9 @@
       var loading = document.getElementById('url-loading');
       if(!form) return;
 
+      var resultsStage = document.querySelector('section[aria-label="Results"]');
+      var resultsBox   = document.getElementById('results-section');
+
       var steps    = Array.prototype.slice.call(loading.querySelectorAll('.loading-step'));
       var stepTimers = [];
       var busy = false;
@@ -611,6 +667,7 @@
 
       function startLoading(){
         busy = true;
+        if(resultsStage) resultsStage.style.display = 'none';
         submit.style.display = 'none';
         input.disabled = true;
         resetSteps();
@@ -642,8 +699,7 @@
           return res.json();
         })
         .then(function(data){
-          console.log('[AI Visibility Checker] /api/grade response:', data);
-          busy = false; // results display comes next session; leave checklist as-is
+          showResults(data);
         })
         .catch(function(err){
           clearTimeout(timeout);
@@ -651,6 +707,63 @@
           stopLoading();
           showError('Something went wrong. Please try again.');
         });
+      }
+
+      function esc(s){
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+          return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+        });
+      }
+
+      function reportHtml(d){
+        var cats = (d.categories || []).map(function(c){
+          var sc = Math.max(0, Math.min(100, Math.round(c.score)));
+          return '<div class="cat-row"><div class="cat-top"><span class="cat-name">' + esc(c.name) +
+            '</span><span class="cat-score">' + sc + '/100</span></div>' +
+            '<div class="cat-track"><div class="cat-fill" data-w="' + sc + '" style="width:0%"></div></div>' +
+            (c.detail ? '<div class="cat-detail">' + esc(c.detail) + '</div>' : '') + '</div>';
+        }).join('');
+        var fixes = (d.fixes || []).map(function(f){
+          var p = (f.priority || 'medium').toLowerCase();
+          if(['high','medium','low'].indexOf(p) < 0) p = 'medium';
+          return '<li class="fix-item"><span class="fix-badge ' + p + '">' + p + '</span>' +
+            '<div class="fix-text"><div class="fix-title">' + esc(f.title) + '</div>' +
+            (f.why ? '<div class="fix-why">' + esc(f.why) + '</div>' : '') + '</div></li>';
+        }).join('');
+        return '<div class="report">' +
+            '<div class="report-head">' +
+              '<div class="report-score"><span class="report-score-num">' + Math.round(d.score) +
+                '</span><span class="report-score-max">out of 100</span></div>' +
+              '<div class="report-head-text">' +
+                '<div class="report-grade">Visibility grade <span class="report-grade-badge">' + esc(d.grade) + '</span></div>' +
+                '<div class="report-title">Your AI Visibility Score</div>' +
+                '<div class="report-url">' + esc(d.url) + '</div>' +
+              '</div>' +
+            '</div>' +
+            (d.summary ? '<p class="report-summary">' + esc(d.summary) + '</p>' : '') +
+            '<div class="report-cats">' + cats + '</div>' +
+            (fixes ? '<div class="report-fixes-label">Your fix list</div><ul class="fix-list">' + fixes + '</ul>' : '') +
+            '<div class="report-cta"><p class="report-cta-text">Want this handled for you? Get a free, no-obligation audit.</p>' +
+              '<a class="btn-primary" href="/contact">Get Your Free Audit →</a></div>' +
+          '</div>';
+      }
+
+      function errorHtml(d){
+        var msg = (d && d.message) || 'We could not analyze that site. Please check the address and try again.';
+        return '<div class="report-error">' + esc(msg) + '</div>';
+      }
+
+      function showResults(data){
+        stopLoading();
+        if(!resultsStage || !resultsBox) return;
+        resultsBox.className = '';
+        resultsBox.innerHTML = (data && data.ok) ? reportHtml(data) : errorHtml(data);
+        resultsStage.style.display = '';
+        requestAnimationFrame(function(){
+          var fills = resultsBox.querySelectorAll('.cat-fill');
+          for(var i = 0; i < fills.length; i++){ fills[i].style.width = fills[i].getAttribute('data-w') + '%'; }
+        });
+        resultsStage.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
       form.addEventListener('submit', function(e){
