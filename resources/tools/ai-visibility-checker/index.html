@@ -685,7 +685,7 @@
 
       function sendRequest(url){
         var controller = new AbortController();
-        var timeout = setTimeout(function(){ controller.abort(); }, 20000);
+        var timeout = setTimeout(function(){ controller.abort(); }, 30000);
 
         fetch('/api/grade', {
           method: 'POST',

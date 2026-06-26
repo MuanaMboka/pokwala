@@ -9,7 +9,11 @@
 
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || process.env.NouveauRiche || '';
 const MODEL = 'claude-haiku-4-5-20251001';
-const FETCH_TIMEOUT_MS = 9000;
+const FETCH_TIMEOUT_MS = 8000;
+
+// Allow up to 30s on Vercel (Hobby default is 10s) so cold starts + a slow
+// target site + the Claude call don't get killed mid-request.
+export const maxDuration = 30;
 const MAX_HTML_BYTES = 500000;
 const UA = 'PokwalaVisibilityChecker/1.0 (+https://pokwala.vercel.app)';
 
@@ -252,12 +256,14 @@ export default async function handler(req, res) {
   const target = normalizeUrl(body && body.url);
   if (!target) return res.status(400).json({ error: 'Please provide a valid website URL.' });
 
-  const page = await fetchText(target.href, 'text/html');
+  // Fetch the page and robots.txt in parallel to stay well under the time budget.
+  const [page, robotsRes] = await Promise.all([
+    fetchText(target.href, 'text/html'),
+    fetchText(new URL('/robots.txt', target.origin).href, 'text/plain'),
+  ]);
   if (!page.text) {
     return res.status(200).json({ ok: false, reachable: false, url: target.href, message: 'We could not reach that website. Check the address and try again.' });
   }
-
-  const robotsRes = await fetchText(new URL('/robots.txt', target.origin).href, 'text/plain');
   const signals = analyzeHtml(page.text, page.finalUrl);
   const robots = parseRobots(robotsRes.ok ? robotsRes.text : '');
   const score = scoreSite(signals, robots);
