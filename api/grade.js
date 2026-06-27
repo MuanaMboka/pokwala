@@ -96,7 +96,11 @@ function analyzeHtml(html, finalUrl) {
   const hasPostalAddress = ldJoined.includes('postaladdress') || ldJoined.includes('"address"');
   const hasGeo = ldJoined.includes('"geo"') || ldJoined.includes('geocoordinates');
 
-  const hasPhone = /(\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/.test(html);
+  // Require a tel: link or a properly separated phone number, so random digit
+  // runs (IDs, coordinates, hashes) are not mistaken for a phone number.
+  const hasTelLink = /href=["']tel:/i.test(html);
+  const hasFormattedPhone = /\(\d{3}\)\s?\d{3}[\s.-]?\d{4}|\b\d{3}[\s.-]\d{3}[\s.-]\d{4}\b|\+\d{1,3}[\s().-]?\d{2,4}[\s().-]?\d{2,4}[\s().-]?\d{2,4}/.test(html);
+  const hasPhone = hasTelLink || hasFormattedPhone;
   const hasMapEmbed = lower.includes('google.com/maps') || lower.includes('maps.google') ||
     lower.includes('goo.gl/maps') || lower.includes('g.page') || lower.includes('maps.app.goo.gl');
 
@@ -242,6 +246,23 @@ function strip(findings) {
   return findings.map(({ status, label, detail }) => ({ status, label, detail }));
 }
 
+// Detect when we were served a block / bot-challenge page instead of the real
+// site (common with Cloudflare etc.), so we never report on the wrong page.
+function blockedMessage(page) {
+  if (page.status === 0) return 'We could not reach that website. Check the address and try again.';
+  if ([401, 403, 407, 408, 429, 451, 503].includes(page.status)) {
+    return 'This site blocked our automated check (HTTP ' + page.status + '). Sites behind Cloudflare or similar bot protection often cannot be scanned this way.';
+  }
+  const head = page.text.slice(0, 4000).toLowerCase();
+  const markers = ['just a moment', 'attention required', 'access denied', '/cdn-cgi/challenge-platform',
+    'cf-browser-verification', 'verify you are human', 'are you a robot', 'checking your browser before',
+    'enable javascript and cookies to continue', 'ddos protection by'];
+  if (markers.some((m) => head.includes(m))) {
+    return 'This site returned a security/verification page instead of its content, so we could not read it. Sites behind Cloudflare or similar bot protection often cannot be scanned this way.';
+  }
+  return null;
+}
+
 /* ---------- handler ---------- */
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -258,8 +279,11 @@ export default async function handler(req, res) {
     fetchText(target.href, 'text/html'),
     fetchText(new URL('/robots.txt', target.origin).href, 'text/plain'),
   ]);
-  if (!page.text) {
-    return res.status(200).json({ ok: false, reachable: false, url: target.href, message: 'We could not reach that website. Check the address and try again.' });
+  const blocked = !page.text
+    ? 'We could not reach that website. Check the address and try again.'
+    : blockedMessage(page);
+  if (blocked) {
+    return res.status(200).json({ ok: false, reachable: false, url: target.href, message: blocked });
   }
 
   const signals = analyzeHtml(page.text, page.finalUrl);
