@@ -299,6 +299,22 @@
     .report-title { font-size: 1.25rem; font-weight: 700; color: var(--cream); letter-spacing: -0.02em; margin-bottom: 6px; }
     .report-url { font-size: 0.8125rem; color: var(--muted); word-break: break-all; }
     .report-summary { font-size: 0.9375rem; line-height: 1.75; color: var(--text); margin-bottom: 32px; }
+    .report-method {
+      font-size: 0.75rem; line-height: 1.6; color: var(--muted);
+      background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+      padding: 12px 14px; margin-bottom: 32px;
+    }
+    .finding-list { list-style: none; margin: 12px 0 4px; display: flex; flex-direction: column; gap: 7px; }
+    .finding { display: flex; gap: 10px; align-items: flex-start; font-size: 0.8125rem; line-height: 1.45; }
+    .finding-mark { flex-shrink: 0; width: 14px; text-align: center; font-weight: 700; }
+    .finding--pass .finding-mark { color: var(--gold); }
+    .finding--warn .finding-mark { color: var(--gold-light); }
+    .finding--fail .finding-mark { color: #E2867B; }
+    .finding--info .finding-mark { color: var(--muted); }
+    .finding-label { color: var(--cream); }
+    .finding--info .finding-label { color: var(--muted); }
+    .finding-detail { color: var(--muted); }
+    .report-allgood { font-size: 0.9375rem; line-height: 1.7; color: var(--muted); margin-bottom: 36px; }
     .report-cats { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
     .cat-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
     .cat-name { font-size: 0.9375rem; font-weight: 600; color: var(--cream); }
@@ -716,13 +732,26 @@
         });
       }
 
+      function markFor(status){
+        return status === 'pass' ? '✓' : status === 'fail' ? '✗' : status === 'warn' ? '!' : '•';
+      }
+
       function reportHtml(d){
         var cats = (d.categories || []).map(function(c){
           var sc = Math.max(0, Math.min(100, Math.round(c.score)));
+          var findings = (c.findings || []).map(function(x){
+            var st = ['pass','warn','fail','info'].indexOf(x.status) < 0 ? 'info' : x.status;
+            return '<li class="finding finding--' + st + '">' +
+              '<span class="finding-mark" aria-hidden="true">' + markFor(st) + '</span>' +
+              '<span class="finding-text"><span class="finding-label">' + esc(x.label) + '</span>' +
+              (x.detail ? ' <span class="finding-detail">' + esc(x.detail) + '</span>' : '') +
+              '</span></li>';
+          }).join('');
           return '<div class="cat-row"><div class="cat-top"><span class="cat-name">' + esc(c.name) +
             '</span><span class="cat-score">' + sc + '/100</span></div>' +
             '<div class="cat-track"><div class="cat-fill" data-w="' + sc + '" style="width:0%"></div></div>' +
-            (c.detail ? '<div class="cat-detail">' + esc(c.detail) + '</div>' : '') + '</div>';
+            (c.detail ? '<div class="cat-detail">' + esc(c.detail) + '</div>' : '') +
+            (findings ? '<ul class="finding-list">' + findings + '</ul>' : '') + '</div>';
         }).join('');
         var fixes = (d.fixes || []).map(function(f){
           var p = (f.priority || 'medium').toLowerCase();
@@ -731,6 +760,9 @@
             '<div class="fix-text"><div class="fix-title">' + esc(f.title) + '</div>' +
             (f.why ? '<div class="fix-why">' + esc(f.why) + '</div>' : '') + '</div></li>';
         }).join('');
+        var fixesBlock = fixes
+          ? '<div class="report-fixes-label">Recommended fixes</div><ul class="fix-list">' + fixes + '</ul>'
+          : '<div class="report-fixes-label">Recommended fixes</div><p class="report-allgood">No issues were detected in the checks above. Nice work.</p>';
         return '<div class="report">' +
             '<div class="report-head">' +
               '<div class="report-score"><span class="report-score-num">' + Math.round(d.score) +
@@ -741,9 +773,9 @@
                 '<div class="report-url">' + esc(d.url) + '</div>' +
               '</div>' +
             '</div>' +
-            (d.summary ? '<p class="report-summary">' + esc(d.summary) + '</p>' : '') +
+            (d.method ? '<p class="report-method">' + esc(d.method) + '</p>' : '') +
             '<div class="report-cats">' + cats + '</div>' +
-            (fixes ? '<div class="report-fixes-label">Your fix list</div><ul class="fix-list">' + fixes + '</ul>' : '') +
+            fixesBlock +
             '<div class="report-cta"><p class="report-cta-text">Want this handled for you? Get a free, no-obligation audit.</p>' +
               '<a class="btn-primary" href="/contact">Get Your Free Audit →</a></div>' +
           '</div>';

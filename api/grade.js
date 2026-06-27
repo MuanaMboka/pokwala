@@ -1,21 +1,24 @@
-// AI Visibility Checker — analysis endpoint
-// Fetches the submitted site, derives local-SEO / GEO (AI-search) readiness
-// signals via HTML heuristics, then (optionally) uses Claude to turn those
-// signals into a prioritized, plain-English fix list.
+// AI Visibility Checker — analysis endpoint (deterministic)
 //
-// The Anthropic key is read from ANTHROPIC_API_KEY, with a fallback to the
-// project's existing "NouveauRiche" variable name. Set ANTHROPIC_API_KEY in
-// the Vercel dashboard; never commit the secret.
+// Every finding is derived directly from the site's served HTML and robots.txt.
+// There is no AI/LLM step and nothing is inferred or invented: each line states
+// exactly what was checked and the literal result, with the evidence.
+//
+// Hard limitation, disclosed in the report: this reads the HTML the server
+// returns and does NOT execute JavaScript, so content rendered in the browser
+// (common on React/Vue/SPA sites) is not seen. It measures readiness signals;
+// it does not query Google, ChatGPT, or other engines directly.
 
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || process.env.NouveauRiche || '';
-const MODEL = 'claude-haiku-4-5-20251001';
 const FETCH_TIMEOUT_MS = 8000;
-
-// Allow up to 30s on Vercel (Hobby default is 10s) so cold starts + a slow
-// target site + the Claude call don't get killed mid-request.
-export const maxDuration = 30;
-const MAX_HTML_BYTES = 500000;
+const MAX_HTML_BYTES = 600000;
 const UA = 'PokwalaVisibilityChecker/1.0 (+https://pokwala.vercel.app)';
+
+export const maxDuration = 30;
+
+const METHOD_NOTE =
+  'Based on the HTML your site returns and its robots.txt. This tool does not run JavaScript, ' +
+  'so content rendered in the browser may not be detected, and it does not query Google or AI ' +
+  'engines directly. It measures whether the signals search and AI engines look for are present.';
 
 /* ---------- SSRF / input guards ---------- */
 function isBlockedHost(hostname) {
@@ -62,13 +65,13 @@ async function fetchText(url, accept) {
     const text = (await resp.text()).slice(0, MAX_HTML_BYTES);
     return { ok: resp.ok, status: resp.status, finalUrl: resp.url || url, text };
   } catch (e) {
-    return { ok: false, status: 0, finalUrl: url, text: '', error: String(e && e.message || e) };
+    return { ok: false, status: 0, finalUrl: url, text: '', error: String((e && e.message) || e) };
   } finally {
     clearTimeout(t);
   }
 }
 
-/* ---------- HTML heuristics ---------- */
+/* ---------- raw signals (all measured, never inferred) ---------- */
 function pick(re, html) { const m = html.match(re); return m ? m[1].trim() : ''; }
 
 function analyzeHtml(html, finalUrl) {
@@ -76,52 +79,53 @@ function analyzeHtml(html, finalUrl) {
   const title = pick(/<title[^>]*>([\s\S]*?)<\/title>/i, html);
   const metaDesc = pick(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i, html);
   const viewport = /<meta[^>]+name=["']viewport["']/i.test(html);
-  const h1Count = (html.match(/<h1[\b>]/gi) || []).length;
+  const h1Count = (html.match(/<h1[\s>]/gi) || []).length;
   const canonical = /<link[^>]+rel=["']canonical["']/i.test(html);
   const ogTitle = /<meta[^>]+property=["']og:title["']/i.test(html);
   const ogImage = /<meta[^>]+property=["']og:image["']/i.test(html);
   const metaRobotsNoindex = /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html);
 
-  // structured data
   const ldBlocks = html.match(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi) || [];
   const ldJoined = ldBlocks.join(' ').toLowerCase();
   const hasSchema = ldBlocks.length > 0;
-  const hasLocalBusiness = /"@type"\s*:\s*"?(localbusiness|[a-z]*business|store|professionalservice|organization)/i.test(ldJoined);
+  const localTypes = ['localbusiness','store','restaurant','professionalservice','homeandconstructionbusiness',
+    'generalcontractor','plumber','electrician','roofingcontractor','hvacbusiness','legalservice','medicalbusiness',
+    'dentist','autorepair','realestateagent','foodestablishment','lodgingbusiness'];
+  const hasLocalBusiness = new RegExp('"@type"\\s*:\\s*"?(' + localTypes.join('|') + ')"?', 'i').test(ldJoined);
+  const hasOrganization = /"@type"\s*:\s*"?organization"?/i.test(ldJoined);
   const hasPostalAddress = ldJoined.includes('postaladdress') || ldJoined.includes('"address"');
   const hasGeo = ldJoined.includes('"geo"') || ldJoined.includes('geocoordinates');
 
-  // NAP-ish signals in raw text
   const hasPhone = /(\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/.test(html);
-  const hasCaPostal = /\b[a-z]\d[a-z]\s?\d[a-z]\d\b/i.test(html);
-  const hasMapEmbed = lower.includes('google.com/maps') || lower.includes('maps.google') || lower.includes('goo.gl/maps') || lower.includes('g.page');
+  const hasMapEmbed = lower.includes('google.com/maps') || lower.includes('maps.google') ||
+    lower.includes('goo.gl/maps') || lower.includes('g.page') || lower.includes('maps.app.goo.gl');
 
-  // content extractability: ratio of visible text to markup
-  const textOnly = html.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  const textLen = textOnly.length;
-  const thinContent = textLen < 600;
+  const textOnly = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 
   return {
     title, titleLen: title.length, metaDesc, metaDescLen: metaDesc.length,
     viewport, h1Count, canonical, ogTitle, ogImage, metaRobotsNoindex,
-    hasSchema, hasLocalBusiness, hasPostalAddress, hasGeo,
-    hasPhone, hasCaPostal, hasMapEmbed, textLen, thinContent,
+    hasSchema, hasLocalBusiness, hasOrganization, hasPostalAddress, hasGeo,
+    hasPhone, hasMapEmbed, textLen: textOnly.length,
     isHttps: finalUrl.startsWith('https://'),
   };
 }
 
 function parseRobots(robotsTxt) {
   const out = { fetched: !!robotsTxt, hasSitemap: false, aiCrawlers: {} };
-  if (!robotsTxt) return out;
-  out.hasSitemap = /^\s*sitemap\s*:/im.test(robotsTxt);
   const bots = ['GPTBot', 'Google-Extended', 'ClaudeBot', 'anthropic-ai', 'PerplexityBot', 'CCBot'];
-  // build map of user-agent -> disallow lines
-  const lines = robotsTxt.split(/\r?\n/);
-  let current = [];
+  if (!robotsTxt) { bots.forEach((b) => { out.aiCrawlers[b] = 'allowed'; }); return out; }
+  out.hasSitemap = /^\s*sitemap\s*:/im.test(robotsTxt);
   const blocks = [];
   let collecting = null;
-  for (const raw of lines) {
+  robotsTxt.split(/\r?\n/).forEach((raw) => {
     const line = raw.replace(/#.*$/, '').trim();
-    if (!line) continue;
+    if (!line) return;
     const ua = line.match(/^user-agent\s*:\s*(.+)$/i);
     if (ua) {
       if (collecting) blocks.push(collecting);
@@ -130,118 +134,112 @@ function parseRobots(robotsTxt) {
       const da = line.match(/^disallow\s*:\s*(.*)$/i);
       if (da) collecting.disallows.push(da[1].trim());
     }
-  }
+  });
   if (collecting) blocks.push(collecting);
-  for (const bot of bots) {
-    const b = bot.toLowerCase();
-    const block = blocks.find((x) => x.agents.includes(b));
-    // allowed unless an explicit block disallows "/"
-    const blocked = block ? block.disallows.some((d) => d === '/') : false;
-    out.aiCrawlers[bot] = blocked ? 'blocked' : 'allowed';
-  }
+  bots.forEach((bot) => {
+    const block = blocks.find((x) => x.agents.includes(bot.toLowerCase()));
+    out.aiCrawlers[bot] = block && block.disallows.some((d) => d === '/') ? 'blocked' : 'allowed';
+  });
   return out;
 }
 
-/* ---------- scoring ---------- */
-function clamp(n) { return Math.max(0, Math.min(100, Math.round(n))); }
+/* ---------- deterministic report ---------- */
+// status: pass | warn | fail | info. Only pass/warn/fail count toward the score.
+function f(status, label, detail, weight, fix) {
+  return { status, label, detail: detail || '', weight: weight || 0, fix: fix || null };
+}
 
-function scoreSite(s, robots) {
-  const aiAllowed = Object.values(robots.aiCrawlers || {}).filter((v) => v === 'allowed').length;
-  const aiTotal = Object.keys(robots.aiCrawlers || {}).length || 6;
+function categoryScore(findings) {
+  let total = 0, got = 0;
+  findings.forEach((x) => {
+    if (!x.weight || x.status === 'info') return;
+    total += x.weight;
+    got += x.weight * (x.status === 'pass' ? 1 : x.status === 'warn' ? 0.5 : 0);
+  });
+  return total ? Math.round((got / total) * 100) : 100;
+}
 
-  const findability = clamp(
-    (s.metaRobotsNoindex ? 0 : 35) +
-    (s.title ? 20 : 0) + (s.titleLen >= 15 && s.titleLen <= 65 ? 10 : 0) +
-    (s.metaDesc ? 15 : 0) + (s.metaDescLen >= 50 && s.metaDescLen <= 165 ? 10 : 0) +
-    (s.canonical ? 10 : 0)
-  );
-  const local = clamp(
-    (s.hasLocalBusiness ? 30 : 0) + (s.hasPostalAddress ? 15 : 0) + (s.hasGeo ? 10 : 0) +
-    (s.hasPhone ? 15 : 0) + (s.hasCaPostal ? 10 : 0) + (s.hasMapEmbed ? 20 : 0)
-  );
-  const aiReady = clamp(
-    (aiAllowed / aiTotal) * 40 +
-    (s.hasSchema ? 25 : 0) +
-    (s.thinContent ? 0 : 20) +
-    (s.ogTitle ? 8 : 0) + (s.ogImage ? 7 : 0)
-  );
-  const technical = clamp(
-    (s.isHttps ? 40 : 0) + (s.viewport ? 30 : 0) +
-    (s.h1Count >= 1 ? 20 : 0) + (s.h1Count === 1 ? 10 : 0)
+function buildReport(s, robots) {
+  const findability = [
+    !s.title
+      ? f('fail', 'No <title> tag found', '', 3, { priority: 'high', title: 'Add a page title', why: 'No <title> tag was found in your homepage HTML.' })
+      : (s.titleLen < 15 || s.titleLen > 65)
+        ? f('warn', 'Title tag present but ' + (s.titleLen > 65 ? 'long' : 'short'), s.titleLen + ' characters', 3, { priority: 'medium', title: 'Tune your title length', why: 'Your title is ' + s.titleLen + ' characters; aim for roughly 15 to 65 so it is not truncated in results.' })
+        : f('pass', 'Title tag present', s.titleLen + ' characters', 3),
+    !s.metaDesc
+      ? f('fail', 'No meta description found', '', 3, { priority: 'medium', title: 'Add a meta description', why: 'No meta description tag was found in your homepage HTML. It is often used as the snippet shown in search results.' })
+      : (s.metaDescLen < 50 || s.metaDescLen > 160)
+        ? f('warn', 'Meta description present but ' + (s.metaDescLen > 160 ? 'long' : 'short'), s.metaDescLen + ' characters', 2, { priority: 'low', title: 'Tune your meta description length', why: 'Your meta description is ' + s.metaDescLen + ' characters; aim for roughly 50 to 160.' })
+        : f('pass', 'Meta description present', s.metaDescLen + ' characters', 2),
+    s.metaRobotsNoindex
+      ? f('fail', 'Page has a noindex tag', 'Asks search engines not to index this page', 3, { priority: 'high', title: 'Remove the noindex tag', why: 'Your homepage HTML contains a robots noindex tag, which tells search engines not to index it.' })
+      : f('pass', 'No noindex tag found', '', 3),
+    s.canonical ? f('pass', 'Canonical URL set', '', 1) : f('info', 'No canonical tag found', ''),
+  ];
+
+  const local = [
+    s.hasLocalBusiness
+      ? f('pass', 'LocalBusiness structured data found', '', 3)
+      : s.hasOrganization
+        ? f('warn', 'Organization schema found, but no LocalBusiness schema', '', 3, { priority: 'medium', title: 'Add LocalBusiness structured data', why: 'Your HTML has Organization schema but no LocalBusiness type, which is what search and AI engines use to confirm a local business.' })
+        : f('fail', 'No business structured data found', '', 3, { priority: 'high', title: 'Add LocalBusiness structured data', why: 'No LocalBusiness or Organization schema was found in your homepage HTML.' }),
+    s.hasPostalAddress ? f('pass', 'Postal address in structured data', '', 1)
+      : f('warn', 'No postal address in structured data', '', 1, { priority: 'medium', title: 'Add your address to structured data', why: 'No postal address was found in your page schema.' }),
+    s.hasGeo ? f('pass', 'Geo coordinates in structured data', '', 1) : f('info', 'No geo coordinates in structured data', ''),
+    s.hasPhone ? f('pass', 'Phone number found in page HTML', '', 1)
+      : f('warn', 'No phone number found in the served HTML', '', 1, { priority: 'medium', title: 'Show your phone number in the page', why: 'No phone-number pattern was found in your homepage HTML.' }),
+    s.hasMapEmbed ? f('pass', 'Map or Google Business link found', '', 1) : f('info', 'No Google Map or Business Profile link found', ''),
+  ];
+
+  const blockedBots = Object.entries(robots.aiCrawlers).filter(([, v]) => v === 'blocked').map(([k]) => k);
+  const aiReady = [
+    blockedBots.length
+      ? f('fail', 'robots.txt blocks AI crawlers', 'Blocked: ' + blockedBots.join(', '), 3, { priority: 'high', title: 'Allow AI search crawlers', why: 'Your robots.txt blocks ' + blockedBots.join(', ') + ', so these engines cannot read your site.' })
+      : f('pass', 'AI crawlers are allowed', robots.fetched ? 'GPTBot, ClaudeBot, PerplexityBot, etc. not blocked' : 'No robots.txt found, so nothing is blocked', 3),
+    s.hasSchema ? f('pass', 'Structured data present', 'Helps AI engines parse your content', 2)
+      : f('warn', 'No structured data found', '', 2, { priority: 'medium', title: 'Add structured data', why: 'No JSON-LD structured data was found in your homepage HTML.' }),
+    s.textLen >= 600 ? f('pass', 'Readable text present in HTML', s.textLen + ' characters', 2)
+      : f('warn', 'Little readable text in the served HTML', s.textLen + ' characters (JavaScript-rendered text is not counted)', 2, { priority: 'low', title: 'Verify your text is in the HTML', why: 'Only ' + s.textLen + ' characters of text were in the served HTML. If your site renders text with JavaScript, AI crawlers that do not run JS may miss it.' }),
+    (s.ogTitle && s.ogImage) ? f('pass', 'Open Graph tags present', '', 1) : f('info', 'Some Open Graph tags missing', ''),
+  ];
+
+  const technical = [
+    s.isHttps ? f('pass', 'Served over HTTPS', '', 3)
+      : f('fail', 'Not served over HTTPS', '', 3, { priority: 'high', title: 'Switch to HTTPS', why: 'Your site was not served over a secure HTTPS connection.' }),
+    s.viewport ? f('pass', 'Mobile viewport tag present', '', 2)
+      : f('fail', 'No mobile viewport tag', '', 2, { priority: 'high', title: 'Add a mobile viewport tag', why: 'No <meta name="viewport"> was found, so the page may not be mobile-friendly.' }),
+    s.h1Count === 1 ? f('pass', 'One <h1> heading found', '', 2)
+      : s.h1Count > 1 ? f('warn', 'Multiple <h1> headings found', s.h1Count + ' found', 2, { priority: 'low', title: 'Use a single <h1>', why: s.h1Count + ' <h1> headings were found in the served HTML; one primary heading is clearest.' })
+      : f('warn', 'No <h1> found in the served HTML', 'Not detected if added via JavaScript', 2, { priority: 'medium', title: 'Check your <h1> heading', why: 'No <h1> heading was found in the served HTML. If your site renders content with JavaScript, confirm the rendered page has one.' }),
+  ];
+
+  const categories = [
+    { name: 'Findability', detail: 'Can search engines index and understand the served HTML', score: categoryScore(findability), findings: strip(findability) },
+    { name: 'Local signals', detail: 'Business name, address, phone, and local schema', score: categoryScore(local), findings: strip(local) },
+    { name: 'AI search readiness', detail: 'Whether AI engines can crawl and parse you', score: categoryScore(aiReady), findings: strip(aiReady) },
+    { name: 'Technical basics', detail: 'HTTPS, mobile, and clean page structure', score: categoryScore(technical), findings: strip(technical) },
+  ];
+
+  const overall = Math.round(
+    categories[0].score * 0.3 + categories[1].score * 0.3 + categories[2].score * 0.25 + categories[3].score * 0.15
   );
 
-  const overall = clamp(findability * 0.3 + local * 0.3 + aiReady * 0.25 + technical * 0.15);
+  const order = { high: 0, medium: 1, low: 2 };
+  const fixes = [...findability, ...local, ...aiReady, ...technical]
+    .filter((x) => x.fix)
+    .map((x) => x.fix)
+    .sort((a, b) => order[a.priority] - order[b.priority]);
+
   return {
-    overall,
+    score: overall,
     grade: overall >= 90 ? 'A' : overall >= 80 ? 'B' : overall >= 70 ? 'C' : overall >= 55 ? 'D' : 'F',
-    categories: [
-      { name: 'Findability', score: findability, detail: 'Can search engines index and understand your pages' },
-      { name: 'Local signals', score: local, detail: 'Business name, address, phone, and local schema' },
-      { name: 'AI search readiness', score: aiReady, detail: 'Whether AI engines can crawl and cite you' },
-      { name: 'Technical basics', score: technical, detail: 'HTTPS, mobile, and clean page structure' },
-    ],
+    categories,
+    fixes,
   };
 }
 
-function ruleFixes(s, robots) {
-  const fixes = [];
-  const blockedBots = Object.entries(robots.aiCrawlers || {}).filter(([, v]) => v === 'blocked').map(([k]) => k);
-  if (blockedBots.length) fixes.push({ priority: 'high', title: 'Allow AI search crawlers', why: `Your robots.txt blocks ${blockedBots.join(', ')}, so these AI engines can't read or cite your site.` });
-  if (!s.hasLocalBusiness) fixes.push({ priority: 'high', title: 'Add LocalBusiness structured data', why: 'No LocalBusiness/Organization schema found. This is how Google and AI confirm your business details.' });
-  if (!s.hasPhone || !s.hasCaPostal) fixes.push({ priority: 'high', title: 'Show complete NAP details', why: 'A consistent name, address, and phone number in the page text strengthens local ranking.' });
-  if (s.metaRobotsNoindex) fixes.push({ priority: 'high', title: 'Remove the noindex tag', why: 'Your homepage tells search engines not to index it.' });
-  if (!s.metaDesc) fixes.push({ priority: 'medium', title: 'Write a meta description', why: 'Missing meta description; this is often the snippet shown in results.' });
-  if (!s.title) fixes.push({ priority: 'medium', title: 'Add a page title', why: 'No <title> found.' });
-  if (!s.viewport) fixes.push({ priority: 'medium', title: 'Add a mobile viewport tag', why: 'Without it, the site is not mobile-friendly.' });
-  if (s.thinContent) fixes.push({ priority: 'medium', title: 'Add more crawlable text', why: 'Very little readable text in the HTML, which limits what AI can cite.' });
-  if (!s.isHttps) fixes.push({ priority: 'high', title: 'Switch to HTTPS', why: 'The site is not served securely.' });
-  if (!robots.hasSitemap) fixes.push({ priority: 'low', title: 'Publish a sitemap', why: 'No sitemap referenced in robots.txt.' });
-  return fixes.slice(0, 6);
-}
-
-async function claudeFixes(url, s, robots, score) {
-  if (!ANTHROPIC_KEY) return null;
-  const prompt = `You are a local SEO and AI-search (GEO) expert helping an Ottawa small business. Based ONLY on these detected signals for ${url}, write a prioritized fix list.
-
-Signals (JSON): ${JSON.stringify({ ...s, robots, score: score.overall, categories: score.categories })}
-
-Return STRICT JSON only, no prose, shape:
-{"summary":"one encouraging sentence about where they stand","fixes":[{"priority":"high|medium|low","title":"short action","why":"one plain-English sentence, specific to the signals"}]}
-Max 6 fixes, ordered most-impactful first. No em dashes.`;
-
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
-  try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      signal: ctrl.signal,
-      headers: {
-        'content-type': 'application/json',
-        'x-api-key': ANTHROPIC_KEY,
-        'anthropic-version': '2023-06-01',
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 900,
-        messages: [{ role: 'user', content: prompt }],
-      }),
-    });
-    if (!resp.ok) {
-      const errText = await resp.text();
-      console.warn('[grade] Anthropic error', resp.status, errText.slice(0, 300));
-      return { _error: `anthropic_${resp.status}` };
-    }
-    const data = await resp.json();
-    const text = (data.content || []).map((c) => c.text || '').join('').trim();
-    const jsonStr = text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1);
-    const parsed = JSON.parse(jsonStr);
-    return parsed;
-  } catch (e) {
-    console.warn('[grade] Anthropic call failed', String(e && e.message || e));
-    return { _error: 'anthropic_exception' };
-  } finally {
-    clearTimeout(t);
-  }
+function strip(findings) {
+  return findings.map(({ status, label, detail }) => ({ status, label, detail }));
 }
 
 /* ---------- handler ---------- */
@@ -256,7 +254,6 @@ export default async function handler(req, res) {
   const target = normalizeUrl(body && body.url);
   if (!target) return res.status(400).json({ error: 'Please provide a valid website URL.' });
 
-  // Fetch the page and robots.txt in parallel to stay well under the time budget.
   const [page, robotsRes] = await Promise.all([
     fetchText(target.href, 'text/html'),
     fetchText(new URL('/robots.txt', target.origin).href, 'text/plain'),
@@ -264,33 +261,17 @@ export default async function handler(req, res) {
   if (!page.text) {
     return res.status(200).json({ ok: false, reachable: false, url: target.href, message: 'We could not reach that website. Check the address and try again.' });
   }
+
   const signals = analyzeHtml(page.text, page.finalUrl);
   const robots = parseRobots(robotsRes.ok ? robotsRes.text : '');
-  const score = scoreSite(signals, robots);
-
-  let generatedBy = 'rules';
-  let summary = '';
-  let fixes = ruleFixes(signals, robots);
-  const ai = await claudeFixes(target.href, signals, robots, score);
-  if (ai && Array.isArray(ai.fixes) && ai.fixes.length) {
-    fixes = ai.fixes.slice(0, 6);
-    summary = ai.summary || '';
-    generatedBy = 'claude';
-  }
+  const report = buildReport(signals, robots);
 
   return res.status(200).json({
     ok: true,
     reachable: true,
     url: page.finalUrl,
     checkedAt: new Date().toISOString(),
-    score: score.overall,
-    grade: score.grade,
-    categories: score.categories,
-    signals,
-    robots,
-    summary,
-    fixes,
-    generatedBy,
-    keyConfigured: !!ANTHROPIC_KEY,
+    method: METHOD_NOTE,
+    ...report,
   });
 }
