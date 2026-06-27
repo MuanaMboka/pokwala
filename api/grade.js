@@ -290,12 +290,23 @@ export default async function handler(req, res) {
   const robots = parseRobots(robotsRes.ok ? robotsRes.text : '');
   const report = buildReport(signals, robots);
 
+  // Low-confidence: the page came back but is suspiciously thin (almost no
+  // readable text AND no <h1>). This usually means we received a stripped or
+  // partial response (some hosts serve datacenter IPs a degraded page) or the
+  // content is rendered with JavaScript. Flag it rather than scoring it as fact.
+  const lowConfidence = signals.textLen < 400 && signals.h1Count === 0;
+  const confidenceNote = lowConfidence
+    ? 'We received very little content from this site, so this report may be incomplete. Some sites serve automated tools a limited version of the page, or build their content with JavaScript that this tool does not run. Treat these results with caution.'
+    : '';
+
   return res.status(200).json({
     ok: true,
     reachable: true,
     url: page.finalUrl,
     checkedAt: new Date().toISOString(),
     method: METHOD_NOTE,
+    lowConfidence,
+    confidenceNote,
     ...report,
   });
 }
