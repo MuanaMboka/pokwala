@@ -11,7 +11,7 @@
 
 const FETCH_TIMEOUT_MS = 8000;
 const MAX_HTML_BYTES = 600000;
-const UA = 'PokwalaVisibilityChecker/1.0 (+https://pokwala.vercel.app)';
+const UA = 'PokwalaVisibilityChecker/1.0 (+https://pokwala.com)';
 
 export const maxDuration = 30;
 
