@@ -9,7 +9,10 @@
 // (common on React/Vue/SPA sites) is not seen. It measures readiness signals;
 // it does not query Google, ChatGPT, or other engines directly.
 
+import { lookup } from 'node:dns/promises';
+
 const FETCH_TIMEOUT_MS = 8000;
+const MAX_REDIRECTS = 5;
 const MAX_HTML_BYTES = 600000;
 const UA = 'PokwalaVisibilityChecker/1.0 (+https://pokwala.com)';
 
@@ -27,15 +30,48 @@ function isBlockedHost(hostname) {
   if (h === 'localhost' || h.endsWith('.localhost')) return true;
   if (h.endsWith('.local') || h.endsWith('.internal')) return true;
   if (h === '::1' || h === '0.0.0.0') return true;
-  if (/^\d{1,3}(\.\d{1,3}){3}$/.test(h)) {
-    const p = h.split('.').map(Number);
-    if (p.some((n) => n > 255)) return true;
-    if (p[0] === 0 || p[0] === 10 || p[0] === 127) return true;
-    if (p[0] === 169 && p[1] === 254) return true;
-    if (p[0] === 172 && p[1] >= 16 && p[1] <= 31) return true;
-    if (p[0] === 192 && p[1] === 168) return true;
-  }
   return false;
+}
+
+// Classify a resolved address. Anything we cannot parse is treated as private
+// (fail closed) rather than fetched.
+function ipIsPrivate(ip, family) {
+  if (family === 6) {
+    const v = String(ip).toLowerCase();
+    if (v === '::1' || v === '::') return true;
+    if (v.startsWith('fc') || v.startsWith('fd')) return true; // unique local
+    if (v.startsWith('fe80')) return true;                     // link local
+    const mapped = v.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
+    if (mapped) return ipIsPrivate(mapped[1], 4);
+    return false;
+  }
+  const parts = String(ip).split('.');
+  if (parts.length !== 4) return true;
+  const p = parts.map(Number);
+  if (p.some((n) => !Number.isInteger(n) || n < 0 || n > 255)) return true;
+  if (p[0] === 0 || p[0] === 10 || p[0] === 127) return true;
+  if (p[0] === 169 && p[1] === 254) return true;               // link local / cloud metadata
+  if (p[0] === 172 && p[1] >= 16 && p[1] <= 31) return true;
+  if (p[0] === 192 && p[1] === 168) return true;
+  if (p[0] === 100 && p[1] >= 64 && p[1] <= 127) return true;  // CGNAT
+  if (p[0] >= 224) return true;                                // multicast / reserved
+  return false;
+}
+
+// Resolve the hostname and reject it if ANY address is private. This is what
+// catches zero-padded literals (0177.0.0.1), DNS names pointed at internal
+// hosts, and redirect targets. Returns a reason string, or null when the host
+// is safe to fetch. "unresolved" is kept distinct from "private" so a DNS
+// failure is not reported to the user as an internal-network address.
+async function hostGuardReason(hostname) {
+  let addrs;
+  try {
+    addrs = await lookup(hostname, { all: true });
+  } catch (_) {
+    return 'unresolved';
+  }
+  if (!addrs || !addrs.length) return 'unresolved';
+  return addrs.some((a) => ipIsPrivate(a.address, a.family)) ? 'private' : null;
 }
 
 function normalizeUrl(raw) {
@@ -53,22 +89,54 @@ function normalizeUrl(raw) {
   }
 }
 
-async function fetchText(url, accept) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
-  try {
-    const resp = await fetch(url, {
-      redirect: 'follow',
-      signal: ctrl.signal,
-      headers: { 'User-Agent': UA, Accept: accept || 'text/html,*/*' },
-    });
-    const text = (await resp.text()).slice(0, MAX_HTML_BYTES);
-    return { ok: resp.ok, status: resp.status, finalUrl: resp.url || url, text };
-  } catch (e) {
-    return { ok: false, status: 0, finalUrl: url, text: '', error: String((e && e.message) || e) };
-  } finally {
-    clearTimeout(t);
+async function fetchText(startUrl, accept) {
+  let url = startUrl;
+  for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+    let u;
+    try { u = new URL(url); } catch (_) {
+      return { ok: false, status: 0, finalUrl: String(url), text: '', error: 'Invalid redirect target' };
+    }
+    if (!/^https?:$/.test(u.protocol) || isBlockedHost(u.hostname)) {
+      return { ok: false, status: 0, finalUrl: u.href, text: '', error: 'Blocked host' };
+    }
+    const guard = await hostGuardReason(u.hostname);
+    if (guard === 'private') {
+      return { ok: false, status: 0, finalUrl: u.href, text: '', error: 'Blocked host' };
+    }
+    if (guard === 'unresolved') {
+      return { ok: false, status: 0, finalUrl: u.href, text: '', error: 'Unresolved host' };
+    }
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS);
+    let resp;
+    try {
+      resp = await fetch(u.href, {
+        redirect: 'manual',
+        signal: ctrl.signal,
+        headers: { 'User-Agent': UA, Accept: accept || 'text/html,*/*' },
+      });
+    } catch (e) {
+      clearTimeout(t);
+      return { ok: false, status: 0, finalUrl: u.href, text: '', error: String((e && e.message) || e) };
+    }
+    const loc = resp.status >= 300 && resp.status < 400 ? resp.headers.get('location') : null;
+    if (loc) {
+      clearTimeout(t);
+      try { url = new URL(loc, u.href).href; } catch (_) {
+        return { ok: false, status: 0, finalUrl: u.href, text: '', error: 'Invalid redirect target' };
+      }
+      continue;
+    }
+    try {
+      const text = (await resp.text()).slice(0, MAX_HTML_BYTES);
+      return { ok: resp.ok, status: resp.status, finalUrl: u.href, text };
+    } catch (e) {
+      return { ok: false, status: resp.status, finalUrl: u.href, text: '', error: String((e && e.message) || e) };
+    } finally {
+      clearTimeout(t);
+    }
   }
+  return { ok: false, status: 0, finalUrl: String(url), text: '', error: 'Too many redirects' };
 }
 
 /* ---------- raw signals (all measured, never inferred) ---------- */
@@ -121,28 +189,56 @@ function analyzeHtml(html, finalUrl) {
 }
 
 function parseRobots(robotsTxt) {
-  const out = { fetched: !!robotsTxt, hasSitemap: false, aiCrawlers: {} };
+  const out = { fetched: !!robotsTxt, hasSitemap: false, aiCrawlers: {}, wildcardBlocksAll: false };
   const bots = ['GPTBot', 'Google-Extended', 'ClaudeBot', 'anthropic-ai', 'PerplexityBot', 'CCBot'];
   if (!robotsTxt) { bots.forEach((b) => { out.aiCrawlers[b] = 'allowed'; }); return out; }
   out.hasSitemap = /^\s*sitemap\s*:/im.test(robotsTxt);
-  const blocks = [];
-  let collecting = null;
+
+  // Consecutive User-agent lines share ONE rule set (per the robots standard),
+  // so a new group starts only at the first agent line after a rule.
+  const groups = [];
+  let current = null;
+  let lastLineWasAgent = false;
   robotsTxt.split(/\r?\n/).forEach((raw) => {
     const line = raw.replace(/#.*$/, '').trim();
     if (!line) return;
     const ua = line.match(/^user-agent\s*:\s*(.+)$/i);
     if (ua) {
-      if (collecting) blocks.push(collecting);
-      collecting = { agents: [ua[1].trim().toLowerCase()], disallows: [] };
-    } else if (collecting) {
-      const da = line.match(/^disallow\s*:\s*(.*)$/i);
-      if (da) collecting.disallows.push(da[1].trim());
+      if (!current || !lastLineWasAgent) {
+        if (current) groups.push(current);
+        current = { agents: [], rules: [] };
+      }
+      current.agents.push(ua[1].trim().toLowerCase());
+      lastLineWasAgent = true;
+      return;
     }
+    if (!current) return;
+    lastLineWasAgent = false;
+    const da = line.match(/^disallow\s*:\s*(.*)$/i);
+    if (da) { current.rules.push({ type: 'disallow', path: da[1].trim() }); return; }
+    const al = line.match(/^allow\s*:\s*(.*)$/i);
+    if (al) { current.rules.push({ type: 'allow', path: al[1].trim() }); }
   });
-  if (collecting) blocks.push(collecting);
+  if (current) groups.push(current);
+
+  const isRoot = (path) => path === '/' || path === '/*';
+  // A group blocks the whole site when it disallows the root and does not
+  // re-open it with an equally broad Allow.
+  const blocksEverything = (group) => {
+    if (!group) return false;
+    if (group.rules.some((r) => r.type === 'allow' && isRoot(r.path))) return false;
+    return group.rules.some((r) => r.type === 'disallow' && isRoot(r.path));
+  };
+  const groupFor = (agent) => groups.find((g) => g.agents.includes(agent));
+
+  const wildcard = groupFor('*');
+  out.wildcardBlocksAll = blocksEverything(wildcard);
+
   bots.forEach((bot) => {
-    const block = blocks.find((x) => x.agents.includes(bot.toLowerCase()));
-    out.aiCrawlers[bot] = block && block.disallows.some((d) => d === '/') ? 'blocked' : 'allowed';
+    // Most specific match wins; "*" applies only when the bot has no group of
+    // its own. This is what makes "User-agent: * / Disallow: /" register.
+    const governing = groupFor(bot.toLowerCase()) || wildcard;
+    out.aiCrawlers[bot] = blocksEverything(governing) ? 'blocked' : 'allowed';
   });
   return out;
 }
@@ -198,7 +294,16 @@ function buildReport(s, robots) {
   const blockedBots = Object.entries(robots.aiCrawlers).filter(([, v]) => v === 'blocked').map(([k]) => k);
   const aiReady = [
     blockedBots.length
-      ? f('fail', 'robots.txt blocks AI crawlers', 'Blocked: ' + blockedBots.join(', '), 3, { priority: 'high', title: 'Allow AI search crawlers', why: 'Your robots.txt blocks ' + blockedBots.join(', ') + ', so these engines cannot read your site.' })
+      ? f('fail',
+          robots.wildcardBlocksAll ? 'robots.txt blocks all crawlers' : 'robots.txt blocks AI crawlers',
+          robots.wildcardBlocksAll
+            ? 'A "User-agent: *" rule disallows the whole site, which includes ' + blockedBots.join(', ')
+            : 'Blocked: ' + blockedBots.join(', '),
+          3,
+          { priority: 'high', title: 'Allow AI search crawlers',
+            why: robots.wildcardBlocksAll
+              ? 'Your robots.txt disallows the entire site for all crawlers ("User-agent: *" with "Disallow: /"), so search and AI engines cannot read any of it.'
+              : 'Your robots.txt blocks ' + blockedBots.join(', ') + ', so these engines cannot read your site.' })
       : f('pass', 'AI crawlers are allowed', robots.fetched ? 'GPTBot, ClaudeBot, PerplexityBot, etc. not blocked' : 'No robots.txt found, so nothing is blocked', 3),
     s.hasSchema ? f('pass', 'Structured data present', 'Helps AI engines parse your content', 2)
       : f('warn', 'No structured data found', '', 2, { priority: 'medium', title: 'Add structured data', why: 'No JSON-LD structured data was found in your homepage HTML.' }),
@@ -275,13 +380,26 @@ export default async function handler(req, res) {
   const target = normalizeUrl(body && body.url);
   if (!target) return res.status(400).json({ error: 'Please provide a valid website URL.' });
 
-  const [page, robotsRes] = await Promise.all([
+  let [page, robotsRes] = await Promise.all([
     fetchText(target.href, 'text/html'),
     fetchText(new URL('/robots.txt', target.origin).href, 'text/plain'),
   ]);
-  const blocked = !page.text
-    ? 'We could not reach that website. Check the address and try again.'
-    : blockedMessage(page);
+
+  // If the site redirected to a different host, the robots.txt we fetched
+  // belongs to the wrong origin — re-fetch it from where we actually landed.
+  let finalOrigin = target.origin;
+  try { finalOrigin = new URL(page.finalUrl).origin; } catch (_) {}
+  if (page.text && finalOrigin !== target.origin) {
+    robotsRes = await fetchText(new URL('/robots.txt', finalOrigin).href, 'text/plain');
+  }
+
+  const blocked = page.error === 'Blocked host'
+    ? 'That address points to a private or internal network, so we did not fetch it.'
+    : page.error === 'Unresolved host'
+      ? 'We could not look up that domain name. Check the spelling and try again.'
+      : !page.text
+      ? 'We could not reach that website. Check the address and try again.'
+      : blockedMessage(page);
   if (blocked) {
     return res.status(200).json({ ok: false, reachable: false, url: target.href, message: blocked });
   }
