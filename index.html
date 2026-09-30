@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local SEO Ottawa | Pokwala: SEO &amp; GEO Agency</title>
-  <meta name="description" content="Pokwala is an Ottawa SEO agency helping small businesses rank higher on search engines and get found by AI like ChatGPT. Start with a free audit.">
+  <title>Ottawa Web Design &amp; SEO for Small Business | Pokwala</title>
+  <meta name="description" content="Pokwala builds Wix and custom websites for small businesses, ranks them on Google and AI search, and keeps them running. From $499. Free audit.">
   <link rel="canonical" href="https://pokwala.com/">
-  <meta property="og:title" content="Local SEO Ottawa | Pokwala: SEO &amp; GEO Agency">
-  <meta property="og:description" content="Pokwala is an Ottawa SEO agency helping small businesses rank higher on search engines and get found by AI like ChatGPT. Start with a free audit.">
+  <meta property="og:title" content="Ottawa Web Design &amp; SEO for Small Business | Pokwala">
+  <meta property="og:description" content="Pokwala builds Wix and custom websites for small businesses, ranks them on Google and AI search, and keeps them running. From $499. Free audit.">
   <meta property="og:url" content="https://pokwala.com/">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,6 +118,7 @@
     }
     .nav-logo:hover { color: var(--gold); }
     .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    @media (max-width: 1180px) { .nav-links { gap: 26px; } }
     .nav-links a {
       font-size: 0.875rem;
       font-weight: 600;
@@ -890,6 +891,63 @@
         will-change: transform;
       }
     }
+
+    /* Services (3 cards) */
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .service-card { display: flex; flex-direction: column; }
+    .service-kicker { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .service-card .service-text { margin-bottom: 28px; }
+    .service-card-link { margin-top: auto; font-size: 0.875rem; font-weight: 700; color: var(--gold); transition: color 0.2s; }
+    .service-card-link:hover { color: var(--gold-light); }
+    .faq-answer a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Sample work */
+    .sample { padding: 100px 0; background: var(--bg); }
+    .sample-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .sample-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.07; color: var(--cream); margin-bottom: 20px; }
+    .sample-desc { font-size: 0.9375rem; line-height: 1.8; color: var(--muted); max-width: 440px; margin-bottom: 32px; }
+    .sample-card { border: 1px solid var(--border-gold); border-radius: 10px; overflow: hidden; background: var(--surface); }
+    .sample-bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .sample-bar span { width: 9px; height: 9px; border-radius: 50%; background: rgba(247,245,242,0.14); }
+    .sample-bar em { margin-left: 10px; font-style: normal; font-size: 0.75rem; color: var(--muted); }
+    .sample-body { padding: 44px 40px 40px; background: radial-gradient(circle, rgba(201,168,76,0.08) 1px, transparent 1px) 0 0 / 28px 28px; }
+    .sample-eyebrow { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .sample-h { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; color: var(--cream); margin-bottom: 12px; }
+    .sample-p { font-size: 0.875rem; line-height: 1.7; color: var(--muted); margin-bottom: 24px; }
+    .sample-btns { display: flex; gap: 10px; margin-bottom: 28px; }
+    .sample-btns span { font-size: 0.8125rem; font-weight: 700; padding: 10px 16px; border-radius: 4px; border: 1px solid var(--border-gold); color: var(--cream); }
+    .sample-btns span:first-child { background: var(--gold); color: #07111C; border-color: var(--gold); }
+    .sample-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .sample-tags span { font-size: 0.75rem; color: var(--muted); padding: 5px 10px; border: 1px solid var(--border); border-radius: 999px; }
+
+    /* Pricing teaser */
+    .pricing-teaser { padding: 100px 0; background: var(--surface); }
+    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+    .price-card { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 36px 32px; border: 1px solid var(--border); border-radius: 8px; background: rgba(247,245,242,0.02); }
+    .price-card--featured { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+    .price-badge { position: absolute; top: 16px; right: 16px; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #07111C; background: var(--gold); padding: 4px 10px; border-radius: 999px; }
+    .price-name { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .price-amount { font-size: clamp(2.25rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--cream); }
+    .price-amount small { font-size: 0.9375rem; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+    .price-meta { font-size: 0.875rem; color: var(--muted); }
+    .pricing-teaser-foot { margin-bottom: 72px; }
+    .ownership { border-top: 1px solid var(--border); padding-top: 56px; max-width: 720px; }
+    .ownership .section-label { margin-bottom: 14px; }
+    .ownership-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.15; color: var(--cream); margin-bottom: 14px; }
+    .ownership-text { font-size: 0.9375rem; line-height: 1.8; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { border-right: none !important; border-top: none !important; border-bottom: 1px solid var(--border); }
+      .service-card:last-child { border-bottom: none; }
+      .sample, .pricing-teaser { padding: 72px 0; }
+      .sample-grid { grid-template-columns: 1fr; gap: 40px; }
+      .price-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .sample, .pricing-teaser { padding: 56px 0; }
+      .sample-body { padding: 32px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -904,11 +962,12 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/pricing" data-cursor="hide"><span class="nl-default">Pricing</span><span class="nl-hover">Pricing</span></a></li>
           <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
-          <li><a class="nav-link" href="/resources" data-cursor="hide"><span class="nl-default">Resources</span><span class="nl-hover">Resources</span></a></li>
+          <li><a class="nav-link" href="/blog" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
           <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
           <li><a class="nav-link" href="/contact" data-cursor="hide"><span class="nl-default">Contact</span><span class="nl-hover">Contact</span></a></li>
-          <li><a class="nav-cta" href="/contact">Get Your Free SEO Audit →</a></li>
+          <li><a class="nav-cta" href="/contact">Get a Free Audit →</a></li>
         </ul>
       </nav>
       <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
@@ -919,11 +978,12 @@
 
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/services" onclick="closeMobileNav()">Services</a>
-    <a href="/about"    onclick="closeMobileNav()">About</a>
-    <a href="/resources"     onclick="closeMobileNav()">Resources</a>
-    <a href="/faq"      onclick="closeMobileNav()">FAQ</a>
+    <a href="/pricing" onclick="closeMobileNav()">Pricing</a>
+    <a href="/about" onclick="closeMobileNav()">About</a>
+    <a href="/blog" onclick="closeMobileNav()">Blog</a>
+    <a href="/faq" onclick="closeMobileNav()">FAQ</a>
     <a href="/contact" onclick="closeMobileNav()">Contact</a>
-    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get Your Free SEO Audit →</a>
+    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get a Free Audit →</a>
   </nav>
 
   <main>
@@ -936,14 +996,14 @@
       <div class="hero-dots" aria-hidden="true"></div>
 
       <div class="hero-main">
-        <p class="hero-overline reveal">SEO &amp; GEO Agency · Ottawa</p>
+        <p class="hero-overline reveal">Websites · SEO · Site care · Ottawa</p>
         <h1 class="hero-headline reveal reveal-d1" id="hero-h1">
-          Ottawa's SEO &amp; GEO agency<br>for local businesses.
+          Your website, built,<br>found, and looked after.
         </h1>
-        <p class="hero-sub reveal reveal-d2">Be found by humans and by AI.</p>
+        <p class="hero-sub reveal reveal-d2">One person to build it, rank it, and keep it running.</p>
         <div class="hero-ctas reveal reveal-d3">
-          <a class="btn-primary" href="/contact">Get Your Free SEO Audit →</a>
-          <a class="btn-ghost" href="/services">See My Services</a>
+          <a class="btn-primary" href="/pricing">See Packages &amp; Prices →</a>
+          <a class="btn-ghost" href="/contact">Get a Free Audit</a>
         </div>
       </div>
 
@@ -958,7 +1018,7 @@
 
       <div class="hero-bar">
         <p class="hero-bar-desc reveal reveal-d4">
-          Pokwala helps Ottawa small businesses and tradespeople rank higher on Google and get discovered by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. Your next customers are already searching. I make sure they find you.
+          Pokwala builds websites for small businesses and tradespeople, gets them found on Google and in AI search like ChatGPT, and takes care of them after launch. Based in Ottawa, working with businesses anywhere.
         </p>
         <div aria-hidden="true"></div>
         <div aria-hidden="true"></div>
@@ -993,50 +1053,106 @@
         <div class="services-header">
           <div class="reveal">
             <span class="section-label">What I do</span>
-            <h2 class="services-title" id="services-h2">Everything your Ottawa business needs to dominate search.</h2>
+            <h2 class="services-title" id="services-h2">Three ways I help. Pick one, or all three.</h2>
           </div>
-          <p class="services-desc reveal reveal-d1">From building your site to ranking it and reporting on it, I handle every layer of your online presence so you can focus on the job.</p>
+          <p class="services-desc reveal reveal-d1">Build a new site, get it found, and keep it working. Every service stands on its own, and they work best together.</p>
         </div>
         <div class="services-grid">
-          <article class="service-card" tabindex="0" aria-label="SEO and GEO Optimization">
+          <article class="service-card" aria-labelledby="svc-build">
             <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="4" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/>
               <path d="M4 15h32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               <circle cx="9.5" cy="11.5" r="1.25" fill="currentColor"/>
               <circle cx="14" cy="11.5" r="1.25" fill="currentColor"/>
-              <path d="M13 25l3.5 3.5L27 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M11 21h12M11 26h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
-            <h3 class="service-name">SEO &amp; GEO Optimization</h3>
-            <p class="service-text">Get your business ranking on Google and showing up in AI recommendations: ChatGPT, Perplexity, and Google AI Overviews. I handle keywords, page structure, and everything in between.</p>
+            <span class="service-kicker">Build</span>
+            <h3 class="service-name" id="svc-build">A website that works as hard as you do.</h3>
+            <p class="service-text">Choose Wix if you want to edit it yourself, or a custom-coded site on Vercel if you want speed and would rather I handle it. Every site launches with SEO built in.</p>
+            <a class="service-card-link" href="/pricing#build">From $499 →</a>
           </article>
-          <article class="service-card" tabindex="0" aria-label="Google Business Profile Management">
+          <article class="service-card" aria-labelledby="svc-seo">
             <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M20 4C13.373 4 8 9.373 8 16c0 9 12 20 12 20s12-11 12-20c0-6.627-5.373-12-12-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <circle cx="20" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="17" cy="17" r="10" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M24.5 24.5L34 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M12.5 18.5l3 3 6-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <h3 class="service-name">Google Business Profile</h3>
-            <p class="service-text">Get found on Google Maps when Ottawa customers search for what you offer. I set up, optimise, and manage your Google Business Profile so your listing works as hard as your website.</p>
+            <span class="service-kicker">SEO</span>
+            <h3 class="service-name" id="svc-seo">Get found on Google and in AI answers.</h3>
+            <p class="service-text">Keyword research, Google Business Profile, and content that helps ChatGPT, Perplexity, and Google AI Overviews recommend you. For sites I build and sites you already have, online stores included.</p>
+            <a class="service-card-link" href="/pricing#seo-only">From $249/month →</a>
           </article>
-          <article class="service-card" tabindex="0" aria-label="Analytics and Monthly Reporting">
+          <article class="service-card" aria-labelledby="svc-manage">
             <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M6 32V18l8-6 8 4 12-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6 32h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="14" cy="26" r="2" fill="currentColor"/>
-              <circle cx="22" cy="20" r="2" fill="currentColor"/>
-              <circle cx="34" cy="12" r="2" fill="currentColor"/>
+              <path d="M20 4l13 5v9c0 8.5-5.6 15-13 18C12.6 33 7 26.5 7 18V9l13-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M14.5 19.5l4 4 7-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <h3 class="service-name">Analytics &amp; Monthly Reporting</h3>
-            <p class="service-text">Clear monthly reports that show exactly where your rankings stand, how much traffic your site is getting, and what I'm doing about it. Understand the story behind your data.</p>
+            <span class="service-kicker">Manage</span>
+            <h3 class="service-name" id="svc-manage">Your site, looked after every month.</h3>
+            <p class="service-text">Updates, fixes, backups, new pages, and a plain-English monthly report. Month to month, cancel anytime, and the first month is free with every build.</p>
+            <a class="service-card-link" href="/pricing#plans">From $29/month →</a>
           </article>
-          <article class="service-card" tabindex="0" aria-label="Content and Website Management">
-            <svg class="service-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M8 10h24M8 16h18M8 22h22M8 28h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="32" cy="28" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M36 32l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <h3 class="service-name">Content &amp; Website Management</h3>
-            <p class="service-text">I keep your site updated, accurate, and optimised. New service pages, blog posts, seasonal updates: I handle the content so your site keeps working for you month after month.</p>
-          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sample" id="sample-work" aria-labelledby="sample-h2">
+      <div class="section-inner">
+        <div class="sample-grid">
+          <div class="reveal">
+            <span class="section-label">Sample work</span>
+            <h2 class="sample-title" id="sample-h2">See what I build.</h2>
+            <p class="sample-desc">ProPlombier is a bilingual plumbing website I built as a demo, to show what you&rsquo;d get: fast, mobile-first, and set up to rank from day one.</p>
+            <a class="btn-ghost" href="/contact">Ask for a walkthrough →</a>
+          </div>
+          <div class="sample-card reveal reveal-d1" aria-hidden="true">
+            <div class="sample-bar"><span></span><span></span><span></span><em>proplombier · demo</em></div>
+            <div class="sample-body">
+              <p class="sample-eyebrow">Plomberie · Plumbing</p>
+              <p class="sample-h">Emergency plumber, 24/7.</p>
+              <p class="sample-p">Fast, clean repairs across the city. Call now or book online.</p>
+              <div class="sample-btns"><span>Call now</span><span>Book online</span></div>
+              <div class="sample-tags"><span>EN / FR</span><span>Mobile-first</span><span>SEO-ready</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-teaser" id="pricing" aria-labelledby="pricing-h2">
+      <div class="section-inner">
+        <div class="services-header">
+          <div class="reveal">
+            <span class="section-label">Pricing</span>
+            <h2 class="services-title" id="pricing-h2">Clear prices. No surprises.</h2>
+          </div>
+          <p class="services-desc reveal reveal-d1">Same price on Wix or Vercel. Bilingual sites, extra pages, and booking systems are available as add-ons. Your first month of site care is free with every build.</p>
+        </div>
+        <div class="price-grid">
+          <div class="price-card reveal">
+            <span class="price-name">Starter</span>
+            <span class="price-amount">$499</span>
+            <span class="price-meta">Up to 5 pages</span>
+          </div>
+          <div class="price-card price-card--featured reveal reveal-d1">
+            <span class="price-badge">Most popular</span>
+            <span class="price-name">Business</span>
+            <span class="price-amount">$999</span>
+            <span class="price-meta">Up to 10 pages</span>
+          </div>
+          <div class="price-card reveal reveal-d2">
+            <span class="price-name">Custom</span>
+            <span class="price-amount"><small>From</small> $1,799</span>
+            <span class="price-meta">10+ pages</span>
+          </div>
+        </div>
+        <div class="pricing-teaser-foot reveal">
+          <a class="btn-primary" href="/pricing">See Full Pricing →</a>
+        </div>
+        <div class="ownership reveal">
+          <span class="section-label">Always yours</span>
+          <p class="ownership-title">Your site, your domain, your accounts. Always.</p>
+          <p class="ownership-text">Everything is set up in your name. If you ever stop working with me, you keep all of it. No locked-in websites, no transfer fees.</p>
         </div>
       </div>
     </section>
@@ -1050,12 +1166,11 @@
         <span class="section-label reveal" style="display:block; margin-bottom:40px;">My belief</span>
         <blockquote>
           <p class="philosophy-quote reveal reveal-d1" id="philosophy-h2">
-            In today's market, a passive online presence means<br>
-            <em>missed opportunities</em> for your Ottawa business.<br>
-            Don't let potential customers pass you by; proactively shape your digital strategy to drive growth.
+            A website nobody finds is <em>just an expense.</em><br>
+            One that ranks and stays current is your hardest-working employee.
           </p>
         </blockquote>
-        <p class="philosophy-sub reveal reveal-d2">In the age of AI-powered search, visibility is the difference between thriving and being forgotten. Pokwala makes sure Ottawa businesses are found everywhere that matters.</p>
+        <p class="philosophy-sub reveal reveal-d2">In the age of AI-powered search, visibility is the difference between thriving and being forgotten. Pokwala makes sure your business is found everywhere that matters.</p>
       </div>
     </section>
 
@@ -1063,13 +1178,13 @@
       <div class="section-inner">
         <div class="faq-header">
           <span class="section-label">Common questions</span>
-          <h2 class="faq-title" id="faq-h2">Everything Ottawa business owners ask me.</h2>
+          <h2 class="faq-title" id="faq-h2">What business owners ask me first.</h2>
         </div>
         <div class="faq-list">
           <div class="faq-item" id="faq-item-1">
             <h3 class="faq-question">
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-1">
-                Is SEO still relevant in 2026?
+                How much does a website cost?
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/>
@@ -1079,14 +1194,14 @@
             </h3>
             <div class="faq-body" id="faq-body-1" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Yes, more than ever. Every day, millions of people search Google to find a plumber, a roofer, a web designer, a dentist near them. SEO is how you show up when they search. What has changed is that AI tools like ChatGPT and Google AI Overviews now also recommend businesses, and the businesses they recommend are the ones with strong SEO. If you rank well on Google, you tend to show up in AI answers too.</p>
+                <p class="faq-answer">My packages start at $499 for up to 5 pages and go up to $1,799 and beyond for larger sites. Every price is on the <a href="/pricing">Pricing page</a>, and you&rsquo;ll know the full cost before I start.</p>
               </div>
             </div>
           </div>
           <div class="faq-item" id="faq-item-2">
             <h3 class="faq-question">
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-2">
-                How much does SEO cost in Ottawa?
+                Should I choose Wix or a custom site?
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/>
@@ -1096,14 +1211,14 @@
             </h3>
             <div class="faq-body" id="faq-body-2" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">It depends on what you need. A one-time audit for a small business website is a much smaller piece of work than ongoing monthly management, where someone actively works on your rankings every month. What makes sense for you comes down to your goals and how competitive your industry is here in Ottawa. At Pokwala, I offer a free audit first so you know exactly what needs to be done before spending anything.</p>
+                <p class="faq-answer">Choose Wix if you want to make your own changes. Choose a custom site on Vercel if you want the fastest possible site and would rather I handle updates. Both cost the same to build, and both come with SEO built in.</p>
               </div>
             </div>
           </div>
           <div class="faq-item" id="faq-item-3">
             <h3 class="faq-question">
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-3">
-                What is GEO and how is it different from SEO?
+                Do I own my website?
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/>
@@ -1113,7 +1228,7 @@
             </h3>
             <div class="faq-body" id="faq-body-3" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">SEO (Search Engine Optimization) is the practice of getting your website to rank on Google. GEO (Generative Engine Optimization) is the newer practice of getting your business mentioned and recommended by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. When someone asks ChatGPT "who is the best contractor in Ottawa?", GEO is what determines whether your business gets named. The good news: strong SEO and strong GEO are built on the same foundations: good content, clear information, and a trustworthy website.</p>
+                <p class="faq-answer">Yes, always. Your domain, your site, and your accounts are in your name. If we stop working together, you keep everything.</p>
               </div>
             </div>
           </div>
@@ -1125,23 +1240,23 @@
       <div class="section-inner">
         <div class="process-header">
           <span class="section-label">How it works</span>
-          <h2 class="process-title" id="process-h2">Three steps<br>to ranking in Ottawa.</h2>
+          <h2 class="process-title" id="process-h2">From first call<br>to found online.</h2>
         </div>
         <ol class="process-steps" role="list">
           <li class="process-step">
             <span class="step-num" aria-hidden="true">01</span>
-            <h3 class="step-name">Audit</h3>
-            <p class="step-desc">I look at your website, your current Google rankings, and what your competitors in Ottawa are doing. You get a plain-English report showing exactly where you stand and what's holding you back.</p>
+            <h3 class="step-name">Free audit</h3>
+            <p class="step-desc">I look at your current site (if you have one), your competitors, and what your customers search for. You get a plain-English picture of where you stand.</p>
           </li>
           <li class="process-step">
             <span class="step-num" aria-hidden="true">02</span>
-            <h3 class="step-name">Strategy</h3>
-            <p class="step-desc">Based on the audit, I build a prioritised plan: quick wins that move the needle in weeks, and longer-term plays that keep compounding.</p>
+            <h3 class="step-name">Build</h3>
+            <p class="step-desc">You pick a package and a platform. I design, write, and build the site, with SEO set up from the start. Most sites launch in 1 to 3 weeks.</p>
           </li>
           <li class="process-step">
             <span class="step-num" aria-hidden="true">03</span>
-            <h3 class="step-name">Execution</h3>
-            <p class="step-desc">I do the work. Pages optimised, content written, reports delivered monthly. You focus on your business; I handle your visibility.</p>
+            <h3 class="step-name">Grow</h3>
+            <p class="step-desc">After launch, I can keep your site updated and keep improving your rankings on a monthly plan. Or you take it from there. Your call.</p>
           </li>
         </ol>
       </div>
@@ -1153,13 +1268,13 @@
         <div class="contact-grid">
           <div class="reveal">
             <span class="section-label">Get started</span>
-            <h2 class="contact-title" id="contact-h2">Get a free Ottawa SEO audit, and I will provide the answers you need.</h2>
-            <p class="contact-desc">Tell me about your business and what you want to achieve. I'll review your site and come back with a clear, honest picture of where you stand in Ottawa search results, and exactly what to do about it. No obligation, no jargon.</p>
+            <h2 class="contact-title" id="contact-h2">Get a free audit, or a quote for your new site.</h2>
+            <p class="contact-desc">Tell me about your business and what you need. I&rsquo;ll get back to you within one business day with an honest picture of where you stand and what I&rsquo;d recommend. No obligation, no jargon.</p>
             <ul class="contact-bullets" aria-label="What your free audit includes">
-              <li>Full technical SEO health check</li>
+              <li>A clear recommendation: new site, SEO, or both</li>
               <li>AI discoverability check (ChatGPT, Perplexity, Google AI Overviews)</li>
-              <li>Ottawa keyword opportunity report for your industry</li>
-              <li>Priority actions you can start on immediately</li>
+              <li>Keyword opportunities for your industry</li>
+              <li>A fixed price before any work starts</li>
             </ul>
           </div>
           <div class="reveal reveal-d1">
@@ -1169,8 +1284,8 @@
                   <path d="M4.5 11l5 5L18 6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <p class="success-title">Audit request received!</p>
-              <p class="success-text">I'll review your details and be in touch within one business day with your personalised free audit.</p>
+              <p class="success-title">Request received!</p>
+              <p class="success-text">I&rsquo;ll review your details and get back to you within one business day.</p>
             </div>
             <div data-fs-error class="form-error-banner"></div>
             <form id="contact-form" novalidate>
@@ -1185,9 +1300,22 @@
                 <span data-fs-error="email"></span>
               </div>
               <div class="form-group">
-                <label for="website">Website URL</label>
+                <label for="website">Website URL <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.5">(optional)</span></label>
                 <input type="url" id="website" name="website" placeholder="https://yoursite.com" autocomplete="url" data-fs-field>
                 <span data-fs-error="website"></span>
+              </div>
+              <div class="form-group">
+                <label for="need">What do you need?</label>
+                <div class="select-wrap">
+                  <select id="need" name="need" required data-fs-field>
+                    <option value="" disabled selected>Choose one…</option>
+                    <option value="new-website">A new website</option>
+                    <option value="seo">SEO for my current site</option>
+                    <option value="site-care">Site care</option>
+                    <option value="not-sure">Not sure yet</option>
+                  </select>
+                </div>
+                <span data-fs-error="need"></span>
               </div>
               <div class="form-group">
                 <label for="goal">What do you do?</label>
@@ -1209,7 +1337,7 @@
                 <textarea id="message" name="message" placeholder="Tell me your biggest challenge getting customers online" data-fs-field></textarea>
                 <span data-fs-error="message"></span>
               </div>
-              <button type="submit" class="btn-submit" data-fs-submit-btn>Get Your Free SEO Audit →</button>
+              <button type="submit" class="btn-submit" data-fs-submit-btn>Get My Free Audit →</button>
             </form>
           </div>
         </div>
@@ -1223,15 +1351,17 @@
       <div class="footer-top">
         <div>
           <div class="footer-logo">Pokwala</div>
-          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+          <p class="footer-tagline">Websites, SEO, and site care for small businesses. Based in Ottawa, working everywhere.</p>
         </div>
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="/services">Services</a></li>
+            <li><a href="/pricing">Pricing</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/resources">Resources</a></li>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/tools/ai-visibility-checker">AI Visibility Checker</a></li>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </nav>

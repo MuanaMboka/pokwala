@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Pokwala: Ottawa SEO &amp; GEO Agency</title>
-  <meta name="description" content="Get in touch with Pokwala for a free SEO audit. Email georgemangala@gmail.com or call +1 438 274 3768, and George will reply within one business day.">
+  <title>Contact | Pokwala: Websites, SEO &amp; Site Care</title>
+  <meta name="description" content="Get a free audit or a fixed quote for your new website. Email georgemangala@gmail.com or call +1 438 274 3768, and George will reply within one business day.">
   <link rel="canonical" href="https://pokwala.com/contact">
-  <meta property="og:title" content="Contact | Pokwala: Ottawa SEO &amp; GEO Agency">
-  <meta property="og:description" content="Get in touch with Pokwala for a free SEO audit. Email georgemangala@gmail.com or call +1 438 274 3768, and George will reply within one business day.">
+  <meta property="og:title" content="Contact | Pokwala: Websites, SEO &amp; Site Care">
+  <meta property="og:description" content="Get a free audit or a fixed quote for your new website. Email georgemangala@gmail.com or call +1 438 274 3768, and George will reply within one business day.">
   <meta property="og:url" content="https://pokwala.com/contact">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,6 +105,7 @@
     .nav-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); transition: color 0.2s; }
     .nav-logo:hover { color: var(--gold); }
     .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    @media (max-width: 1180px) { .nav-links { gap: 26px; } }
     .nav-links a { font-size: 0.875rem; font-weight: 600; color: rgba(247,245,242,0.72); transition: color 0.2s; }
     .nav-links a:hover { color: var(--cream); }
     .nav-links a[aria-current="page"] { color: var(--gold); }
@@ -321,11 +322,12 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/pricing" data-cursor="hide"><span class="nl-default">Pricing</span><span class="nl-hover">Pricing</span></a></li>
           <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
-          <li><a class="nav-link" href="/resources" data-cursor="hide"><span class="nl-default">Resources</span><span class="nl-hover">Resources</span></a></li>
+          <li><a class="nav-link" href="/blog" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
           <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
           <li><a class="nav-link" href="/contact" aria-current="page" data-cursor="hide"><span class="nl-default">Contact</span><span class="nl-hover">Contact</span></a></li>
-          <li><a class="nav-cta" href="/contact">Get Your Free SEO Audit →</a></li>
+          <li><a class="nav-cta" href="/contact">Get a Free Audit →</a></li>
         </ul>
       </nav>
       <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
@@ -336,11 +338,12 @@
 
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/services" onclick="closeMobileNav()">Services</a>
+    <a href="/pricing" onclick="closeMobileNav()">Pricing</a>
     <a href="/about" onclick="closeMobileNav()">About</a>
-    <a href="/resources" onclick="closeMobileNav()">Resources</a>
+    <a href="/blog" onclick="closeMobileNav()">Blog</a>
     <a href="/faq" onclick="closeMobileNav()">FAQ</a>
     <a href="/contact" aria-current="page" onclick="closeMobileNav()">Contact</a>
-    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get Your Free SEO Audit →</a>
+    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get a Free Audit →</a>
   </nav>
 
   <main>
@@ -352,7 +355,7 @@
           <div class="reveal">
             <span class="section-label">Get in touch</span>
             <h1 class="contact-title" id="contact-h1">Let's talk about your business.</h1>
-            <p class="contact-desc">Fill out the form and I will get back to you within one business day with a clear, honest picture of where your Ottawa business stands online.</p>
+            <p class="contact-desc">Need a new website, better rankings, or someone to look after your site? Fill out the form and I&rsquo;ll get back to you within one business day with an honest recommendation and a fixed price.</p>
             <ul class="contact-details" aria-label="Direct contact details">
               <li class="contact-detail">
                 <span class="contact-detail-icon" aria-hidden="true">
@@ -386,8 +389,8 @@
                   <path d="M4.5 11l5 5L18 6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <p class="success-title">Audit request received!</p>
-              <p class="success-text">I'll review your details and be in touch within one business day with your personalised free audit.</p>
+              <p class="success-title">Request received!</p>
+              <p class="success-text">I&rsquo;ll review your details and get back to you within one business day.</p>
             </div>
             <div data-fs-error class="form-error-banner"></div>
             <form id="contact-form" novalidate>
@@ -402,9 +405,22 @@
                 <span data-fs-error="email"></span>
               </div>
               <div class="form-group">
-                <label for="website">Website URL</label>
+                <label for="website">Website URL <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.5">(optional)</span></label>
                 <input type="url" id="website" name="website" placeholder="https://yoursite.com" autocomplete="url" data-fs-field>
                 <span data-fs-error="website"></span>
+              </div>
+              <div class="form-group">
+                <label for="need">What do you need?</label>
+                <div class="select-wrap">
+                  <select id="need" name="need" required data-fs-field>
+                    <option value="" disabled selected>Choose one…</option>
+                    <option value="new-website">A new website</option>
+                    <option value="seo">SEO for my current site</option>
+                    <option value="site-care">Site care</option>
+                    <option value="not-sure">Not sure yet</option>
+                  </select>
+                </div>
+                <span data-fs-error="need"></span>
               </div>
               <div class="form-group">
                 <label for="goal">What do you do?</label>
@@ -426,7 +442,7 @@
                 <textarea id="message" name="message" placeholder="Tell me your biggest challenge getting customers online" data-fs-field></textarea>
                 <span data-fs-error="message"></span>
               </div>
-              <button type="submit" class="btn-submit" data-fs-submit-btn>Get Your Free SEO Audit →</button>
+              <button type="submit" class="btn-submit" data-fs-submit-btn>Get My Free Audit →</button>
             </form>
           </div>
         </div>
@@ -440,15 +456,17 @@
       <div class="footer-top">
         <div>
           <div class="footer-logo">Pokwala</div>
-          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+          <p class="footer-tagline">Websites, SEO, and site care for small businesses. Based in Ottawa, working everywhere.</p>
         </div>
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="/services">Services</a></li>
+            <li><a href="/pricing">Pricing</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/resources">Resources</a></li>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact" aria-current="page">Contact</a></li>
+            <li><a href="/tools/ai-visibility-checker">AI Visibility Checker</a></li>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </nav>

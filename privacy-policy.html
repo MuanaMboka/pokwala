@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | Pokwala: Ottawa SEO & GEO Agency</title>
+  <title>Privacy Policy | Pokwala: Websites, SEO &amp; Site Care</title>
   <meta name="description" content="Pokwala's privacy policy. Learn how I collect, use, and protect your personal information in accordance with PIPEDA and Quebec Law 25.">
   <link rel="canonical" href="https://pokwala.com/privacy-policy">
   <meta name="robots" content="noindex">
@@ -55,6 +55,7 @@
     .nav-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); transition: color 0.2s; }
     .nav-logo:hover { color: var(--gold); }
     .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    @media (max-width: 1180px) { .nav-links { gap: 26px; } }
     .nav-links a { font-size: 0.875rem; font-weight: 600; color: rgba(247,245,242,0.72); transition: color 0.2s; }
     .nav-links a:hover { color: var(--cream); }
     .nav-link { position: relative; display: inline-block; overflow: hidden; line-height: 1.1; vertical-align: middle; }
@@ -143,11 +144,12 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/pricing" data-cursor="hide"><span class="nl-default">Pricing</span><span class="nl-hover">Pricing</span></a></li>
           <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
-          <li><a class="nav-link" href="/resources" data-cursor="hide"><span class="nl-default">Resources</span><span class="nl-hover">Resources</span></a></li>
+          <li><a class="nav-link" href="/blog" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
           <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
           <li><a class="nav-link" href="/contact" data-cursor="hide"><span class="nl-default">Contact</span><span class="nl-hover">Contact</span></a></li>
-          <li><a class="nav-cta" href="/contact">Get Your Free SEO Audit</a></li>
+          <li><a class="nav-cta" href="/contact">Get a Free Audit →</a></li>
         </ul>
       </nav>
       <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
@@ -157,11 +159,12 @@
   </header>
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/services" onclick="closeMobileNav()">Services</a>
+    <a href="/pricing" onclick="closeMobileNav()">Pricing</a>
     <a href="/about" onclick="closeMobileNav()">About</a>
-    <a href="/resources" onclick="closeMobileNav()">Resources</a>
+    <a href="/blog" onclick="closeMobileNav()">Blog</a>
     <a href="/faq" onclick="closeMobileNav()">FAQ</a>
     <a href="/contact" onclick="closeMobileNav()">Contact</a>
-    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get Your Free SEO Audit</a>
+    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get a Free Audit →</a>
   </nav>
   <main>
     <section class="privacy-hero" aria-labelledby="privacy-h1">
@@ -171,7 +174,7 @@
         <div class="privacy-hero-inner">
           <span class="section-label reveal">Legal</span>
           <h1 class="privacy-h1 reveal reveal-d1" id="privacy-h1">Privacy Policy</h1>
-          <p class="privacy-meta reveal reveal-d2">Pokwala. Ottawa, Ontario, Canada. Last updated: June 2026</p>
+          <p class="privacy-meta reveal reveal-d2">Pokwala. Ottawa, Ontario, Canada. Last updated: September 2026</p>
         </div>
       </div>
     </section>
@@ -180,7 +183,7 @@
         <section class="policy-section scroll-reveal" aria-labelledby="s1">
           <span class="section-label">Overview</span>
           <h2 class="policy-h2" id="s1">Who I am and what this policy covers</h2>
-          <p class="policy-p">Pokwala is a one-person SEO and GEO consultancy based in Ottawa, Ontario, Canada. George Mangala is the sole owner and operator. The business provides SEO optimization, website design, analytics reporting, and content management services to local businesses, primarily in the Ottawa area.</p>
+          <p class="policy-p">Pokwala is a one-person web design and SEO business based in Ottawa, Ontario, Canada. George Mangala is the sole owner and operator. The business provides website design, SEO, and website care services to small businesses in Canada and elsewhere.</p>
           <p class="policy-p">This Privacy Policy describes what personal information I collect through this website (pokwala.com), how I use it, how long I keep it, and what rights you have in relation to it. It applies to visitors and prospective clients who interact with this website.</p>
           <p class="policy-p">I comply with the <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA), Canada's federal private-sector privacy law, and with <em>Quebec's Act respecting the protection of personal information in the private sector</em> (Law 25), which imposes additional obligations for anyone handling the personal information of Quebec residents.</p>
           <p class="policy-p">Pokwala is responsible for personal information under its control and has implemented policies and practices to ensure compliance with applicable privacy laws.</p>
@@ -194,6 +197,7 @@
             <li>Your name</li>
             <li>Your email address</li>
             <li>Your website URL</li>
+            <li>What you need (a new website, SEO, or site care), selected from a dropdown</li>
             <li>Your business or trade type (selected from a dropdown)</li>
             <li>Any additional information you choose to share in the free-text field</li>
           </ul>
@@ -299,15 +303,17 @@
       <div class="footer-top">
         <div>
           <div class="footer-logo">Pokwala</div>
-          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+          <p class="footer-tagline">Websites, SEO, and site care for small businesses. Based in Ottawa, working everywhere.</p>
         </div>
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="/services">Services</a></li>
+            <li><a href="/pricing">Pricing</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/resources">Resources</a></li>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/tools/ai-visibility-checker">AI Visibility Checker</a></li>
             <li><a href="/privacy-policy" aria-current="page">Privacy Policy</a></li>
           </ul>
         </nav>
