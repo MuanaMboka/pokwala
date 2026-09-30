@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ottawa SEO FAQ | Pokwala: Questions Answered</title>
-  <meta name="description" content="Answers to the most common SEO and GEO questions from Ottawa small business owners and tradespeople.">
+  <title>Website &amp; SEO FAQ for Small Business | Pokwala</title>
+  <meta name="description" content="Answers to common questions about website costs, Wix vs custom sites, ownership, timelines, SEO, and monthly site care.">
   <link rel="canonical" href="https://pokwala.com/faq">
-  <meta property="og:title" content="Ottawa SEO FAQ | Pokwala: Questions Answered">
-  <meta property="og:description" content="Answers to the most common SEO and GEO questions from Ottawa small business owners and tradespeople.">
+  <meta property="og:title" content="Website &amp; SEO FAQ for Small Business | Pokwala">
+  <meta property="og:description" content="Answers to common questions about website costs, Wix vs custom sites, ownership, timelines, SEO, and monthly site care.">
   <meta property="og:url" content="https://pokwala.com/faq">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,6 +143,7 @@
     }
     .nav-logo:hover { color: var(--gold); }
     .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    @media (max-width: 1180px) { .nav-links { gap: 26px; } }
     .nav-links a {
       font-size: 0.875rem;
       font-weight: 600;
@@ -541,6 +542,9 @@
       .footer-nav { gap: 18px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
+    .faq-group-title { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 56px 0 18px; }
+    .faq-group-title:first-child { margin-top: 24px; }
+    .faq-answer a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
   </style>
 </head>
 <body>
@@ -555,11 +559,12 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/pricing" data-cursor="hide"><span class="nl-default">Pricing</span><span class="nl-hover">Pricing</span></a></li>
           <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
-          <li><a class="nav-link" href="/resources" data-cursor="hide"><span class="nl-default">Resources</span><span class="nl-hover">Resources</span></a></li>
+          <li><a class="nav-link" href="/blog" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
           <li><a class="nav-link" href="/faq" aria-current="page" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
           <li><a class="nav-link" href="/contact" data-cursor="hide"><span class="nl-default">Contact</span><span class="nl-hover">Contact</span></a></li>
-          <li><a class="nav-cta" href="/contact">Get Your Free SEO Audit →</a></li>
+          <li><a class="nav-cta" href="/contact">Get a Free Audit →</a></li>
         </ul>
       </nav>
       <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
@@ -569,12 +574,13 @@
   </header>
 
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
-    <a href="/services"  onclick="closeMobileNav()">Services</a>
-    <a href="/about"      onclick="closeMobileNav()">About</a>
-    <a href="/resources" onclick="closeMobileNav()">Resources</a>
+    <a href="/services" onclick="closeMobileNav()">Services</a>
+    <a href="/pricing" onclick="closeMobileNav()">Pricing</a>
+    <a href="/about" onclick="closeMobileNav()">About</a>
+    <a href="/blog" onclick="closeMobileNav()">Blog</a>
     <a href="/faq" aria-current="page" onclick="closeMobileNav()">FAQ</a>
     <a href="/contact" onclick="closeMobileNav()">Contact</a>
-    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get Your Free SEO Audit →</a>
+    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get a Free Audit →</a>
   </nav>
 
   <main>
@@ -586,10 +592,10 @@
       <div class="page-hero-inner">
         <span class="page-hero-overline reveal">Common Questions</span>
         <h1 class="page-hero-h1 reveal reveal-d1" id="faq-h1">
-          Everything Ottawa business owners ask me about SEO.
+          Everything business owners ask me about websites and SEO.
         </h1>
         <p class="page-hero-sub reveal reveal-d2">
-          Answers to the questions I hear most from Ottawa tradespeople, contractors, and small business owners thinking about SEO for the first time.
+          Straight answers to the questions I hear most from tradespeople and small business owners.
         </p>
       </div>
     </section>
@@ -597,13 +603,12 @@
     <!-- FAQ LIST -->
     <section class="faq-page" aria-label="Frequently asked questions">
       <div class="section-inner">
+        <h2 class="faq-group-title">Websites</h2>
         <div class="faq-list">
-
-          <!-- FAQ 1 -->
           <div class="faq-item" id="faq-item-1">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-1">
-                <span class="faq-question-text">How much does SEO cost in Ottawa?</span>
+                <span class="faq-question-text">How much does a website cost?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -611,16 +616,15 @@
             </h3>
             <div class="faq-body" id="faq-body-1" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">It depends on what you need. A one-time audit for a small business website is a much smaller piece of work than ongoing monthly management, where someone actively works on your rankings every month. What makes sense for you comes down to your goals and how competitive your industry is here in Ottawa. At Pokwala, I offer a free audit first so you know exactly what needs to be done before spending anything.</p>
+                <p class="faq-answer">My packages start at $499 for a site of up to 5 pages, $999 for up to 10 pages, and from $1,799 for larger sites. A bilingual site adds 40%. Every price is on my <a href="/pricing">Pricing page</a>, and you get a fixed quote before I start.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 2 -->
           <div class="faq-item" id="faq-item-2">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-2">
-                <span class="faq-question-text">Is SEO still relevant in 2026?</span>
+                <span class="faq-question-text">Should I choose Wix or a custom site?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -628,16 +632,15 @@
             </h3>
             <div class="faq-body" id="faq-body-2" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Yes, more than ever. Every day, millions of people search Google to find a plumber, a roofer, a web designer, a dentist near them. SEO is how you show up when they search. What has changed is that AI tools like ChatGPT and Google AI Overviews now also recommend businesses, and the businesses they recommend are the ones with strong SEO. If you rank well on Google, you tend to show up in AI answers too.</p>
+                <p class="faq-answer">It comes down to who will make changes. Choose Wix if you want to edit the site yourself. Choose a custom-coded site on Vercel if you want the fastest possible site and would rather I handle updates. Both cost the same to build and both come with SEO built in.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 3 -->
           <div class="faq-item" id="faq-item-3">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-3">
-                <span class="faq-question-text">What is GEO and how is it different from SEO?</span>
+                <span class="faq-question-text">Do I own my website?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -645,16 +648,15 @@
             </h3>
             <div class="faq-body" id="faq-body-3" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">SEO (Search Engine Optimization) is the practice of getting your website to rank on Google. GEO (Generative Engine Optimization) is the newer practice of getting your business mentioned and recommended by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. When someone asks ChatGPT "who is the best contractor in Ottawa?", GEO is what determines whether your business gets named. The good news: strong SEO and strong GEO are built on the same foundations: good content, clear information, and a trustworthy website.</p>
+                <p class="faq-answer">Yes, always. Your domain, your site, and your accounts are in your name from day one. If we stop working together, you keep everything, with no transfer fees.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 4 -->
           <div class="faq-item" id="faq-item-4">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-4">
-                <span class="faq-question-text">What does local SEO actually include?</span>
+                <span class="faq-question-text">How long does it take to build a website?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -662,16 +664,15 @@
             </h3>
             <div class="faq-body" id="faq-body-4" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Local SEO is a set of practices that help your business show up when people nearby search for what you offer. It includes: optimising your Google Business Profile so you appear on the map, making sure your website mentions the right locations and services, building citations (listings on directories like Yelp, Yellow Pages, and industry sites), and earning reviews that signal trust to Google. For an Ottawa tradesperson, local SEO is often more valuable than broad SEO because your customers are always nearby; they are not searching from Tokyo.</p>
+                <p class="faq-answer">Most Starter sites launch in 1 to 2 weeks, Business sites in 2 to 3 weeks, and larger sites in 3 to 5 weeks. The clock starts once I have your logo, photos, and business details.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 5 -->
           <div class="faq-item" id="faq-item-5">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-5">
-                <span class="faq-question-text">Do I need an SEO consultant or an SEO agency?</span>
+                <span class="faq-question-text">What do I need to give you?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -679,16 +680,15 @@
             </h3>
             <div class="faq-body" id="faq-body-5" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">It depends on your situation. A consultant typically works independently and gives you a strategy and recommendations; you or your team execute the work. An agency handles execution for you. For most Ottawa small businesses and tradespeople, an agency model makes more sense because you are already running a business; you do not have time to implement SEO yourself. At Pokwala, I handle both: the strategy and the doing.</p>
+                <p class="faq-answer">Your logo, a few photos of your work or team, the services you offer, and the areas you serve. If you don&rsquo;t have written content, I can write it for you as an add-on.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 6 -->
           <div class="faq-item" id="faq-item-6">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-6">
-                <span class="faq-question-text">How do I find a reliable SEO agency near me?</span>
+                <span class="faq-question-text">Can you redesign my current website?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -696,16 +696,15 @@
             </h3>
             <div class="faq-body" id="faq-body-6" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Start by looking for agencies that are transparent about their process and honest about timelines. Good SEO takes time; anyone promising page one rankings in two weeks is not being straight with you. Look for an agency that shows you exactly what they will do, reports on real metrics (rankings, traffic, and leads, not vanity numbers), and can explain their work in plain language without hiding behind jargon. Locally in Ottawa, you want someone who understands the Ottawa market: the neighbourhoods, the industries, the search behaviour of local customers.</p>
+                <p class="faq-answer">Yes. A redesign is priced like a new build, based on the number of pages. I&rsquo;ll carry over what works and fix what&rsquo;s holding your site back in search.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 7 -->
           <div class="faq-item" id="faq-item-7">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-7">
-                <span class="faq-question-text">Does local SEO work differently in Ontario compared to other provinces?</span>
+                <span class="faq-question-text">Do you build online stores?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -713,16 +712,15 @@
             </h3>
             <div class="faq-body" id="faq-body-7" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">The fundamentals are the same everywhere, but Ontario markets tend to be more competitive than smaller provinces, especially in cities like Toronto, Ottawa, and Hamilton. That means the bar for ranking is higher and the importance of doing SEO properly is greater. For Ottawa specifically, the market is competitive but not Toronto-level; there is real opportunity for a well-optimised local business to rank on page one without a massive budget.</p>
+                <p class="faq-answer">No. I don&rsquo;t build e-commerce sites. If you already have a store on Shopify, Wix, or WordPress, I can do the SEO for it, including product and category pages.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 8 -->
           <div class="faq-item" id="faq-item-8">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-8">
-                <span class="faq-question-text">What makes an SEO service professional and trustworthy?</span>
+                <span class="faq-question-text">Can you build my site in English and French?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -730,16 +728,18 @@
             </h3>
             <div class="faq-body" id="faq-body-8" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">A professional SEO service does not make guarantees it cannot keep. Google's algorithm is not something any agency controls; no one can guarantee a specific ranking. What a trustworthy agency can guarantee is the quality of the work: proper technical setup, well-researched content, clean backlink practices, and honest monthly reporting. Red flags to watch for: agencies that will not explain what they do, lock you into long contracts without results, or focus on metrics that do not translate to actual business (like raw traffic numbers with no leads).</p>
+                <p class="faq-answer">Yes. I&rsquo;m bilingual, so translation is included in the bilingual add-on, which adds 40% to the package price.</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- FAQ 9 -->
+        <h2 class="faq-group-title">After launch</h2>
+        <div class="faq-list">
           <div class="faq-item" id="faq-item-9">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-9">
-                <span class="faq-question-text">How long does SEO take to show results?</span>
+                <span class="faq-question-text">Do I need a monthly plan?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -747,16 +747,15 @@
             </h3>
             <div class="faq-body" id="faq-body-9" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Honest answer: most businesses start seeing meaningful movement in 3 to 6 months. In a mid-size market like Ottawa, you can sometimes see early wins, including small ranking improvements and more traffic from long-tail searches, within 4 to 8 weeks. Full competitive rankings for high-volume keywords take longer, sometimes 6 to 12 months of consistent work. SEO is not a switch you flip; it is a foundation you build. The businesses that win long-term are the ones that start early and stay consistent.</p>
+                <p class="faq-answer">No. Every build comes with one free month of site care, then it&rsquo;s your choice. Plans start at $29 a month on Wix and $49 on Vercel (hosting included), and you can cancel anytime.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 10 -->
           <div class="faq-item" id="faq-item-10">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-10">
-                <span class="faq-question-text">What is the difference between SEO and digital marketing?</span>
+                <span class="faq-question-text">What happens if something breaks?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -764,16 +763,15 @@
             </h3>
             <div class="faq-body" id="faq-body-10" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Digital marketing is the umbrella term for all online marketing activities: paid ads, social media, email campaigns, content marketing, and SEO. SEO is one channel within digital marketing, but it is unique because it generates organic (unpaid) traffic. You do not pay per click. For most Ottawa small businesses and tradespeople, SEO is the highest-ROI digital marketing channel because it builds lasting visibility rather than renting attention. Pokwala specialises in SEO and GEO; I do not run ads or manage social media, so you get focused expertise rather than a generalist doing everything average.</p>
+                <p class="faq-answer">On a monthly plan, you tell me and I fix it. Without a plan, I can fix it at an hourly rate, or you can make changes yourself if your site is on Wix.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 11 -->
           <div class="faq-item" id="faq-item-11">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-11">
-                <span class="faq-question-text">Does SEO work for e-commerce businesses in Ottawa?</span>
+                <span class="faq-question-text">Do you only work with Ottawa businesses?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -781,16 +779,18 @@
             </h3>
             <div class="faq-body" id="faq-body-11" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Yes, but e-commerce SEO is a different challenge from local SEO. Local SEO targets people searching nearby: "plumber Ottawa", "contractor near me". E-commerce SEO targets people searching for products regardless of location: "buy X online", "best X Canada". Both are valid but require different strategies. If you have a physical location in Ottawa and also sell online, you need both: local SEO for foot traffic and regional customers, and e-commerce SEO for national reach. Pokwala currently focuses on local SEO for Ottawa service businesses, but I can advise on e-commerce strategy as part of a broader audit.</p>
+                <p class="faq-answer">No. I&rsquo;m based in Ottawa, but I work with businesses anywhere. Everything can be done by phone, video, and email.</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- FAQ 12 -->
+        <h2 class="faq-group-title">SEO</h2>
+        <div class="faq-list">
           <div class="faq-item" id="faq-item-12">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-12">
-                <span class="faq-question-text">What should I ask an SEO consultant before hiring them?</span>
+                <span class="faq-question-text">Is SEO still relevant in 2026?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -798,16 +798,15 @@
             </h3>
             <div class="faq-body" id="faq-body-12" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Five questions worth asking: (1) Can you show me examples of local businesses you have ranked in Ottawa or similar markets? (2) How do you measure success, and what metrics will you report on? (3) What does your process look like in the first 90 days? (4) Do you do the work yourself or outsource it? (5) What happens to my rankings if I stop working with you? A good consultant answers all five without hesitation. At Pokwala, I answer these on our first call, and I offer a free audit before you spend anything.</p>
+                <p class="faq-answer">Yes, more than ever. Every day, people search Google for a plumber, a roofer, or a dentist near them. What has changed is that AI tools like ChatGPT and Google AI Overviews now also recommend businesses, and they tend to recommend the ones with strong SEO.</p>
               </div>
             </div>
           </div>
 
-          <!-- FAQ 13 -->
           <div class="faq-item" id="faq-item-13">
             <h3>
               <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-13">
-                <span class="faq-question-text">Why does the content on my website affect my Google ranking?</span>
+                <span class="faq-question-text">What is GEO and how is it different from SEO?</span>
                 <span class="faq-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
                 </span>
@@ -815,11 +814,42 @@
             </h3>
             <div class="faq-body" id="faq-body-13" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Google reads your website the same way a person would, looking for clear, useful information. If your site says "We do plumbing" and nothing else, Google has no idea what kind of plumbing, where, or for whom. But if your site explains your services in detail, mentions the Ottawa neighbourhoods you serve, and answers common questions your customers have, Google understands it and ranks it higher. Content is how you tell Google (and your customers) exactly what you do. A site with no content is invisible, no matter how good the underlying code is.</p>
+                <p class="faq-answer">SEO (Search Engine Optimization) gets your website ranking on Google. GEO (Generative Engine Optimization) gets your business mentioned and recommended by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. Both are built on the same foundations: good content, clear information, and a trustworthy website.</p>
               </div>
             </div>
           </div>
 
+          <div class="faq-item" id="faq-item-14">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-14">
+                <span class="faq-question-text">How long does SEO take to show results?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-14" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">Most businesses see meaningful movement in 3 to 6 months, with early wins sometimes in 4 to 8 weeks. Competitive keywords can take 6 to 12 months of consistent work. SEO is a foundation you build, not a switch you flip.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-item-15">
+            <h3>
+              <button class="faq-toggle" aria-expanded="false" aria-controls="faq-body-15">
+                <span class="faq-question-text">How much does SEO cost?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#C9A84C" stroke-width="1.75" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="faq-body" id="faq-body-15" role="region">
+              <div class="faq-body-inner">
+                <p class="faq-answer">A one-time SEO audit with fixes is $299. Ongoing monthly SEO starts at $249 for an existing site, or $299 as part of a site care plan for a site I built.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -831,13 +861,13 @@
         <div class="faq-cta-grid">
           <div class="reveal">
             <span class="section-label">Still have questions?</span>
-            <h2 class="faq-cta-title" id="faq-cta-h2">Get a free Ottawa SEO audit, and I will provide the answers you need.</h2>
-            <p class="faq-cta-desc">I review your current site, your rankings, and your market, then walk you through exactly what I would do and why. No obligation, no jargon, no hard sell.</p>
+            <h2 class="faq-cta-title" id="faq-cta-h2">Get a free audit, or a quote for your new site.</h2>
+            <p class="faq-cta-desc">I&rsquo;ll look at your current site (if you have one) and your market, then walk you through what I&rsquo;d do and what it costs. No obligation, no jargon, no hard sell.</p>
             <ul class="contact-bullets" aria-label="What your free audit includes">
-              <li>Full technical SEO health check</li>
+              <li>A clear recommendation: new site, SEO, or both</li>
               <li>AI discoverability check (ChatGPT, Perplexity, Google AI Overviews)</li>
-              <li>Ottawa keyword opportunity report for your industry</li>
-              <li>Priority actions you can start on immediately</li>
+              <li>Keyword opportunities for your industry</li>
+              <li>A fixed price before any work starts</li>
             </ul>
           </div>
           <div class="reveal reveal-d1">
@@ -847,8 +877,8 @@
                   <path d="M4.5 11l5 5L18 6" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <p class="success-title">Audit request received!</p>
-              <p class="success-text">I'll review your details and be in touch within one business day with your personalised free audit.</p>
+              <p class="success-title">Request received!</p>
+              <p class="success-text">I&rsquo;ll review your details and get back to you within one business day.</p>
             </div>
             <div data-fs-error class="form-error-banner"></div>
             <form id="contact-form" novalidate>
@@ -863,9 +893,22 @@
                 <span data-fs-error="email"></span>
               </div>
               <div class="form-group">
-                <label for="website">Website URL</label>
+                <label for="website">Website URL <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.5">(optional)</span></label>
                 <input type="url" id="website" name="website" placeholder="https://yoursite.com" autocomplete="url" data-fs-field>
                 <span data-fs-error="website"></span>
+              </div>
+              <div class="form-group">
+                <label for="need">What do you need?</label>
+                <div class="select-wrap">
+                  <select id="need" name="need" required data-fs-field>
+                    <option value="" disabled selected>Choose one…</option>
+                    <option value="new-website">A new website</option>
+                    <option value="seo">SEO for my current site</option>
+                    <option value="site-care">Site care</option>
+                    <option value="not-sure">Not sure yet</option>
+                  </select>
+                </div>
+                <span data-fs-error="need"></span>
               </div>
               <div class="form-group">
                 <label for="goal">What do you do?</label>
@@ -887,7 +930,7 @@
                 <textarea id="message" name="message" placeholder="Tell me your biggest challenge getting customers online" data-fs-field></textarea>
                 <span data-fs-error="message"></span>
               </div>
-              <button type="submit" class="btn-submit" data-fs-submit-btn>Get Your Free SEO Audit →</button>
+              <button type="submit" class="btn-submit" data-fs-submit-btn>Get My Free Audit →</button>
             </form>
           </div>
         </div>
@@ -901,15 +944,17 @@
       <div class="footer-top">
         <div>
           <div class="footer-logo">Pokwala</div>
-          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+          <p class="footer-tagline">Websites, SEO, and site care for small businesses. Based in Ottawa, working everywhere.</p>
         </div>
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="/services">Services</a></li>
+            <li><a href="/pricing">Pricing</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/resources">Resources</a></li>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="/faq" aria-current="page">FAQ</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/tools/ai-visibility-checker">AI Visibility Checker</a></li>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </nav>
@@ -929,10 +974,90 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How much does SEO cost in Ottawa?",
+        "name": "How much does a website cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It depends on what you need. A one-time audit for a small business website is a much smaller piece of work than ongoing monthly management, where someone actively works on your rankings every month. What makes sense for you comes down to your goals and how competitive your industry is here in Ottawa. At Pokwala, I offer a free audit first so you know exactly what needs to be done before spending anything."
+          "text": "My packages start at $499 for a site of up to 5 pages, $999 for up to 10 pages, and from $1,799 for larger sites. A bilingual site adds 40%. Every price is on my Pricing page, and you get a fixed quote before I start."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I choose Wix or a custom site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It comes down to who will make changes. Choose Wix if you want to edit the site yourself. Choose a custom-coded site on Vercel if you want the fastest possible site and would rather I handle updates. Both cost the same to build and both come with SEO built in."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I own my website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, always. Your domain, your site, and your accounts are in your name from day one. If we stop working together, you keep everything, with no transfer fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most Starter sites launch in 1 to 2 weeks, Business sites in 2 to 3 weeks, and larger sites in 3 to 5 weeks. The clock starts once I have your logo, photos, and business details."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I need to give you?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your logo, a few photos of your work or team, the services you offer, and the areas you serve. If you don't have written content, I can write it for you as an add-on."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you redesign my current website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. A redesign is priced like a new build, based on the number of pages. I'll carry over what works and fix what's holding your site back in search."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you build online stores?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. I don't build e-commerce sites. If you already have a store on Shopify, Wix, or WordPress, I can do the SEO for it, including product and category pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you build my site in English and French?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. I'm bilingual, so translation is included in the bilingual add-on, which adds 40% to the package price."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a monthly plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every build comes with one free month of site care, then it's your choice. Plans start at $29 a month on Wix and $49 on Vercel (hosting included), and you can cancel anytime."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if something breaks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On a monthly plan, you tell me and I fix it. Without a plan, I can fix it at an hourly rate, or you can make changes yourself if your site is on Wix."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you only work with Ottawa businesses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. I'm based in Ottawa, but I work with businesses anywhere. Everything can be done by phone, video, and email."
         }
       },
       {
@@ -940,7 +1065,7 @@
         "name": "Is SEO still relevant in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, more than ever. Every day, millions of people search Google to find a plumber, a roofer, a web designer, a dentist near them. SEO is how you show up when they search. What has changed is that AI tools like ChatGPT and Google AI Overviews now also recommend businesses, and the businesses they recommend are the ones with strong SEO. If you rank well on Google, you tend to show up in AI answers too."
+          "text": "Yes, more than ever. Every day, people search Google for a plumber, a roofer, or a dentist near them. What has changed is that AI tools like ChatGPT and Google AI Overviews now also recommend businesses, and they tend to recommend the ones with strong SEO."
         }
       },
       {
@@ -948,47 +1073,7 @@
         "name": "What is GEO and how is it different from SEO?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SEO (Search Engine Optimization) is the practice of getting your website to rank on Google. GEO (Generative Engine Optimization) is the newer practice of getting your business mentioned and recommended by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. When someone asks ChatGPT who is the best contractor in Ottawa, GEO is what determines whether your business gets named. The good news: strong SEO and strong GEO are built on the same foundations: good content, clear information, and a trustworthy website."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does local SEO actually include?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Local SEO is a set of practices that help your business show up when people nearby search for what you offer. It includes: optimising your Google Business Profile so you appear on the map, making sure your website mentions the right locations and services, building citations (listings on directories like Yelp, Yellow Pages, and industry sites), and earning reviews that signal trust to Google. For an Ottawa tradesperson, local SEO is often more valuable than broad SEO because your customers are always nearby; they are not searching from Tokyo."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need an SEO consultant or an SEO agency?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It depends on your situation. A consultant typically works independently and gives you a strategy and recommendations; you or your team execute the work. An agency handles execution for you. For most Ottawa small businesses and tradespeople, an agency model makes more sense because you are already running a business; you do not have time to implement SEO yourself. At Pokwala, I handle both: the strategy and the doing."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I find a reliable SEO agency near me?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Start by looking for agencies that are transparent about their process and honest about timelines. Good SEO takes time; anyone promising page one rankings in two weeks is not being straight with you. Look for an agency that shows you exactly what they will do, reports on real metrics (rankings, traffic, and leads, not vanity numbers), and can explain their work in plain language without hiding behind jargon. Locally in Ottawa, you want someone who understands the Ottawa market: the neighbourhoods, the industries, the search behaviour of local customers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does local SEO work differently in Ontario compared to other provinces?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The fundamentals are the same everywhere, but Ontario markets tend to be more competitive than smaller provinces, especially in cities like Toronto, Ottawa, and Hamilton. That means the bar for ranking is higher and the importance of doing SEO properly is greater. For Ottawa specifically, the market is competitive but not Toronto-level; there is real opportunity for a well-optimised local business to rank on page one without a massive budget."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What makes an SEO service professional and trustworthy?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A professional SEO service does not make guarantees it cannot keep. Google's algorithm is not something any agency controls; no one can guarantee a specific ranking. What a trustworthy agency can guarantee is the quality of the work: proper technical setup, well-researched content, clean backlink practices, and honest monthly reporting. Red flags to watch for: agencies that will not explain what they do, lock you into long contracts without results, or focus on metrics that do not translate to actual business (like raw traffic numbers with no leads)."
+          "text": "SEO (Search Engine Optimization) gets your website ranking on Google. GEO (Generative Engine Optimization) gets your business mentioned and recommended by AI platforms like ChatGPT, Perplexity, and Google AI Overviews. Both are built on the same foundations: good content, clear information, and a trustworthy website."
         }
       },
       {
@@ -996,39 +1081,15 @@
         "name": "How long does SEO take to show results?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Honest answer: most businesses start seeing meaningful movement in 3 to 6 months. In a mid-size market like Ottawa, you can sometimes see early wins, including small ranking improvements and more traffic from long-tail searches, within 4 to 8 weeks. Full competitive rankings for high-volume keywords take longer, sometimes 6 to 12 months of consistent work. SEO is not a switch you flip; it is a foundation you build. The businesses that win long-term are the ones that start early and stay consistent."
+          "text": "Most businesses see meaningful movement in 3 to 6 months, with early wins sometimes in 4 to 8 weeks. Competitive keywords can take 6 to 12 months of consistent work. SEO is a foundation you build, not a switch you flip."
         }
       },
       {
         "@type": "Question",
-        "name": "What is the difference between SEO and digital marketing?",
+        "name": "How much does SEO cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Digital marketing is the umbrella term for all online marketing activities: paid ads, social media, email campaigns, content marketing, and SEO. SEO is one channel within digital marketing, but it is unique because it generates organic (unpaid) traffic. You do not pay per click. For most Ottawa small businesses and tradespeople, SEO is the highest-ROI digital marketing channel because it builds lasting visibility rather than renting attention. Pokwala specialises in SEO and GEO; I do not run ads or manage social media, so you get focused expertise rather than a generalist doing everything average."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does SEO work for e-commerce businesses in Ottawa?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, but e-commerce SEO is a different challenge from local SEO. Local SEO targets people searching nearby: 'plumber Ottawa', 'contractor near me'. E-commerce SEO targets people searching for products regardless of location: 'buy X online', 'best X Canada'. Both are valid but require different strategies. If you have a physical location in Ottawa and also sell online, you need both: local SEO for foot traffic and regional customers, and e-commerce SEO for national reach. Pokwala currently focuses on local SEO for Ottawa service businesses, but I can advise on e-commerce strategy as part of a broader audit."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What should I ask an SEO consultant before hiring them?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Five questions worth asking: (1) Can you show me examples of local businesses you have ranked in Ottawa or similar markets? (2) How do you measure success, and what metrics will you report on? (3) What does your process look like in the first 90 days? (4) Do you do the work yourself or outsource it? (5) What happens to my rankings if I stop working with you? A good consultant answers all five without hesitation. At Pokwala, I answer these on our first call, and I offer a free audit before you spend anything."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why does the content on my website affect my Google ranking?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Google reads your website the same way a person would, looking for clear, useful information. If your site says 'We do plumbing' and nothing else, Google has no idea what kind of plumbing, where, or for whom. But if your site explains your services in detail, mentions the Ottawa neighbourhoods you serve, and answers common questions your customers have, Google understands it and ranks it higher. Content is how you tell Google (and your customers) exactly what you do. A site with no content is invisible, no matter how good the underlying code is."
+          "text": "A one-time SEO audit with fixes is $299. Ongoing monthly SEO starts at $249 for an existing site, or $299 as part of a site care plan for a site I built."
         }
       }
     ]
@@ -1166,11 +1227,13 @@
         ST.refresh();
       }
 
-      gsap.from('.faq-item', {
-        y: 28, opacity: 0,
-        duration: 0.75, ease: 'power2.out',
-        stagger: 0.07,
-        scrollTrigger: { trigger: '.faq-list', start: 'top 85%' }
+      document.querySelectorAll('.faq-list').forEach(function (list) {
+        gsap.from(list.querySelectorAll('.faq-item'), {
+          y: 28, opacity: 0,
+          duration: 0.75, ease: 'power2.out',
+          stagger: 0.07,
+          scrollTrigger: { trigger: list, start: 'top 85%' }
+        });
       });
     })();
 

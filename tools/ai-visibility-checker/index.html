@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Visibility Checker | Pokwala</title>
-  <meta name="description" content="Free tool for Ottawa businesses. Find out if Google and AI search like ChatGPT and Google AI Overviews can actually find your website, with a plain-English fix list.">
-  <link rel="canonical" href="https://pokwala.com/resources/tools/ai-visibility-checker">
+  <meta name="description" content="Free tool for small businesses. Find out if Google and AI search like ChatGPT and Google AI Overviews can find your website, with a plain-English fix list.">
+  <link rel="canonical" href="https://pokwala.com/tools/ai-visibility-checker">
   <meta property="og:title" content="AI Visibility Checker | Pokwala">
   <meta property="og:description" content="Find out if Google and AI search can actually find your business online.">
-  <meta property="og:url" content="https://pokwala.com/resources/tools/ai-visibility-checker">
+  <meta property="og:url" content="https://pokwala.com/tools/ai-visibility-checker">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,6 +107,7 @@
     .nav-logo { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.04em; color: var(--cream); transition: color 0.2s; }
     .nav-logo:hover { color: var(--gold); }
     .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    @media (max-width: 1180px) { .nav-links { gap: 26px; } }
     .nav-links a { font-size: 0.875rem; font-weight: 600; color: rgba(247,245,242,0.72); transition: color 0.2s; }
     .nav-links a:hover { color: var(--cream); }
     .nav-links a[aria-current="page"] { color: var(--gold); }
@@ -272,6 +273,10 @@
     /* Results + Email placeholders */
     .tool-stage { padding: 56px 0 96px; background: var(--bg); }
     .tool-stage-inner { max-width: 720px; margin: 0 auto; padding: 0 48px; }
+    .fix-upsell { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 24px; padding: 32px 36px; border: 1px solid var(--border-gold, rgba(201,168,76,0.25)); border-radius: 8px; background: rgba(201,168,76,0.04); }
+    .fix-upsell-title { font-size: 1.125rem; font-weight: 700; color: var(--cream); margin-bottom: 6px; }
+    .fix-upsell-text { font-size: 0.9375rem; line-height: 1.7; color: var(--muted); }
+    @media (max-width: 700px) { .fix-upsell { flex-direction: column; align-items: flex-start; } }
     .stage-placeholder {
       background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
       padding: 56px 40px; text-align: center;
@@ -413,11 +418,12 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
+          <li><a class="nav-link" href="/pricing" data-cursor="hide"><span class="nl-default">Pricing</span><span class="nl-hover">Pricing</span></a></li>
           <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
-          <li><a class="nav-link" href="/resources" aria-current="page" data-cursor="hide"><span class="nl-default">Resources</span><span class="nl-hover">Resources</span></a></li>
+          <li><a class="nav-link" href="/blog" data-cursor="hide"><span class="nl-default">Blog</span><span class="nl-hover">Blog</span></a></li>
           <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
           <li><a class="nav-link" href="/contact" data-cursor="hide"><span class="nl-default">Contact</span><span class="nl-hover">Contact</span></a></li>
-          <li><a class="nav-cta" href="/contact">Get Your Free SEO Audit →</a></li>
+          <li><a class="nav-cta" href="/contact">Get a Free Audit →</a></li>
         </ul>
       </nav>
       <button class="nav-hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
@@ -428,11 +434,12 @@
 
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/services" onclick="closeMobileNav()">Services</a>
+    <a href="/pricing" onclick="closeMobileNav()">Pricing</a>
     <a href="/about" onclick="closeMobileNav()">About</a>
-    <a href="/resources" aria-current="page" onclick="closeMobileNav()">Resources</a>
+    <a href="/blog" onclick="closeMobileNav()">Blog</a>
     <a href="/faq" onclick="closeMobileNav()">FAQ</a>
     <a href="/contact" onclick="closeMobileNav()">Contact</a>
-    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get Your Free SEO Audit →</a>
+    <a class="nav-cta" href="/contact" onclick="closeMobileNav()">Get a Free Audit →</a>
   </nav>
 
   <main>
@@ -497,6 +504,13 @@
     <section class="tool-stage" aria-label="Results" style="display:none;">
       <div class="tool-stage-inner">
         <div id="results-section" class="stage-placeholder">Results will appear here</div>
+        <div class="fix-upsell">
+          <div>
+            <p class="fix-upsell-title">Want these fixed for you?</p>
+            <p class="fix-upsell-text">I can fix everything on this list with a one-time SEO audit and fixes for $299, or build you a new site from $499.</p>
+          </div>
+          <a class="btn-primary" href="/pricing">See Pricing →</a>
+        </div>
       </div>
     </section>
 
@@ -514,15 +528,17 @@
       <div class="footer-top">
         <div>
           <div class="footer-logo">Pokwala</div>
-          <p class="footer-tagline">Ottawa SEO &amp; GEO agency. Helping local businesses get found on Google and AI platforms.</p>
+          <p class="footer-tagline">Websites, SEO, and site care for small businesses. Based in Ottawa, working everywhere.</p>
         </div>
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="/services">Services</a></li>
+            <li><a href="/pricing">Pricing</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/resources" aria-current="page">Resources</a></li>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/tools/ai-visibility-checker">AI Visibility Checker</a></li>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </nav>
