@@ -948,6 +948,17 @@
       .sample, .pricing-teaser { padding: 56px 0; }
       .sample-body { padding: 32px 24px; }
     }
+    .hero-tool { margin-top: 22px; font-size: 0.875rem; color: rgba(247,245,242,0.7); }
+    .hero-tool a { color: var(--gold); font-weight: 700; }
+    .meet { padding: 88px 0; background: var(--bg); }
+    .meet-grid { display: grid; grid-template-columns: 160px 1fr; gap: 48px; align-items: center; max-width: 900px; }
+    .meet-photo { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-gold, rgba(201,168,76,0.25)); }
+    .meet .section-label { margin-bottom: 14px; }
+    .meet-title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.15; color: var(--cream); margin-bottom: 14px; }
+    .meet-text { font-size: 0.9375rem; line-height: 1.8; color: var(--muted); margin-bottom: 18px; max-width: 620px; }
+    .contact-call { margin-top: 28px; font-size: 0.9375rem; color: var(--muted); }
+    .contact-call a { color: var(--gold); font-weight: 700; }
+    @media (max-width: 600px) { .meet { padding: 56px 0; } .meet-grid { grid-template-columns: 1fr; gap: 24px; } .meet-photo { width: 112px; height: 112px; } }
   </style>
 </head>
 <body>
@@ -1005,6 +1016,7 @@
           <a class="btn-primary" href="/pricing">See Packages &amp; Prices →</a>
           <a class="btn-ghost" href="/contact">Get a Free Audit</a>
         </div>
+        <p class="hero-tool reveal reveal-d4">Or check your site free in 60 seconds with the <a href="/tools/ai-visibility-checker">AI Visibility Checker &rarr;</a></p>
       </div>
 
       <a href="#stats" class="hero-scroll-ring" aria-label="Scroll to next section">
@@ -1025,24 +1037,24 @@
       </div>
     </section>
 
-    <section class="stats" id="stats" aria-label="Industry statistics">
+    <section class="stats" id="stats" aria-label="Pokwala at a glance">
       <div class="section-inner">
         <div class="stats-grid">
           <div class="stat">
-            <span class="stat-number">53<span class="stat-unit">%</span></span>
-            <span class="stat-label">of all website traffic comes from organic search</span>
+            <span class="stat-number"><span class="stat-unit">$</span>499</span>
+            <span class="stat-label">for a 5-page website, SEO basics included</span>
           </div>
           <div class="stat">
-            <span class="stat-number">748<span class="stat-unit">%</span></span>
-            <span class="stat-label">median ROI from SEO; every $1 invested returns $7.48</span>
+            <span class="stat-number">1&ndash;3<span class="stat-unit"> wks</span></span>
+            <span class="stat-label">typical time from go-ahead to launch</span>
           </div>
           <div class="stat">
-            <span class="stat-number">78<span class="stat-unit">%</span></span>
-            <span class="stat-label">of local mobile searches lead to an in-store visit within 24 hours</span>
+            <span class="stat-number">100<span class="stat-unit">%</span></span>
+            <span class="stat-label">yours: domain, site, and accounts in your name</span>
           </div>
           <div class="stat">
-            <span class="stat-number">14.6<span class="stat-unit">%</span></span>
-            <span class="stat-label">SEO lead close rate, vs 1.7% for outbound cold outreach</span>
+            <span class="stat-number">1<span class="stat-unit"> day</span></span>
+            <span class="stat-label">to hear back from me, every time</span>
           </div>
         </div>
       </div>
@@ -1068,7 +1080,7 @@
             </svg>
             <span class="service-kicker">Build</span>
             <h3 class="service-name" id="svc-build">A website that works as hard as you do.</h3>
-            <p class="service-text">Choose Wix if you want to edit it yourself, or a custom-coded site on Vercel if you want speed and would rather I handle it. Every site launches with SEO built in.</p>
+            <p class="service-text">Wix if you want to make your own edits. A custom site if you want it faster and would rather I handle the updates. Every site launches with the SEO basics done.</p>
             <a class="service-card-link" href="/pricing#build">From $499 →</a>
           </article>
           <article class="service-card" aria-labelledby="svc-seo">
@@ -1079,7 +1091,7 @@
             </svg>
             <span class="service-kicker">SEO</span>
             <h3 class="service-name" id="svc-seo">Get found on Google and in AI answers.</h3>
-            <p class="service-text">Keyword research, Google Business Profile, and content that helps ChatGPT, Perplexity, and Google AI Overviews recommend you. For sites I build and sites you already have, online stores included.</p>
+            <p class="service-text">Ongoing work to climb higher: new content, your Google Business Profile, and making sure ChatGPT and Google AI Overviews can recommend you. Optional, for sites I build and sites you already have, online stores included.</p>
             <a class="service-card-link" href="/pricing#seo-only">From $249/month →</a>
           </article>
           <article class="service-card" aria-labelledby="svc-manage">
@@ -1089,7 +1101,7 @@
             </svg>
             <span class="service-kicker">Manage</span>
             <h3 class="service-name" id="svc-manage">Your site, looked after every month.</h3>
-            <p class="service-text">Updates, fixes, backups, new pages, and a plain-English monthly report. Month to month, cancel anytime, and the first month is free with every build.</p>
+            <p class="service-text">Updates, fixes, backups, new pages, and a plain-English monthly report. The first month is free with every build; after that, you choose whether to keep a plan.</p>
             <a class="service-card-link" href="/pricing#plans">From $29/month →</a>
           </article>
         </div>
@@ -1126,7 +1138,7 @@
             <span class="section-label">Pricing</span>
             <h2 class="services-title" id="pricing-h2">Clear prices. No surprises.</h2>
           </div>
-          <p class="services-desc reveal reveal-d1">Same price on Wix or Vercel. Bilingual sites, extra pages, and booking systems are available as add-ons. Your first month of site care is free with every build.</p>
+          <p class="services-desc reveal reveal-d1">Same price whether you choose Wix or a custom site. Want it in English and French? Add 40%, translation included. Your first month of site care is free, then you choose whether to keep a plan. You&rsquo;re never charged unless you sign up.</p>
         </div>
         <div class="price-grid">
           <div class="price-card reveal">
@@ -1153,6 +1165,20 @@
           <span class="section-label">Always yours</span>
           <p class="ownership-title">Your site, your domain, your accounts. Always.</p>
           <p class="ownership-text">Everything is set up in your name. If you ever stop working with me, you keep all of it. No locked-in websites, no transfer fees.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="meet" id="meet" aria-labelledby="meet-h2">
+      <div class="section-inner">
+        <div class="meet-grid reveal">
+          <img class="meet-photo" src="/assets/images/george-mangala.jpg" alt="George Mangala, founder of Pokwala" width="160" height="160" loading="lazy" decoding="async">
+          <div>
+            <span class="section-label">Who you&rsquo;ll work with</span>
+            <h2 class="meet-title" id="meet-h2">Hi, I&rsquo;m George. I&rsquo;ll be the one building your site.</h2>
+            <p class="meet-text">No account managers, no outsourcing. I&rsquo;ve spent 3+ years running SEO and web performance for a tech product used by thousands of people daily. Now I do the same work for small businesses, in English or French.</p>
+            <a class="service-card-link" href="/about">More about me &rarr;</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1211,7 +1237,7 @@
             </h3>
             <div class="faq-body" id="faq-body-2" role="region">
               <div class="faq-body-inner">
-                <p class="faq-answer">Choose Wix if you want to make your own changes. Choose a custom site on Vercel if you want the fastest possible site and would rather I handle updates. Both cost the same to build, and both come with SEO built in.</p>
+                <p class="faq-answer">Choose Wix if you want to make your own edits. Choose a custom site if you want it faster and would rather I handle the updates. Both cost the same to build, and both launch with the SEO basics done.</p>
               </div>
             </div>
           </div>
@@ -1276,6 +1302,7 @@
               <li>Keyword opportunities for your industry</li>
               <li>A fixed price before any work starts</li>
             </ul>
+            <p class="contact-call">Prefer to call? <a href="tel:+14382743768">+1 438 274 3768</a></p>
           </div>
           <div class="reveal reveal-d1">
             <div data-fs-success>
@@ -1298,6 +1325,11 @@
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="john@yourcompany.com" required autocomplete="email" data-fs-field>
                 <span data-fs-error="email"></span>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.5">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="613 555 0123" autocomplete="tel" data-fs-field>
+                <span data-fs-error="phone"></span>
               </div>
               <div class="form-group">
                 <label for="website">Website URL <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.5">(optional)</span></label>
