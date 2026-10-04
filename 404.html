@@ -150,6 +150,8 @@
     .nf-card-d { font-size: 0.8125rem; line-height: 1.6; color: var(--muted); }
     @media (max-width: 900px) { .nf-links-inner { padding: 56px 28px 0; } }
     @media (max-width: 600px) { .nf-links-inner { padding: 48px 20px 0; } .nf-actions .nf-btn { width: 100%; justify-content: center; } }
+      /* Content always visible for crawlers; animations move, never hide */
+    .reveal, .scroll-reveal { opacity: 1 !important; }
   </style>
 </head>
 <body>
@@ -250,10 +252,8 @@
       </div>
     </div>
   </footer>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script>
   (function () {
     var lenis = null;

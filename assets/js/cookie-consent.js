@@ -38,9 +38,10 @@
     '}',
     '.pkw-accept:hover{background:#D9BB6E;}',
     '@media(max-width:640px){',
-      '#pkw-cookie{padding:16px 20px;}',
-      '#pkw-cookie p{font-size:0.8125rem;}',
-      '.pkw-btns{width:100%;justify-content:flex-end;}',
+      '#pkw-cookie{padding:8px 12px;gap:10px;flex-wrap:nowrap;}',
+      '#pkw-cookie p{font-size:0.75rem;line-height:1.4;min-width:0;}',
+      '.pkw-btns{gap:6px;}',
+      '.pkw-decline,.pkw-accept{padding:6px 12px;font-size:0.75rem;}',
     '}'
   ].join('');
 
@@ -53,8 +54,7 @@
   banner.setAttribute('role', 'region');
   banner.setAttribute('aria-label', 'Cookie consent');
   banner.innerHTML = [
-    '<p>We use cookies to analyze site traffic and improve your experience.',
-    ' <a href="/privacy-policy">Privacy Policy</a>.</p>',
+    '<p>We use analytics cookies. <a href="/privacy-policy">Privacy</a></p>',
     '<div class="pkw-btns">',
       '<button class="pkw-decline" aria-label="Decline cookies">Decline</button>',
       '<button class="pkw-accept" aria-label="Accept cookies">Accept</button>',

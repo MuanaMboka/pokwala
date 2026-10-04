@@ -946,6 +946,8 @@
       .author-grid { grid-template-columns: 1fr; gap: 32px; }
       .price-section, .author-section, .page-section { padding: 80px 0; }
     }
+      /* Content always visible for crawlers; animations move, never hide */
+    .reveal, .scroll-reveal { opacity: 1 !important; }
   </style>
   <script type="application/ld+json">
 {
@@ -1165,7 +1167,7 @@
       <div class="hero-main">
         <p class="hero-overline reveal">Web design · SEO · Website management</p>
         <h1 class="hero-headline reveal reveal-d1" id="hero-h1">
-          SEO web design<br>for small businesses.
+          SEO web design <br>for small businesses.
         </h1>
         <p class="hero-sub reveal reveal-d2">Built to rank on Google from day one.</p>
         <div class="hero-ctas reveal reveal-d3">
@@ -1250,6 +1252,7 @@
             Websites for trades<br>and <em>home services.</em>
           </h2>
         <p class="philosophy-sub reveal reveal-d2" style="max-width:620px">When a pipe bursts or the furnace dies, your customers grab their phone and search. Plumbers, electricians, HVAC techs and contractors win those jobs by showing up first and making it easy to call. I build a page for each main service and area you cover, add click-to-call and a quote form, and put your reviews where customers see them.</p>
+        <p class="philosophy-sub reveal reveal-d3" style="max-width:620px;margin-top:20px;color:var(--cream)">Trades Pro websites are $4,495, or $2,995 for the first 5 founding clients.</p>
         <p class="reveal reveal-d3" style="margin-top:32px"><a class="btn-primary" href="/trades">Websites for contractors and trades →</a></p>
       </div>
     </section>
@@ -1526,10 +1529,8 @@
     formspree('initForm', { formElement: '#contact-form', formId: 'mgoqqrak' });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 
   <script>
   (function () {
