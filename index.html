@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-CA">
 <head>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal,.scroll-reveal').forEach(function(e){e.classList.add('is-visible','is-revealed')})},3000)</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SEO Web Design for Small Businesses | Pokwala</title>
@@ -58,7 +59,6 @@
 
     /* Reveal animations */
     .reveal {
-      opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
     }
@@ -71,7 +71,6 @@
 
     /* scroll-reveal system */
     .scroll-reveal {
-      opacity: 0;
       transform: translateY(2rem);
       transition: none;
     }
@@ -946,8 +945,9 @@
       .author-grid { grid-template-columns: 1fr; gap: 32px; }
       .price-section, .author-section, .page-section { padding: 80px 0; }
     }
-      /* Content always visible for crawlers; animations move, never hide */
-    .reveal, .scroll-reveal { opacity: 1 !important; }
+        /* Hide-then-reveal only when JS runs; content is visible without it */
+    .js .reveal:not(.is-visible), .js .scroll-reveal:not(.is-revealed) { opacity: 0; }
+    @media (prefers-reduced-motion: reduce) { .js .reveal, .js .scroll-reveal { opacity: 1 !important; transform: none !important; } }
   </style>
   <script type="application/ld+json">
 {
@@ -1249,7 +1249,7 @@
       <div class="philosophy-content section-inner">
         <span class="section-label reveal" style="display:block; margin-bottom:40px;">For trades and home services</span>
         <h2 class="philosophy-quote reveal reveal-d1" id="philosophy-h2">
-            Websites for trades<br>and <em>home services.</em>
+            Websites for trades <br>and <em>home services.</em>
           </h2>
         <p class="philosophy-sub reveal reveal-d2" style="max-width:620px">When a pipe bursts or the furnace dies, your customers grab their phone and search. Plumbers, electricians, HVAC techs and contractors win those jobs by showing up first and making it easy to call. I build a page for each main service and area you cover, add click-to-call and a quote form, and put your reviews where customers see them.</p>
         <p class="philosophy-sub reveal reveal-d3" style="max-width:620px;margin-top:20px;color:var(--cream)">Trades Pro websites are $4,495, or $2,995 for the first 5 founding clients.</p>
@@ -1284,6 +1284,7 @@
             <ul class="price-list"><li>Google Business Profile management</li><li>On-page SEO fixes</li><li>One article a month</li><li>Plain-English monthly report</li></ul>
           </div>
         </div>
+        <p class="price-intro reveal" style="margin-top:28px;max-width:none">Need more? <strong style="color:var(--cream)">Growth</strong> (up to 10 pages) is $2,495, or $2,995 in English and French. <strong style="color:var(--cream)">Trades Pro</strong> (10 to 15 pages with a page per service and area) is $4,495. <a class="text-link" href="/trades">Websites for trades →</a></p>
         <p class="founding-banner reveal"><strong>Founding clients:</strong> the first 5 clients get about 30% off in exchange for a testimonial and a case study.</p>
         <p class="reveal" style="margin-top:28px"><a class="text-link" href="/web-design#packages">Compare all website packages →</a></p>
       </div>
@@ -1373,7 +1374,7 @@
       <div class="section-inner">
         <div class="process-header">
           <span class="section-label">How it works</span>
-          <h2 class="process-title" id="process-h2">How a Pokwala<br>website gets built.</h2>
+          <h2 class="process-title" id="process-h2">How a Pokwala <br>website gets built.</h2>
         </div>
         <ol class="process-steps" role="list">
           <li class="process-step">
@@ -1759,39 +1760,18 @@
         });
       }
 
-      /* Service cards — stagger in */
-      gsap.from('.service-card', {
-        y: 40, opacity: 0,
-        duration: 0.8, ease: 'power2.out',
-        stagger: 0.10,
-        scrollTrigger: { trigger: '.services-grid', start: 'top 82%' }
-      });
 
       /* Process header + steps — stagger from left */
       gsap.from('.process-header', {
-        y: 32, opacity: 0,
-        duration: 0.8, ease: 'power2.out',
+        y: 32, duration: 0.8, ease: 'power2.out',
         scrollTrigger: { trigger: '.process-header', start: 'top 85%' }
       });
       gsap.from('.process-step', {
-        x: -32, y: 16, opacity: 0,
-        duration: 0.85, ease: 'power3.out',
+        x: -32, y: 16, duration: 0.85, ease: 'power3.out',
         stagger: 0.15,
         scrollTrigger: { trigger: '.process-steps', start: 'top 82%' }
       });
 
-      /* FAQ — stagger in */
-      gsap.from('.faq-header', {
-        y: 32, opacity: 0,
-        duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: '.faq-header', start: 'top 85%' }
-      });
-      gsap.from('.faq-item', {
-        y: 32, opacity: 0,
-        duration: 0.75, ease: 'power2.out',
-        stagger: 0.1,
-        scrollTrigger: { trigger: '.faq-list', start: 'top 82%' }
-      });
     })();
 
     /* ── Nav character split (unseen.co style wave hover) ── */

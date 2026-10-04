@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-CA">
 <head>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal,.scroll-reveal').forEach(function(e){e.classList.add('is-visible','is-revealed')})},3000)</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Small Business Website &amp; SEO FAQ | Pokwala</title>
@@ -58,7 +59,6 @@
 
     /* Reveal animations */
     .reveal {
-      opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
     }
@@ -69,7 +69,6 @@
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
     .scroll-reveal {
-      opacity: 0;
       transform: translateY(2rem);
       transition: none;
     }
@@ -598,8 +597,9 @@
       .author-grid { grid-template-columns: 1fr; gap: 32px; }
       .price-section, .author-section, .page-section { padding: 80px 0; }
     }
-      /* Content always visible for crawlers; animations move, never hide */
-    .reveal, .scroll-reveal { opacity: 1 !important; }
+        /* Hide-then-reveal only when JS runs; content is visible without it */
+    .js .reveal:not(.is-visible), .js .scroll-reveal:not(.is-revealed) { opacity: 0; }
+    @media (prefers-reduced-motion: reduce) { .js .reveal, .js .scroll-reveal { opacity: 1 !important; transform: none !important; } }
   </style>
   <script type="application/ld+json">
 {
@@ -1359,12 +1359,6 @@
         ST.refresh();
       }
 
-      gsap.from('.faq-item', {
-        y: 28, opacity: 0,
-        duration: 0.75, ease: 'power2.out',
-        stagger: 0.07,
-        scrollTrigger: { trigger: '.faq-list', start: 'top 85%' }
-      });
     })();
 
     /* ── Nav character split ── */
