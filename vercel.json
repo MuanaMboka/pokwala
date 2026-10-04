@@ -2,7 +2,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/blog", "destination": "/resources", "permanent": true }
+    { "source": "/resources/tools/ai-visibility-checker", "destination": "/services#local-seo", "permanent": true },
+    { "source": "/resources/:path*", "destination": "/services", "permanent": true },
+    { "source": "/resources", "destination": "/services", "permanent": true },
+    { "source": "/blog", "destination": "/faq", "permanent": false }
   ],
   "headers": [
     {
