@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SEO Web Design for Small Businesses | Pokwala</title>
   <meta name="description" content="Websites built to rank on Google from launch. Packages from $1,495 or one monthly plan with hosting, updates and SEO included. Canada and US.">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/icon-180.png">
+  <meta property="og:image" content="https://pokwala.com/assets/brand/icon-512.png">
   <link rel="canonical" href="https://pokwala.com/">
   <meta property="og:title" content="SEO Web Design for Small Businesses | Pokwala">
   <meta property="og:description" content="Websites built to rank on Google from launch. Packages from $1,495 or one monthly plan with hosting, updates and SEO included. Canada and US.">
@@ -948,6 +952,8 @@
         /* Hide-then-reveal only when JS runs; content is visible without it */
     .js .reveal:not(.is-visible), .js .scroll-reveal:not(.is-revealed) { opacity: 0; }
     @media (prefers-reduced-motion: reduce) { .js .reveal, .js .scroll-reveal { opacity: 1 !important; transform: none !important; } }
+      .nav-logo, .footer-logo { display: inline-flex; align-items: center; gap: 10px; }
+    .logo-mark { flex-shrink: 0; }
   </style>
   <script type="application/ld+json">
 {
@@ -994,7 +1000,9 @@
       "knowsLanguage": [
         "en",
         "fr"
-      ]
+      ],
+      "logo": "https://pokwala.com/assets/brand/icon-512.png",
+      "image": "https://pokwala.com/assets/brand/icon-512.png"
     },
     {
       "@type": "Person",
@@ -1127,7 +1135,7 @@
 
   <header class="nav" id="navbar" role="banner">
     <div class="nav-inner">
-      <a class="nav-logo" href="/" aria-label="Pokwala home">Pokwala</a>
+      <a class="nav-logo" href="/" aria-label="Pokwala home"><svg class="logo-mark" viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false"><path d="M20 50V14h13a11 11 0 0 1 0 22H20" fill="none" stroke="#C9A84C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="47" cy="47" r="4.5" fill="#F7F5F2"/></svg>Pokwala</a>
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/web-design" data-cursor="hide"><span class="nl-default">Packages</span><span class="nl-hover">Packages</span></a></li>
@@ -1503,7 +1511,7 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div>
-          <div class="footer-logo">Pokwala</div>
+          <div class="footer-logo"><svg class="logo-mark" viewBox="0 0 64 64" width="24" height="24" aria-hidden="true" focusable="false"><path d="M20 50V14h13a11 11 0 0 1 0 22H20" fill="none" stroke="#C9A84C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="47" cy="47" r="4.5" fill="#F7F5F2"/></svg>Pokwala</div>
           <p class="footer-tagline">SEO web design for small businesses. Websites built, ranked and managed, from Ottawa to anywhere in Canada and the US.</p>
         </div>
         <nav aria-label="Footer navigation">
