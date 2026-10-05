@@ -1,0 +1,494 @@
+/* ============================================================================
+   SITE — structure and components. Reads every colour, font and radius from
+   tokens.css. Do not hard-code design values here.
+   ============================================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: var(--weight-body);
+  background: var(--ink);
+  color: var(--text-on-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a   { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p { margin: 0; }
+
+/* Surface-aware: an accent ring is invisible on the accent section, and weak
+   on paper. Ink rings there, accent ring on ink. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.section--paper :focus-visible,
+.section--accent :focus-visible { outline-color: var(--ink); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--accent); color: var(--text-on-accent);
+  padding: 14px 20px; font-weight: var(--weight-strong);
+}
+.skip-link:focus { left: 0; }
+
+/* ---------------------------------------------------------------- shared -- */
+
+/* Muted, never accent-coloured. The accent is reserved for CTAs and the one
+   full-bleed brand section, so it lands once per screen instead of three times. */
+.eyebrow {
+  font-size: 12px;
+  font-weight: var(--weight-strong);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-on-ink-mute);
+}
+.section--paper  .eyebrow { color: var(--text-on-paper-mute); }
+.section--accent .eyebrow { color: var(--text-on-accent-mute); }
+
+/* ---------------------------------------------------------------- layout -- */
+
+.section { padding-block: var(--section-y); }
+.section--ink    { background: var(--ink);    color: var(--text-on-ink); }
+.section--paper  { background: var(--paper);  color: var(--text-on-paper); }
+.section--accent { background: var(--accent); color: var(--text-on-accent); }
+
+.container {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Section head: eyebrow, heading, optional lead. */
+.section-head { max-width: 58ch; margin-bottom: clamp(40px, 5vw, 72px); }
+.section-head h2 {
+  margin-top: 18px;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.06;
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-display);
+}
+.section-head p {
+  margin-top: 20px;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 52ch;
+}
+.section--ink    .section-head p { color: var(--text-on-ink-mute); }
+.section--paper  .section-head p { color: var(--text-on-paper-mute); }
+.section--accent .section-head p { color: var(--text-on-accent-mute); }
+
+/* ------------------------------------------------------------- usp grid -- */
+/* Type and a hairline. No cards, no shadows, no icons — the boxes are what
+   make these pages read as templates. */
+
+.usp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 34px clamp(24px, 3vw, 48px);
+}
+.usp-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.usp { border-top: 1px solid; padding-top: 20px; }
+.section--ink    .usp, .hero-trust > div { border-top-color: var(--rule-on-ink); }
+.section--paper  .usp { border-top-color: var(--rule-on-paper); }
+.section--accent .usp { border-top-color: var(--rule-on-accent); }
+
+.usp h3 {
+  font-size: 17px;
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.01em;
+}
+.usp p {
+  margin-top: 9px;
+  font-size: 14px;
+  line-height: 1.58;
+}
+.section--ink    .usp p { color: var(--text-on-ink-mute); }
+.section--paper  .usp p { color: var(--text-on-paper-mute); }
+.section--accent .usp p { color: var(--text-on-accent-mute); }
+
+@media (max-width: 900px) {
+  .usp-grid, .usp-grid--3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .usp-grid, .usp-grid--3 { grid-template-columns: 1fr; gap: 26px; }
+  /* Secondary copy gets a nudge on phones, where 14px is doing too much work. */
+  .usp p { font-size: 15px; }
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 26px;
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: var(--weight-strong);
+  line-height: 1;
+  border: 1px solid transparent;
+  transition: background 200ms var(--ease), color 200ms var(--ease),
+              border-color 200ms var(--ease);
+}
+.btn-accent { background: var(--accent); color: var(--text-on-accent); }
+.btn-accent:hover { background: var(--accent-hover); }
+
+/* For the accent section, where an accent button would vanish. */
+.btn-ink { background: var(--ink); color: var(--text-on-ink); }
+.btn-ink:hover { background: var(--ink-raised); }
+
+/* Outline pill, surface-aware so one class works on ink, paper and accent. */
+.btn-ghost { border-color: var(--rule-on-ink); color: var(--text-on-ink); }
+.btn-ghost:hover { border-color: var(--text-on-ink); }
+.section--paper  .btn-ghost { border-color: var(--rule-on-paper);  color: var(--text-on-paper); }
+.section--paper  .btn-ghost:hover { border-color: var(--text-on-paper); }
+.section--accent .btn-ghost { border-color: var(--rule-on-accent); color: var(--text-on-accent); }
+.section--accent .btn-ghost:hover { border-color: var(--text-on-accent); }
+
+/* ------------------------------------------------------------------- nav -- */
+
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 60;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+  padding: 26px var(--gutter);
+  transition: padding 300ms var(--ease), background 300ms var(--ease),
+              border-color 300ms var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.nav.is-stuck {
+  padding-block: 14px;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--rule-on-ink);
+}
+
+.wordmark {
+  position: relative;
+  font-size: 17px;
+  font-weight: var(--weight-display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+/* The text logo is only 18px tall. Extend the tap target to 44px without
+   padding the element, which would grow the nav bar. */
+.wordmark::after {
+  content: '';
+  position: absolute;
+  inset: -13px -10px;
+}
+/* Deliberately not accent-coloured. Above the fold the accent should land
+   exactly twice: the highlighted headline word, and the CTA. */
+.wordmark .dot { color: var(--text-on-ink-mute); }
+
+.nav-links {
+  display: flex; align-items: center; gap: 34px;
+  font-size: 14.5px;
+  font-weight: var(--weight-medium);
+}
+.nav-links a { color: var(--text-on-ink-mute); transition: color 180ms var(--ease); }
+.nav-links a:hover { color: var(--text-on-ink); }
+
+.nav-end { display: flex; align-items: center; gap: 22px; }
+.nav-tel {
+  font-size: 14.5px;
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+}
+.nav .btn { padding: 15px 22px; font-size: 14px; }
+
+.nav-toggle { display: none; }
+
+@media (max-width: 1080px) {
+  .nav-links, .nav-tel { display: none; }
+}
+
+/* ------------------------------------------------------------------ hero -- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  min-height: 100svh;
+}
+
+.hero-copy {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 126px var(--gutter) 48px;
+  /* Keeps the measure sane on very wide screens without centring the column. */
+  max-width: calc(var(--measure) / 2 + var(--gutter));
+  justify-self: end;
+  width: 100%;
+}
+
+.hero h1 {
+  margin-top: 18px;
+  font-size: clamp(36px, 4.2vw, 60px);
+  line-height: 1.02;
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-display);
+  max-width: 13ch;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-sub {
+  margin-top: 22px;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.6;
+  color: var(--text-on-ink-mute);
+  max-width: 46ch;
+}
+
+.hero-actions {
+  margin-top: 32px;
+  display: flex; flex-wrap: wrap; gap: 14px;
+}
+
+/* Same hairline-and-type pattern as .usp-grid: a rule per item rather than one
+   rule across the row, so the columns read as a set of three, not a table. */
+.hero-trust {
+  margin-top: 46px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px clamp(20px, 2.4vw, 40px);
+}
+.hero-trust > div { border-top: 1px solid var(--rule-on-ink); padding-top: 18px; }
+.hero-trust dt {
+  font-size: 17px;
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.01em;
+}
+.hero-trust dd {
+  margin: 9px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-on-ink-mute);
+}
+
+/* The photo does the visual work. No overlay pattern, no gradient sky. */
+.hero-figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--ink-raised);
+}
+/* Absolute, so the photo's own 2:3 ratio cannot stretch the grid row. Hero
+   height is driven by the copy column and 100svh, never by the image. */
+.hero-figure img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+}
+/* Two scrims, both structural rather than decorative:
+   1. left seam, so the photo does not visibly butt against the type column;
+   2. top band, so nav links stay legible over whatever photo a client drops
+      in. Without it, a bright ceiling light lands right under the nav. */
+.hero-figure::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, var(--ink) 0%, rgba(12, 17, 23, 0) 22%),
+    linear-gradient(180deg, rgba(12, 17, 23, 0.88) 0%,
+                            rgba(12, 17, 23, 0.55) 72px,
+                            rgba(12, 17, 23, 0) 170px);
+  pointer-events: none;
+}
+
+.hero-caption {
+  position: absolute; left: 28px; bottom: 26px; z-index: 2;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
+}
+.hero-caption::before {
+  content: '';
+  width: 26px; height: 1px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-copy {
+    padding: 118px var(--gutter) 48px;
+    max-width: none;
+    justify-self: stretch;
+  }
+  .hero-figure { aspect-ratio: 4 / 3; }
+  .hero-figure::after {
+    background: linear-gradient(180deg, var(--ink) 0%, rgba(12, 17, 23, 0) 16%);
+  }
+  .hero-trust { grid-template-columns: 1fr 1fr; gap: 22px 20px; }
+}
+
+@media (max-width: 420px) {
+  .hero-trust { grid-template-columns: 1fr; }
+  .hero-actions .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ------------------------------------------------------------ animation -- */
+
+/* Above the fold: a CSS load-in. Deliberately not the IntersectionObserver
+   path, so hero copy is never invisible if JS fails or is slow. */
+.rise { animation: rise var(--dur) var(--ease) both; }
+.rise[data-delay="1"] { animation-delay:  70ms; }
+.rise[data-delay="2"] { animation-delay: 140ms; }
+.rise[data-delay="3"] { animation-delay: 210ms; }
+.rise[data-delay="4"] { animation-delay: 280ms; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Below the fold: reveal on scroll. Needs JS, and that is fine down there. */
+.reveal { opacity: 0; transform: translateY(20px); }
+.reveal.is-in {
+  opacity: 1; transform: none;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.reveal[data-delay="1"].is-in { transition-delay:  70ms; }
+.reveal[data-delay="2"].is-in { transition-delay: 140ms; }
+.reveal[data-delay="3"].is-in { transition-delay: 210ms; }
+.reveal[data-delay="4"].is-in { transition-delay: 280ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise { animation: none; }
+  .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; }
+}
+
+/* --------------------------------------------------------- statement ----- */
+
+.statement h2 {
+  margin-top: 18px;
+  font-size: clamp(32px, 4.8vw, 66px);
+  line-height: 1.03;
+  font-weight: var(--weight-display);
+  letter-spacing: -0.03em;
+  max-width: 17ch;
+}
+.statement p {
+  margin-top: 30px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-on-ink-mute);
+  max-width: 48ch;
+}
+
+/* ----------------------------------------------------------- gallery ----- */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 1.8vw, 26px);
+}
+.gallery-item {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--ink-raised);
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease);
+}
+.gallery-item:hover img { transform: scale(1.03); }
+
+.gallery-item figcaption {
+  position: absolute; left: 20px; bottom: 16px;
+  font-size: 11.5px;
+  font-weight: var(--weight-strong);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item img, .gallery-item:hover img { transition: none; transform: none; }
+}
+@media (max-width: 640px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------- brand moment ---- */
+
+/* Echoes Hyer's dashed flight path, read as a road rather than a dial. One
+   quiet graphic on the one accent section; it is not a repeating device. */
+.brand-route {
+  display: block;
+  width: 100%;
+  height: clamp(64px, 8vw, 112px);
+  margin-block: clamp(36px, 4.5vw, 64px);
+  color: var(--text-on-accent);
+  overflow: visible;
+}
+
+/* --------------------------------------------------------- closing CTA -- */
+
+.cta-close { text-align: center; }
+.cta-close h2 {
+  margin-top: 18px;
+  font-size: clamp(34px, 5.4vw, 76px);
+  line-height: 1.02;
+  font-weight: var(--weight-display);
+  letter-spacing: -0.03em;
+}
+.cta-close p {
+  margin: 22px auto 0;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 44ch;
+  color: var(--text-on-paper-mute);
+}
+.cta-close .hero-actions { justify-content: center; margin-top: 36px; }
+
+/* -------------------------------------------------------------- footer -- */
+
+.site-footer {
+  background: var(--ink);
+  color: var(--text-on-ink);
+  padding-block: clamp(52px, 5vw, 80px) 30px;
+}
+.footer-top {
+  display: flex; flex-wrap: wrap; gap: 40px;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule-on-ink);
+}
+/* Footer links carry vertical padding rather than sitting at their 16px text
+   height, so each is a ~32px tap target. Row gaps are pulled in to keep the
+   visual rhythm close to what the padding replaced. */
+.footer-contact { display: grid; gap: 2px; font-size: 14.5px; color: var(--text-on-ink-mute); }
+.footer-contact a:not(.wordmark),
+.footer-contact > span { padding-block: 8px; }
+.footer-contact a:hover { color: var(--text-on-ink); }
+
+.footer-nav { display: flex; gap: clamp(28px, 4vw, 64px); }
+.footer-nav div { display: grid; gap: 0; align-content: start; }
+.footer-nav span {
+  font-size: 11.5px; letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase; color: var(--text-on-ink-mute);
+  margin-bottom: 8px;
+}
+.footer-nav a { font-size: 14.5px; font-weight: var(--weight-medium); padding-block: 8px; }
+
+.footer-legal {
+  padding-top: 26px;
+  display: flex; flex-wrap: wrap; gap: 8px 32px;
+  font-size: 12.5px;
+  color: var(--text-on-ink-mute);
+}

@@ -4,16 +4,16 @@
   <script>document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal,.scroll-reveal').forEach(function(e){e.classList.add('is-visible','is-revealed')})},3000)</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contractor &amp; Trades Web Design | Pokwala</title>
-  <meta name="description" content="Websites for plumbers, electricians, HVAC and contractors, built to get calls. A page per service and area, quote forms, reviews. From $249/month.">
+  <title>Website Demos for Trades &amp; Small Businesses | Pokwala</title>
+  <meta name="description" content="Live demo websites built by Pokwala: see what a fast, mobile-first small business website looks like before you buy. Plumbing, auto repair and more.">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/brand/icon-180.png">
   <meta property="og:image" content="https://pokwala.com/assets/brand/icon-512.png">
-  <link rel="canonical" href="https://pokwala.com/trades">
-  <meta property="og:title" content="Contractor &amp; Trades Web Design | Pokwala">
-  <meta property="og:description" content="Websites for plumbers, electricians, HVAC and contractors, built to get calls. A page per service and area, quote forms, reviews. From $249/month.">
-  <meta property="og:url" content="https://pokwala.com/trades">
+  <link rel="canonical" href="https://pokwala.com/work">
+  <meta property="og:title" content="Website Demos for Trades &amp; Small Businesses | Pokwala">
+  <meta property="og:description" content="Live demo websites built by Pokwala: see what a fast, mobile-first small business website looks like before you buy. Plumbing, auto repair and more.">
+  <meta property="og:url" content="https://pokwala.com/work">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -393,64 +393,32 @@
         /* Hide-then-reveal only when JS runs; content is visible without it */
     .js .reveal:not(.is-visible), .js .scroll-reveal:not(.is-revealed) { opacity: 0; }
     @media (prefers-reduced-motion: reduce) { .js .reveal, .js .scroll-reveal { opacity: 1 !important; transform: none !important; } }
-    </style>
+        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; }
+    .work-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: rgba(247,245,242,0.02); display: flex; flex-direction: column; }
+    .work-shots { position: relative; background: #0a1622; }
+    .work-shots img.desk { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; }
+    .work-shots img.mob { position: absolute; right: 16px; bottom: -22px; width: 22%; border-radius: 10px; border: 3px solid #0a1622; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+    .work-body { padding: 40px 28px 30px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .work-tag { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .work-body h3 { font-size: 1.5rem; font-weight: 700; color: var(--cream); letter-spacing: -0.03em; }
+    .work-body p { font-size: 0.9875rem; line-height: 1.7; color: var(--text); }
+    .work-feats { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .work-feats li { font-size: 0.8125rem; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; }
+    .work-actions { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .demo-note { font-size: 0.875rem; color: var(--muted); margin-top: 18px; max-width: 760px; line-height: 1.7; }
+    @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Service",
-      "name": "Websites for contractors and trades",
-      "serviceType": "Web design for contractors",
-      "provider": {
-        "@type": "Organization",
-        "@id": "https://pokwala.com/#org",
-        "name": "Pokwala"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Ottawa"
-        },
-        {
-          "@type": "City",
-          "name": "Gatineau"
-        },
-        {
-          "@type": "Country",
-          "name": "Canada"
-        },
-        {
-          "@type": "Country",
-          "name": "United States"
-        }
-      ],
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Trades Pro website",
-          "price": "4495",
-          "priceCurrency": "CAD"
-        },
-        {
-          "@type": "Offer",
-          "name": "Trades Pro website, founding client price (first 5 clients)",
-          "price": "2995",
-          "priceCurrency": "CAD"
-        },
-        {
-          "@type": "Offer",
-          "name": "All-in website plan",
-          "price": "249",
-          "priceCurrency": "CAD",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "249",
-            "priceCurrency": "CAD",
-            "unitCode": "MON"
-          }
-        }
-      ]
+      "@type": "CollectionPage",
+      "name": "Website demos",
+      "url": "https://pokwala.com/work",
+      "about": {
+        "@id": "https://pokwala.com/#org"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -464,45 +432,8 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Trades websites",
-          "item": "https://pokwala.com/trades"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do I need a page for each city I serve?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "For the main areas you want work from, yes. Each area page should say something specific about the work you do there, not just swap the city name."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can customers book online?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Trades Pro includes a quote or booking form. If you already use a booking tool, I can link to it or embed it where that tool allows."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will it work with my Google Business Profile?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. I set up or clean up your profile and connect it to your website, since both help you show up on Google Maps."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "I'm a one-person business. Is this overkill?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Start with the $249/month plan. It gets you a proper 5-page site without a big upfront cost, and you can add pages as you grow."
-          }
+          "name": "Work",
+          "item": "https://pokwala.com/work"
         }
       ]
     }
@@ -521,8 +452,8 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a class="nav-link" href="/web-design" data-cursor="hide"><span class="nl-default">Packages</span><span class="nl-hover">Packages</span></a></li>
-          <li><a class="nav-link" href="/trades" aria-current="page" data-cursor="hide"><span class="nl-default">Trades</span><span class="nl-hover">Trades</span></a></li>
-          <li><a class="nav-link" href="/work" data-cursor="hide"><span class="nl-default">Work</span><span class="nl-hover">Work</span></a></li>
+          <li><a class="nav-link" href="/trades" data-cursor="hide"><span class="nl-default">Trades</span><span class="nl-hover">Trades</span></a></li>
+          <li><a class="nav-link" href="/work" aria-current="page" data-cursor="hide"><span class="nl-default">Work</span><span class="nl-hover">Work</span></a></li>
           <li><a class="nav-link" href="/services" data-cursor="hide"><span class="nl-default">Services</span><span class="nl-hover">Services</span></a></li>
           <li><a class="nav-link" href="/about" data-cursor="hide"><span class="nl-default">About</span><span class="nl-hover">About</span></a></li>
           <li><a class="nav-link" href="/faq" data-cursor="hide"><span class="nl-default">FAQ</span><span class="nl-hover">FAQ</span></a></li>
@@ -537,8 +468,8 @@
 
   <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile navigation">
     <a href="/web-design" onclick="closeMobileNav()">Packages</a>
-    <a href="/trades" aria-current="page" onclick="closeMobileNav()">Trades</a>
-    <a href="/work" onclick="closeMobileNav()">Work</a>
+    <a href="/trades" onclick="closeMobileNav()">Trades</a>
+    <a href="/work" aria-current="page" onclick="closeMobileNav()">Work</a>
     <a href="/services" onclick="closeMobileNav()">Services</a>
     <a href="/about" onclick="closeMobileNav()">About</a>
     <a href="/faq" onclick="closeMobileNav()">FAQ</a>
@@ -553,103 +484,56 @@
       <div class="services-hero-fade" aria-hidden="true"></div>
       <div class="section-inner">
         <div class="services-hero-inner">
-          <span class="section-label reveal">For trades and home services</span>
-          <h1 class="services-h1 reveal reveal-d1" id="page-h1">Websites for contractors and trades</h1>
-          <p class="services-sub reveal reveal-d2">Your customers search when something breaks. A pipe bursts, the heat dies, a breaker keeps tripping. They pick from the first few businesses they find and call the one that looks trustworthy. Pokwala builds trades websites that show up in those searches and get the call.<br><br><strong style="color:var(--cream)">Trades Pro is $4,495, or $2,995 for the first 5 founding clients. Or start at $249/month with nothing upfront.</strong></p>
-          <div class="cta-row reveal reveal-d3"><a class="btn-primary" href="/contact">Get a free website review →</a><a class="btn-ghost" href="/work">See demo websites</a><a class="text-link" href="tel:+14382743768">Call 438-274-3768</a></div>
-        </div>
-      </div>
-    </section>
-    <section class="page-section surface scroll-reveal" id="calls" aria-labelledby="calls-h2">
-      <div class="section-inner">
-        <span class="section-label">Built for calls</span>
-        <h2 class="page-h2" id="calls-h2">Built to get calls, not just visits</h2>
-        <ul class="check-list">
-          <li><strong>Click-to-call on every page.</strong> One tap from the search result to your phone.</li>
-          <li><strong>Quote or booking form.</strong> Customers can request a job at 10 p.m. without waiting for business hours.</li>
-          <li><strong>Your reviews, up front.</strong> Google reviews shown where customers decide whether to call.</li>
-          <li><strong>Fast on mobile data.</strong> Most trades searches happen on a phone, often in a hurry.</li>
-        </ul>
-      </div>
-    </section>
-    <section class="page-section bg scroll-reveal" id="service-area-pages" aria-labelledby="service-area-pages-h2">
-      <div class="section-inner">
-        <span class="section-label">Service and area pages</span>
-        <h2 class="page-h2" id="service-area-pages-h2">A page for every service and every area</h2>
-        <p class="page-body">Someone searching "water heater replacement Kanata" wants a page about water heater replacement in Kanata, not your homepage. Trades Pro sites include a page for each main service and up to a few key areas you cover. That gives Google a clear page to show for each search.</p>
-        <p class="page-body">For example, a plumber might have pages for drain cleaning, water heaters, sump pumps and emergency plumbing, plus pages for the areas they serve.</p>
-      </div>
-    </section>
-    <section class="page-section surface scroll-reveal" id="plans" aria-labelledby="plans-h2">
-      <div class="section-inner">
-        <span class="section-label">Plans</span>
-        <h2 class="page-h2" id="plans-h2">Trades Pro package or a monthly plan</h2>
-        <div class="compare-wrap" style="margin-top:36px">
-          <table class="compare-table">
-            <thead><tr><th scope="col"></th><th scope="col">Trades Pro</th><th scope="col">All-in monthly plan</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Price</th><td><span class="big">$4,495</span><br>one-time (founding price $2,995)<br>English and French: +$500</td><td><span class="big">$249/mo</span><br>nothing upfront, 12-month minimum</td></tr>
-              <tr><th scope="row">Pages</th><td>10 to 15, including service and key area pages</td><td>5-page Starter site; more pages can be added</td></tr>
-              <tr><th scope="row">Hosting and updates</th><td>Add a care plan for $99/month</td><td>Included</td></tr>
-              <tr><th scope="row">Best for</th><td>Established trades businesses that want the full setup</td><td>New or small operators who want to start without a big invoice</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="page-body" style="margin-top:28px">Want to rank higher once the site is live? Add Local SEO for $599/month. <a class="text-link" href="/services#local-seo">Local SEO for trades →</a></p>
-        <p class="page-body" style="margin-top:12px">Need a smaller site? The Starter and Growth packages start at $1,495. <a class="text-link" href="/web-design#packages">Compare all packages →</a></p>
-      </div>
-    </section>
-    <section class="page-section bg scroll-reveal" id="by-trade" aria-labelledby="by-trade-h2">
-      <div class="section-inner">
-        <span class="section-label">By trade</span>
-        <h2 class="page-h2" id="by-trade-h2">Web design for plumbers, electricians and HVAC</h2>
-        <div class="two-col">
-          <div class="info-card"><h3>Plumbers</h3><p>Emergency service pages, water heater and drain pages, and a clear "call now" for urgent jobs.</p></div>
-          <div class="info-card"><h3>Electricians</h3><p>Pages for panel upgrades, EV charger installation, rewiring and inspections, with licence information visible.</p></div>
-          <div class="info-card"><h3>HVAC</h3><p>Furnace, air conditioning and heat pump pages, seasonal maintenance offers, and financing or rebate information where you offer it.</p></div>
-          <div class="info-card"><h3>Contractors and renovators</h3><p>Project galleries, service pages and a quote form that asks the right questions up front.</p></div>
-        </div>
-      </div>
-    </section>
-    <section class="page-section bg scroll-reveal" id="where" aria-labelledby="where-h2">
-      <div class="section-inner">
-        <span class="section-label">Where I work</span>
-        <h2 class="page-h2" id="where-h2">Based in Ottawa, working with trades across Canada and the US</h2>
-        <p class="page-body">Pokwala is based in Ottawa. I work with trades in Ottawa, Kanata, Orl&eacute;ans, Barrhaven and Gatineau, and with trades anywhere else in Canada and the US, in English or French.</p>
-      </div>
-    </section>
-
-    <section class="author-section" id="built-by" aria-labelledby="built-by-h2" style="background:var(--surface)">
-      <div class="section-inner">
-        <div class="author-grid">
-          <img class="author-photo" src="/assets/images/george-mangala.jpg" alt="George Mangala, founder of Pokwala" width="220" height="220" loading="lazy">
-          <div class="author-text">
-            <span class="section-label">Who builds your site</span>
-            <h2 class="page-h2" id="built-by-h2">Built by George Mangala</h2>
-            <p>Every trades website is planned, written with you and built by me, George Mangala, founder of Pokwala. I've spent 4 years doing SEO and web performance in-house for a bilingual Canadian tech platform, and you deal with me directly from the first call to launch.</p>
-            <a class="text-link" href="/about">More about George →</a>
-          </div>
+          <span class="section-label reveal">Work</span>
+          <h1 class="services-h1 reveal reveal-d1" id="page-h1">Website demos for trades and small businesses</h1>
+          <p class="services-sub reveal reveal-d2">Live demo sites I built to show what a Pokwala website looks and feels like. Open them on your phone: that's where most of your customers will see yours.</p>
         </div>
       </div>
     </section>
 
-    <section class="page-section surface scroll-reveal" id="faq" aria-labelledby="faq-h2">
+    <section class="page-section surface" id="demos" aria-labelledby="demos-h2">
       <div class="section-inner">
-        <span class="section-label">Questions</span>
-        <h2 class="page-h2" id="faq-h2">Trades website FAQ</h2>
-        <div class="qa"><h3>Do I need a page for each city I serve?</h3><p>For the main areas you want work from, yes. Each area page should say something specific about the work you do there, not just swap the city name.</p></div>
-        <div class="qa"><h3>Can customers book online?</h3><p>Yes. Trades Pro includes a quote or booking form. If you already use a booking tool, I can link to it or embed it where that tool allows.</p></div>
-        <div class="qa"><h3>Will it work with my Google Business Profile?</h3><p>Yes. I set up or clean up your profile and connect it to your website, since both help you show up on Google Maps.</p></div>
-        <div class="qa"><h3>I'm a one-person business. Is this overkill?</h3><p>Start with the $249/month plan. It gets you a proper 5-page site without a big upfront cost, and you can add pages as you grow.</p></div>
+        <span class="section-label">Live demos</span>
+        <h2 class="page-h2" id="demos-h2">See a Pokwala website in action</h2>
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-shots">
+              <picture><source srcset="/assets/work/flowright-plumbing.webp" type="image/webp"><img class="desk" src="/assets/work/flowright-plumbing.jpg" alt="FlowRight Plumbing demo website, desktop view" width="960" height="600" loading="lazy"></picture>
+              <img class="mob" src="/assets/work/flowright-plumbing-mobile.webp" alt="FlowRight Plumbing demo website, phone view" width="260" height="563" loading="lazy">
+            </div>
+            <div class="work-body">
+              <span class="work-tag">Trades website · plumber</span>
+              <h3>FlowRight Plumbing</h3>
+              <p>A one-page site for a fictional Ottawa plumber. Built for the moment something breaks: emergency service and the phone number up front, services laid out clearly, and a quote form for the jobs that can wait.</p>
+              <ul class="work-feats"><li>Click-to-call header</li><li>Quote request form</li><li>Service grid</li><li>Sample reviews</li><li>Mobile-first</li></ul>
+              <div class="work-actions"><a class="btn-primary" href="/demos/flowright-plumbing" target="_blank" rel="noopener">View live demo →</a><span style="font-size:0.875rem;color:var(--muted)">Similar build: Starter, from $1,495</span></div>
+            </div>
+          </article>
+          <article class="work-card">
+            <div class="work-shots">
+              <picture><source srcset="/assets/work/ridgeline-auto.webp" type="image/webp"><img class="desk" src="/assets/work/ridgeline-auto.jpg" alt="Ridgeline Auto demo website, desktop view" width="960" height="600" loading="lazy"></picture>
+              <img class="mob" src="/assets/work/ridgeline-auto-mobile.webp" alt="Ridgeline Auto demo website, phone view" width="260" height="563" loading="lazy">
+            </div>
+            <div class="work-body">
+              <span class="work-tag">Trades website · auto repair</span>
+              <h3>Ridgeline Auto</h3>
+              <p>A photography-led site for a fictional independent garage in Ottawa. The message is trust: written quotes before any work, a warranty on parts and labour, and booking by phone in one tap.</p>
+              <ul class="work-feats"><li>Photo-led design</li><li>Clear trust promises</li><li>Services and gallery</li><li>One-tap booking call</li><li>Mobile-first</li></ul>
+              <div class="work-actions"><a class="btn-primary" href="/demos/ridgeline-auto" target="_blank" rel="noopener">View live demo →</a><span style="font-size:0.875rem;color:var(--muted)">Similar build: Starter, from $1,495</span></div>
+            </div>
+          </article>
+        </div>
+        <p class="demo-note">These are demo sites for fictional businesses, built to show my work. Names, phone numbers and reviews are samples, not real customers. Real client projects will appear here as they launch.</p>
       </div>
     </section>
+
     <section class="services-cta" aria-labelledby="cta-h2">
       <div class="services-cta-overlay" aria-hidden="true"></div>
-      <div class="services-cta-inner scroll-reveal">
-        <span class="section-label">Free website review</span>
-        <h2 class="services-cta-title" id="cta-h2">Find out what your website is costing you in calls.</h2>
-        <p class="services-cta-desc">Send your website, or your business name if you don't have one. I'll email you the 3 changes that would bring in the most calls, within 3 business days.</p>
-        <div class="cta-row" style="justify-content:center"><a class="btn-primary" href="/contact">Get a free website review →</a><a class="btn-ghost" href="/web-design#packages">Compare all packages</a><a class="text-link" href="tel:+14382743768">Call 438-274-3768</a></div>
+      <div class="services-cta-inner">
+        <span class="section-label">Want one like this?</span>
+        <h2 class="services-cta-title" id="cta-h2">Get a website built for your business.</h2>
+        <p class="services-cta-desc">Send your website or your business name. I'll email you the 3 changes that would bring in the most calls and a package recommendation, within 3 business days.</p>
+        <div class="cta-row" style="justify-content:center"><a class="btn-primary" href="/contact">Get a free website review →</a><a class="btn-ghost" href="/web-design#packages">See packages and prices</a></div>
       </div>
     </section>
 
@@ -665,8 +549,8 @@
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="/web-design">Packages</a></li>
-            <li><a href="/trades" aria-current="page">Trades websites</a></li>
-            <li><a href="/work">Demos</a></li>
+            <li><a href="/trades">Trades websites</a></li>
+            <li><a href="/work" aria-current="page">Demos</a></li>
             <li><a href="/services">Services</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>

@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ridgeline Auto — Independent Auto Repair in Ottawa</title>
+<meta name="description" content="Independent auto repair in Ottawa. ASE-certified technicians, a written quote before any work starts, and a 12-month warranty on parts and labour.">
+
+<!-- ======================= DEMO ONLY — DELETE FOR CLIENT BUILDS =======================
+     Ridgeline Auto Co. is fictional. The name, address, phone and hours all look
+     real enough to be indexed as a genuine Ottawa business, so a public demo must
+     tell crawlers to stay out. Delete this block and robots.txt when handing the
+     template to a client, and let their real site be indexed normally.           -->
+<meta name="robots" content="noindex, nofollow">
+<script src="/demos/ridgeline-auto/assets/js/demo.js" defer></script>
+<!-- =================================================================================== -->
+
+<link rel="icon" href="/demos/ridgeline-auto/assets/favicon.svg" type="image/svg+xml">
+
+<!-- Link preview. og:image should be an ABSOLUTE url once the demo has a domain;
+     several scrapers (Facebook among them) will not resolve a relative one. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ridgeline Auto — auto repair website template">
+<meta property="og:description" content="A restrained, photography-led website template for independent auto repair shops. Built as static HTML, re-skinnable from a single tokens file.">
+<meta property="og:image" content="https://pokwala.com/demos/ridgeline-auto/assets/photos/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/demos/ridgeline-auto/assets/css/tokens.css">
+<link rel="stylesheet" href="/demos/ridgeline-auto/assets/css/site.css">
+
+<link rel="preload" as="image"
+      href="/demos/ridgeline-auto/assets/photos/shop-bay-lift-1024.jpg"
+      imagesrcset="/demos/ridgeline-auto/assets/photos/shop-bay-lift-480.jpg 480w, /demos/ridgeline-auto/assets/photos/shop-bay-lift-1024.jpg 1024w, /demos/ridgeline-auto/assets/photos/shop-bay-lift-1920.jpg 1920w"
+      imagesizes="(max-width: 900px) 100vw, 48vw">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="wordmark" href="/demos/ridgeline-auto">Ridgeline<span class="dot">.</span></a>
+
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#about">Why Ridgeline</a>
+  </nav>
+
+  <div class="nav-end">
+    <a class="nav-tel" href="tel:+16135550123">(613) 555-0123</a>
+    <a class="btn btn-accent" href="#book">Book a service</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow rise">Independent auto repair &middot; Ottawa</p>
+
+      <h1 class="rise" data-delay="1">
+        The shop that tells you what&rsquo;s <em>actually</em> wrong.
+      </h1>
+
+      <p class="hero-sub rise" data-delay="2">
+        ASE-certified technicians, a written quote before anything is touched, and a
+        12-month warranty on parts and labour. No upsell, no guesswork, no surprises
+        at pickup.
+      </p>
+
+      <div class="hero-actions rise" data-delay="3">
+        <a class="btn btn-accent" href="#book">Book a service</a>
+        <a class="btn btn-ghost" href="#services">See what we do</a>
+      </div>
+
+      <dl class="hero-trust rise" data-delay="4">
+        <div>
+          <dt>ASE</dt>
+          <dd>Certified technicians on every job</dd>
+        </div>
+        <div>
+          <dt>12 mo.</dt>
+          <dd>Warranty on parts and labour</dd>
+        </div>
+        <div>
+          <dt>Same day</dt>
+          <dd>Diagnostics on most vehicles</dd>
+        </div>
+      </dl>
+    </div>
+
+    <figure class="hero-figure">
+      <img src="/demos/ridgeline-auto/assets/photos/shop-bay-lift-1024.jpg"
+           srcset="/demos/ridgeline-auto/assets/photos/shop-bay-lift-480.jpg 480w,
+                   /demos/ridgeline-auto/assets/photos/shop-bay-lift-1024.jpg 1024w,
+                   /demos/ridgeline-auto/assets/photos/shop-bay-lift-1920.jpg 1920w"
+           sizes="(max-width: 900px) 100vw, 48vw"
+           width="1400" height="2100"
+           alt="A car raised on a two-post lift inside the Ridgeline service bay."
+           fetchpriority="high" decoding="async">
+      <figcaption class="hero-caption">Bay 2 &middot; Ottawa</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================================ SERVICES · light ======= -->
+  <section id="services" class="section section--paper">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Services</p>
+        <h2>What we do, and what we&rsquo;ll tell you about it.</h2>
+        <p>
+          Four things make up most of what comes through the bay. All of them start the
+          same way: we look, we quote, you decide.
+        </p>
+      </div>
+
+      <div class="usp-grid">
+        <div class="usp reveal">
+          <h3>Diagnostics</h3>
+          <p>Dealer-grade scan tools, and a technician who explains the fault code in
+             plain language instead of handing you a printout.</p>
+        </div>
+        <div class="usp reveal" data-delay="1">
+          <h3>Brakes &amp; Suspension</h3>
+          <p>Pads, rotors, struts and alignment. Most jobs booked in the morning are
+             finished the same afternoon.</p>
+        </div>
+        <div class="usp reveal" data-delay="2">
+          <h3>Scheduled Maintenance</h3>
+          <p>Oil, filters, fluids and inspections, timed to your vehicle&rsquo;s actual
+             service interval rather than a sticker on the windscreen.</p>
+        </div>
+        <div class="usp reveal" data-delay="3">
+          <h3>Warranty Work</h3>
+          <p>Every repair we carry out is covered for twelve months on parts and
+             labour. If it comes back, it comes back to us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ STATEMENT · dark ======= -->
+  <section class="section section--ink statement">
+    <div class="container">
+      <p class="eyebrow reveal">Our promise</p>
+      <h2 class="reveal" data-delay="1">
+        Nothing gets touched until you&rsquo;ve seen the price in writing.
+      </h2>
+      <p class="reveal" data-delay="2">
+        Every job starts with a written quote. If we open something up and find more
+        than we expected, work stops and you get a phone call. You will never collect a
+        vehicle and discover the bill grew while it was out of your hands.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================ GALLERY · light ======== -->
+  <section id="work" class="section section--paper">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">The shop</p>
+        <h2>Inside the bay.</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item reveal">
+          <img src="/demos/ridgeline-auto/assets/photos/technician-bench-1024.jpg"
+               srcset="/demos/ridgeline-auto/assets/photos/technician-bench-480.jpg 480w,
+                       /demos/ridgeline-auto/assets/photos/technician-bench-1024.jpg 1024w,
+                       /demos/ridgeline-auto/assets/photos/technician-bench-1920.jpg 1920w"
+               sizes="(max-width: 640px) 100vw, 45vw"
+               width="1400" height="934" loading="lazy" decoding="async"
+               alt="A technician working at a bench beside a vehicle lift.">
+          <figcaption>Diagnostics</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-delay="1">
+          <img src="/demos/ridgeline-auto/assets/photos/engine-bay-1024.jpg"
+               srcset="/demos/ridgeline-auto/assets/photos/engine-bay-480.jpg 480w,
+                       /demos/ridgeline-auto/assets/photos/engine-bay-1024.jpg 1024w,
+                       /demos/ridgeline-auto/assets/photos/engine-bay-1920.jpg 1920w"
+               sizes="(max-width: 640px) 100vw, 45vw"
+               width="1400" height="935" loading="lazy" decoding="async"
+               alt="Close-up of an engine bay during a service.">
+          <figcaption>Engine work</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-delay="2">
+          <img src="/demos/ridgeline-auto/assets/photos/under-vehicle-1024.jpg"
+               srcset="/demos/ridgeline-auto/assets/photos/under-vehicle-480.jpg 480w,
+                       /demos/ridgeline-auto/assets/photos/under-vehicle-1024.jpg 1024w,
+                       /demos/ridgeline-auto/assets/photos/under-vehicle-1920.jpg 1920w"
+               sizes="(max-width: 640px) 100vw, 45vw"
+               width="1400" height="933" loading="lazy" decoding="async"
+               alt="Suspension and driveshaft work from beneath a raised vehicle.">
+          <figcaption>Suspension</figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-delay="3">
+          <img src="/demos/ridgeline-auto/assets/photos/tool-wall-1024.jpg"
+               srcset="/demos/ridgeline-auto/assets/photos/tool-wall-480.jpg 480w,
+                       /demos/ridgeline-auto/assets/photos/tool-wall-1024.jpg 1024w,
+                       /demos/ridgeline-auto/assets/photos/tool-wall-1920.jpg 1920w"
+               sizes="(max-width: 640px) 100vw, 45vw"
+               width="1400" height="933" loading="lazy" decoding="async"
+               alt="Wrenches and hand tools organised on the shop wall.">
+          <figcaption>The bench</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================= BRAND MOMENT · accent ======= -->
+  <section id="about" class="section section--accent">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Why Ridgeline</p>
+        <h2>Three things we don&rsquo;t negotiate on.</h2>
+      </div>
+
+      <svg class="brand-route" viewBox="0 0 1200 120" fill="none" aria-hidden="true"
+           preserveAspectRatio="xMidYMid meet">
+        <circle cx="16" cy="98" r="5" fill="currentColor" opacity=".8"/>
+        <path d="M16 98 C 300 98, 360 22, 620 22 S 930 92, 1184 30"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-dasharray="1 11" opacity=".75"/>
+        <circle cx="1184" cy="30" r="5" fill="currentColor" opacity=".8"/>
+      </svg>
+
+      <div class="usp-grid usp-grid--3">
+        <div class="usp reveal">
+          <h3>Written Quotes</h3>
+          <p>A price in writing before any work is approved, and a phone call before
+             anything is added to it.</p>
+        </div>
+        <div class="usp reveal" data-delay="1">
+          <h3>ASE Certified</h3>
+          <p>Every technician who touches your vehicle holds current certification for
+             the work they are doing.</p>
+        </div>
+        <div class="usp reveal" data-delay="2">
+          <h3>12-Month Warranty</h3>
+          <p>Parts and labour, twelve months, no fine print and no argument about what
+             counts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== CLOSING CTA · light ====== -->
+  <section id="book" class="section section--paper">
+    <div class="container cta-close">
+      <p class="eyebrow reveal">Ready when you are</p>
+      <h2 class="reveal" data-delay="1">Book your vehicle in.</h2>
+      <p class="reveal" data-delay="2">
+        Tell us what it&rsquo;s doing and we&rsquo;ll tell you what it needs. Most
+        vehicles booked before noon are back with you the same day.
+      </p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a class="btn btn-accent" href="tel:+16135550123">Book a service</a>
+        <a class="btn btn-ghost" href="tel:+16135550123">(613) 555-0123</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-contact">
+        <a class="wordmark" href="/demos/ridgeline-auto" style="margin-bottom:10px">Ridgeline<span class="dot">.</span></a>
+        <a href="tel:+16135550123">(613) 555-0123</a>
+        <span>1400 Carling Avenue, Ottawa, ON</span>
+        <span>Mon&ndash;Fri 7:30&ndash;18:00 &middot; Sat 8:00&ndash;16:00</span>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <span>Services</span>
+          <a href="#services">Diagnostics</a>
+          <a href="#services">Brakes &amp; Suspension</a>
+          <a href="#services">Maintenance</a>
+        </div>
+        <div>
+          <span>Shop</span>
+          <a href="#work">Our Work</a>
+          <a href="#about">Why Ridgeline</a>
+          <a href="#book">Book a service</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 Ridgeline Auto Co.</span>
+      <span>Independently owned and operated.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/demos/ridgeline-auto/assets/js/site.js" defer></script>
+</body>
+</html>

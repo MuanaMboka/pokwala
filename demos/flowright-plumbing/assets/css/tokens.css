@@ -1,0 +1,77 @@
+/* ============================================================================
+   TOKENS — the re-skin surface.
+
+   Second vertical in the template series. Same contract as the auto-repair
+   template: retargeting this to another trade (HVAC, electrician, roofing)
+   should mean editing THIS file plus the copy in the HTML. Nothing in
+   site.css hard-codes a colour, font, radius or duration.
+   ============================================================================ */
+
+:root {
+  /* --- Colour -------------------------------------------------------------
+     A plumbing site trades on "clean water, fast response", so this vertical
+     runs cool rather than warm: deep navy grounds, one saturated trade blue
+     doing every call-to-action, and a single gold reserved for star ratings.
+     That gold is the ONLY non-blue accent on the page — keep it that way.  */
+  --ink:          #0B2440;   /* hero + CTA band, deep navy                   */
+  --ink-deep:     #07192F;   /* footer, one step darker                      */
+  --paper:        #FFFFFF;   /* cards, nav, form surface                     */
+  --paper-tint:   #F4F9FD;   /* light sections, a blue-cast off-white        */
+  --panel:        #E9F3FD;   /* the "why choose us" panel                    */
+
+  --text:         #0F2438;   /* headings on light                            */
+  --text-mute:    #55687C;   /* body copy on light                           */
+  --text-on-ink:      #FFFFFF;
+  --text-on-ink-mute: #B6C6D8;
+
+  --brand:        #1A6EE0;   /* the trade blue. Every CTA, every icon.       */
+  --brand-strong: #1459C4;   /* hover / pressed                              */
+  --brand-light:  #4FA3FF;   /* on navy: headline accent, eyebrows, links    */
+  --brand-wash:   #EDF5FE;   /* icon chips, hovered rows                     */
+  --text-on-brand: #FFFFFF;
+
+  --star:         #F5B932;   /* ratings only                                 */
+
+  --rule:           rgba(15, 36, 56, 0.10);   /* hairlines on light          */
+  --rule-strong:    rgba(15, 36, 56, 0.16);   /* form fields                 */
+  --rule-on-ink:    rgba(255, 255, 255, 0.22);
+
+  --shadow-card:  0 1px 2px rgba(15, 36, 56, 0.05),
+                  0 8px 24px rgba(15, 36, 56, 0.05);
+  --shadow-lift:  0 2px 4px rgba(15, 36, 56, 0.06),
+                  0 16px 40px rgba(15, 36, 56, 0.10);
+
+  /* --- Type ---------------------------------------------------------------
+     Two roles, deliberately. The auto-repair template used one family because
+     its whole character came from photography; this vertical needs a friendly
+     geometric voice in the headings that Inter cannot do, so the display face
+     is split out. Swap both tokens AND the Google Fonts <link> together.   */
+  --font:         'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Poppins', var(--font);
+
+  --weight-body:    400;
+  --weight-medium:  500;
+  --weight-strong:  600;
+  --weight-display: 700;
+
+  --tracking-display: -0.02em;
+  --tracking-eyebrow:  0.14em;
+
+  /* --- Geometry ----------------------------------------------------------- */
+  --measure:     1200px;
+  --gutter:      clamp(20px, 4vw, 56px);
+  --radius:      8px;    /* buttons, fields — friendlier than auto-repair's 2px */
+  --radius-card: 12px;
+  --radius-panel:16px;
+  --radius-pill: 999px;
+
+  --nav-h:       72px;
+
+  --section-y:       clamp(64px, 7vw, 104px);
+  --section-y-tight: clamp(48px, 5vw, 72px);
+
+  /* --- Motion -------------------------------------------------------------- */
+  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --dur:       640ms;
+  --dur-quick: 180ms;
+}

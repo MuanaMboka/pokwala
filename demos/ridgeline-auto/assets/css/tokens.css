@@ -1,0 +1,64 @@
+/* ============================================================================
+   TOKENS — the re-skin surface.
+
+   To retarget this template to another vertical (plumber, dentist, electrician)
+   you should only need to edit THIS file plus the copy in the HTML. Nothing in
+   site.css hard-codes a colour, font or radius.
+   ============================================================================ */
+
+:root {
+  /* --- Colour -------------------------------------------------------------
+     Near-black with a slight blue cast, one warm accent, and nothing else.
+     The photography supplies every other colour on the page.              */
+  --ink:          #0C1117;   /* page/section background, deep navy-black     */
+  --ink-raised:   #141A22;   /* one step up: cards, nav on scroll            */
+  --paper:        #F6F4F1;   /* warm off-white for light sections            */
+
+  --text-on-ink:      #FFFFFF;
+  --text-on-ink-mute: #9AA4B0;
+  --text-on-paper:      #0C1117;
+  --text-on-paper-mute: #5C6570;
+
+  --accent:        #C8823A;  /* warm brass. The single accent. Swap freely.  */
+  --accent-hover:  #D9924A;
+  --text-on-accent: #0C1117;
+
+  --rule-on-ink:    rgba(255, 255, 255, 0.16);
+  --rule-on-paper:  rgba(12, 17, 23, 0.16);
+  --rule-on-accent: rgba(12, 17, 23, 0.28);
+
+  /* Copy on the accent surface. The accent is a full-bleed section background,
+     not a text colour, so it needs its own muted pair.
+     0.82 is the floor: at 0.68 this measured 3.7:1 against --accent and failed
+     WCAG AA for body text. Re-check this ratio if --accent is ever changed. */
+  --text-on-accent-mute: rgba(12, 17, 23, 0.82);
+
+  /* --- Type ---------------------------------------------------------------
+     ONE family. Hierarchy comes from weight and size, never from a second
+     display face.                                                          */
+  --font: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --weight-body:    400;
+  --weight-medium:  500;
+  --weight-strong:  600;
+  --weight-display: 700;
+
+  --tracking-display: -0.025em;
+  --tracking-eyebrow:  0.14em;
+
+  /* --- Geometry ----------------------------------------------------------- */
+  --measure:   1360px;  /* max content width                                 */
+  --gutter:    clamp(20px, 4vw, 64px);
+  --radius:    2px;     /* restrained. Raise for a friendlier vertical.      */
+  --radius-card: 20px;  /* photo cards only                                  */
+  --radius-pill: 999px;
+
+  /* Vertical rhythm. The single biggest lever on whether the page reads as
+     premium or as cramped, so it is a token rather than a per-section value. */
+  --section-y:       clamp(72px, 9vw, 150px);
+  --section-y-tight: clamp(56px, 6vw, 96px);
+
+  /* --- Motion -------------------------------------------------------------- */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur:  720ms;
+}
