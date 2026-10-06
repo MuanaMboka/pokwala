@@ -3,6 +3,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/work",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/demos",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/demos/:path*",
+      "destination": "/portfolio/:path*",
+      "permanent": true
+    },
+    {
       "source": "/resources/tools/ai-visibility-checker",
       "destination": "/services#local-seo",
       "permanent": true
@@ -25,7 +40,7 @@
   ],
   "headers": [
     {
-      "source": "/demos/(.*)",
+      "source": "/portfolio/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -43,7 +58,7 @@
       ]
     },
     {
-      "source": "/demos/:slug/assets/(.*)",
+      "source": "/portfolio/:slug/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
