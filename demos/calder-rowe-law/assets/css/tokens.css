@@ -1,0 +1,65 @@
+/* ============================================================================
+   TOKENS: the re-skin surface for Calder Rowe Law (demo).
+
+   A law firm sells judgement and calm, not urgency, so this vertical runs
+   quieter than the trade demos: a deep "trusted navy" ground, warm sand
+   sections instead of grey, slate for secondary text, and one gold accent
+   reserved for the consultation call-to-action and fine rules. Headlines use
+   a system serif (zero bytes, editorial voice); everything else is one
+   self-hosted variable Montserrat file.
+   ============================================================================ */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/demos/calder-rowe-law/assets/fonts/montserrat-latin-wght.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* --- Colour (from the brief's palette) -------------------------------- */
+  --navy:        #0B2545;   /* Trusted Navy: hero, header band, footer      */
+  --navy-deep:   #071A33;   /* footer, one step darker                      */
+  --slate:       #4A6572;   /* Professional Slate: secondary text, icons    */
+  --sand:        #E8E4DE;   /* Soft Sand: alternating sections              */
+  --sand-soft:   #F4F2EE;   /* lighter sand for cards on sand               */
+  --paper:       #FFFFFF;   /* Clean Background                             */
+  --ink:         #212529;   /* Onyx Grey: body text and headings on light   */
+
+  --gold:        #C19A6B;   /* Judicial Gold: CTA fills, rules, on-navy text */
+  --gold-strong: #AD8455;   /* hover                                        */
+  --gold-text:   #7E5E33;   /* gold that passes AA as text on white/sand    */
+
+  --text:          var(--ink);
+  --text-mute:     #4F5B63;
+  --text-on-navy:  #FFFFFF;
+  --text-on-navy-mute: #C3CCD8;
+
+  --rule:        rgba(33, 37, 41, 0.12);
+  --rule-strong: rgba(33, 37, 41, 0.28);
+  --rule-on-navy: rgba(255, 255, 255, 0.18);
+
+  --shadow-card: 0 1px 2px rgba(11, 37, 69, 0.06), 0 10px 30px rgba(11, 37, 69, 0.06);
+
+  /* --- Type --------------------------------------------------------------- */
+  --font:         'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+
+  --tracking-eyebrow: 0.16em;
+
+  /* --- Geometry ----------------------------------------------------------- */
+  --measure:   1180px;
+  --prose:     68ch;
+  --gutter:    clamp(16px, 4vw, 48px);
+  --radius:    4px;        /* law reads square; trades demos run rounder    */
+  --radius-card: 6px;
+  --banner-h:  36px;
+  --nav-h:     72px;
+  --section-y: clamp(56px, 7vw, 104px);
+
+  /* --- Motion ------------------------------------------------------------- */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur:  520ms;
+  --dur-quick: 160ms;
+}
