@@ -2,28 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pokwala.com/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pokwala.com/web-design</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://pokwala.com/trades</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pokwala.com/portfolio</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://pokwala.com/services</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.8</priority>
+    <loc>https://pokwala.com/web-design</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pokwala.com/local-seo-services</loc>
@@ -31,23 +21,28 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pokwala.com/portfolio</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pokwala.com/services</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pokwala.com/about</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pokwala.com/faq</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pokwala.com/contact</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pokwala.com/privacy-policy</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.2</priority>
   </url>
 </urlset>

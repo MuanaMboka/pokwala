@@ -1,0 +1,5 @@
+#!/bin/sh
+# Rebuild sitemap.xml from the site's pages and include it in the commit.
+# Enable once per clone with: git config core.hooksPath .githooks
+node scripts/build-sitemap.mjs >/dev/null || exit 1
+git add sitemap.xml
