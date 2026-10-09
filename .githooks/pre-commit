@@ -1,5 +1,14 @@
 #!/bin/sh
-# Rebuild sitemap.xml from the site's pages and include it in the commit.
 # Enable once per clone with: git config core.hooksPath .githooks
+
+# 1. Shared header/footer: if any page is out of date, update it and stop so the
+#    changes can be reviewed and staged (never stage whole pages automatically).
+if ! node scripts/build-chrome.mjs --check >/dev/null 2>&1; then
+  node scripts/build-chrome.mjs
+  echo "pre-commit: header/footer were out of date and have been updated. Review, stage and commit again." >&2
+  exit 1
+fi
+
+# 2. Rebuild sitemap.xml from the site's pages and include it in the commit.
 node scripts/build-sitemap.mjs >/dev/null || exit 1
 git add sitemap.xml
