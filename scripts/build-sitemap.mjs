@@ -27,6 +27,7 @@ const PRIORITY = {
   '/portfolio': '0.8',
   '/services': '0.8',
   '/local-seo-services': '0.8',
+  '/website-maintenance': '0.8',
   '/about': '0.7',
   '/faq': '0.7',
   '/contact': '0.6',
@@ -36,7 +37,8 @@ const DEFAULT_PRIORITY = '0.6';
 const EXCLUDE_FILES = new Set(['404.html']);
 
 const git = (...args) => execFileSync('git', args, { cwd: ROOT, encoding: 'utf8' }).trim();
-const today = new Date().toISOString().slice(0, 10);
+// Local date, to match the dates git log reports for commits made on this machine.
+const today = new Date().toLocaleDateString('en-CA');
 
 // Turn a vercel.json "source" pattern into a RegExp (covers :param, :param*, (.*)).
 function sourceToRegExp(source) {
